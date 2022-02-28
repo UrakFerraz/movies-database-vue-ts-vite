@@ -6,7 +6,7 @@ import Movie from "./pages/movie.vue";
 <template>
   <Suspense>
     <template #default>
-      <Movie :movie-id="'634649'" />
+      <Movie :movie-id="'476669'" />
     </template>
     <template #fallback> Loading... </template>
   </Suspense>

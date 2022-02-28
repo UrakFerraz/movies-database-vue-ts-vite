@@ -1,5 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap');
 html {
 	background: rgb(25, 25, 32);
+}
+
+div, h1, h2 , h3, span, p, a, li, ul, button, input, html, body {
+	font-family: 'Manrope', sans-serif;
+	position: relative;
+	display: block;
+	padding: 0;
+	margin: 0;
 }
 
 h1,
@@ -8,27 +17,58 @@ h3,
 p,
 li {
   color: aliceblue;
+	line-height: 1.5;
 }
 
-a {
+a, li, button {
+	text-decoration: none;
+}
+
+a , button{
 	color: aliceblue;
-	display: block;
+	display: inline-grid;
+	font-size: 14px;
+	padding: 5px 9px;
+	border: 1px solid rgb(100, 96, 96);
+	border-radius: 5px;
+	background: transparent;
+	cursor: pointer;
+}
+
+a , button:hover {
+	transform: scale(0.98);
 }
 
 h1 {
-	font-size: 28px;
+	font-size: 23px;
 }
 
 h2 {
 	margin: 10px 0;
-	font-size: 25px;
+	font-size: 18px;
 }
 
 p {
+	font-size: 14px;
 	margin: 10px 0;
 }
 
 span {
-	font-size: 14px;
+	font-size: 12px;
 	color: rgb(100, 96, 96);
+}
+
+
+
+@media (min-width: 768px) {
+	h1 {
+		font-size: 28px;
+	}
+
+	h2 {
+		font-size: 20px;
+	}
+	p, a, span {
+		font-size: 14px;
+	}
 }

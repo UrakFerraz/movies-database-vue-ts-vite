@@ -1,46 +1,20 @@
 <template>
   <div v-if="movieDetails">
     <Backdrop :backdrop-path="movieDetails.backdrop_path" />
-    <div class="rating">
-      <div class="rate">
-        <p>{{ movieDetails.vote_average }}</p>
-      </div>
-    </div>
-    <div class="movie-img">
-      <img
-        :src="'https://www.themoviedb.org/t/p/w300/' + movieDetails.poster_path"
-        alt=""
-      />
-    </div>
-    <div class="movie-info">
-      <span>Título Original: {{ movieDetails.original_title }}</span>
-      <h1>{{ movieDetails.title }}</h1>
-      <h2>{{ movieDetails.tagline }}</h2>
-      <p>{{ movieDetails.overview }}</p>
-    </div>
-    <div class="genres">
-      <ul>
-        <li v-for="genre in movieDetails.genres" :key="genre.id">
-          <a :href="'#'">{{ genre.name }}</a>
-        </li>
-      </ul>
-    </div>
-    <div class="more-info">
-      <p>
-        Duração:
-        {{ (movieDetails.runtime / 60).toFixed(2).split(".").join(":") }} horas
-      </p>
-      <a
-        target="_blank"
-        :href="'https://www.imdb.com/title/' + movieDetails.imdb_id"
-        >Ver no IMDB</a
-      >
+    <div class="movie-content">
+      <Suspense>
+        <MovieCard :movie="movieDetails" />
+        <template #fallback> Loading... </template>
+      </Suspense>
+      <CastList class="cast-list--wrapper" :movie-id="movieDetails.id" />
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { ref } from "vue";
-import Backdrop from "../components/backdrop.vue";
+import CastList from "../components/template/cast-list.vue";
+import Backdrop from "../components/molecule/backdrop.vue";
+import MovieCard from "../components/template/movie-card.vue";
 import MovieDatabase from "../modules/movies-db-api";
 const props = defineProps<{ movieId: string }>();
 let movieDatabase = new MovieDatabase(props.movieId);
@@ -56,4 +30,14 @@ console.log(movieDetails);
 </script>
 
 <style scoped>
+.movie-content {
+  display: grid;
+  grid-template-columns: auto minmax(300px, 1200px) auto;
+}
+.movie-content .movie-card {
+  grid-column: 2 / -2;
+}
+.cast-list--wrapper {
+  grid-column: 2 / -2;
+}
 </style>

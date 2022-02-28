@@ -1,9 +1,5 @@
-<script setup lang="ts">
-const props = defineProps<{ cast: any }>();
-</script>
-
 <template>
-  <li>
+  <li class="cast-list-item">
     <div class="cast-list-img">
       <img
         :src="'https://image.tmdb.org/t/p/w200' + props.cast.profile_path"
@@ -23,24 +19,9 @@ const props = defineProps<{ cast: any }>();
   </li>
 </template>
 
+<script setup lang="ts">
+const props = defineProps<{ cast: any }>();
+</script>
 
 <style scoped>
-.cast-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
-}
-
-.cast-list-img {
-  overflow: hidden;
-  position: relative;
-  display: block;
-  border-radius: 10px;
-}
-
-.cast-list-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
 </style>
