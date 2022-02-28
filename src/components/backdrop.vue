@@ -16,7 +16,7 @@ const props = defineProps<{ backdropPath: string }>();
 
 <style scoped>
 .backdrop-img {
-  z-index: 0;
+  z-index: -1;
   position: absolute;
   width: 100%;
   top: 0;
