@@ -7,7 +7,6 @@ const count = ref(0);
 </script>
 
 <template>
-  <h1>{{ movie }}</h1>
   <p>{{ msg }}</p>
 </template>
 
