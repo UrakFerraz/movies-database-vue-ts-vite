@@ -11,16 +11,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
 import MoviePosterImage from "../molecule/movie-poster-image.vue";
 import MovieInfo from "../molecule/movie-info.vue";
 
-const displayCast = ref(false);
 const props = defineProps<{ movie: any }>();
 
-function viewCast(): void {
-  return !displayCast.value;
-}
+onMounted(() => {
+  console.log(props.movie);
+});
 </script>
 
 <style scoped>

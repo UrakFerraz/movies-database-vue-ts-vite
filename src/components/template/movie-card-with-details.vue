@@ -34,6 +34,10 @@ function viewCast(): void {
   gap: 20px;
   overflow: hidden;
 }
+
+.movie-card img {
+  width: 20px;
+}
 @media (min-width: 768px) {
   .movie-card {
     display: grid;

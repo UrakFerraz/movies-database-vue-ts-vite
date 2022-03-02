@@ -1,15 +1,13 @@
 <template>
-  <div>
-    <div class="movies-list--wrapper">
-      <MovieCard :movie="movie" v-for="mov in props.movie" :key="mov.id" />
-      {{ item }}
-    </div>
+  <div class="movies-list--wrapper" v-if="props.content">
+    <p>{{ props.content }}</p>
   </div>
 </template>
 
 <script setup lang="ts">
-import MovieCard from "../organism/cast-list.vue";
-const props = defineProps<{ movie: any }>();
+import { ref } from "vue";
+import MovieCard from "../template/movie-card.vue";
+const props = defineProps<{ content: any }>();
 </script>
 
 <style scoped>

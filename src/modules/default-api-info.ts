@@ -14,11 +14,17 @@ export default class APIDefaultInfo {
 	get genresListUrl(): string {
 		return `${this.apiURL}/genre/movie/list?api_key=${this.API_KEY}&${this.defaultLanguage}`
 	}
-	get latestMoviesUrl(): string {
-		return `${this.apiURL}/movie/latest/list?api_key=${this.API_KEY}&${this.defaultLanguage}`
+	get nowPlayingMoviesUrl(): string {
+		return `${this.apiURL}/movie/now_playing?api_key=${this.API_KEY}&${this.defaultLanguage}&page=1`
+	}
+	get populargMoviesUrl(): string {
+		return `${this.apiURL}/movie/popular?api_key=${this.API_KEY}&${this.defaultLanguage}&page=1`
+	}
+	get topRatedMoviesUrl(): string {
+		return `${this.apiURL}/movie/top_rated?api_key=${this.API_KEY}&${this.defaultLanguage}&page=1`
 	}
 	get upcomingMoviesUrl(): string {
-		return `${this.apiURL}/movie/upcoming/list?api_key=${this.API_KEY}&${this.defaultLanguage}`
+		return `${this.apiURL}/movie/upcoming?api_key=${this.API_KEY}&${this.defaultLanguage}&page=1`
 	}
 	static getGenreUrl(pageNumber: number, genreName: number): string {
 		return `${this.apiURL}/discover/movie?api_key=${this.API_KEY}&${this.defaultLanguage}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_genres=${genreName}`
