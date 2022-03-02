@@ -1,7 +1,7 @@
 <template>
   <div class="movie-card--img">
     <img
-      :src="'https://www.themoviedb.org/t/p/w300/' + props.posterPath"
+      :src="'https://www.themoviedb.org/t/p/w300' + props.posterPath"
       :alt="props.altText"
     />
   </div>

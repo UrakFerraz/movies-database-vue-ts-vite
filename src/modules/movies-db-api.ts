@@ -21,11 +21,4 @@ export default class MovieDatabase extends APIDefaultInfo {
 	get movieExternalIdsUrl(): string {
 		return `${this.apiURL}/movie/${this.movieId}/extenal_ids?api_key=${this.API_KEY}`
 	}
-
-	fetchData = async (url: string) => {
-		const response = await fetch(url)
-		const data = await response.json()
-		console.log(data);
-		return data
-	}
 }

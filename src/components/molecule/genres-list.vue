@@ -3,7 +3,7 @@
     <span>Gêneros:</span>
     <ul>
       <li v-for="genre in props.genres" :key="genre.id">
-        <a :href="'#'">{{ genre.name }}</a>
+        <a class="average-rgb--border" :href="'#'">{{ genre.name }}</a>
       </li>
     </ul>
   </div>

@@ -12,5 +12,7 @@ export default async function getAverageRgb(src: string): Promise<Uint8ClampedAr
             context!.drawImage(img, 0, 0, 1, 1);
             resolve(context!.getImageData(0, 0, 1, 1).data.slice(0,3));
         };
+        console.log(img);
+        console.log(context);
     });
 }

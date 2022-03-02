@@ -7,7 +7,7 @@
       />
     </div>
     <a
-      class="cast-name"
+      class="cast-name average-rgb--border"
       :href="
         'https://api.themoviedb.org/3/person/' +
         props.cast.cast_id +

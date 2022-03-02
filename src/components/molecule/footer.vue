@@ -1,6 +1,7 @@
 <template>
-  <div class="footer">
+  <div class="footer average-rgb--bg">
     <a
+      class="average-rgb--border"
       href="https://github.com/UrakFerraz/movies-database-vue-ts-vite"
       target="_blank"
       >GitHub</a

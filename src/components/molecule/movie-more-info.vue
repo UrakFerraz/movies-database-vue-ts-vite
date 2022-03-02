@@ -3,7 +3,9 @@
     <h2>{{ movie.tagline }}</h2>
     <p>{{ movie.overview }}</p>
     <p>Duração: {{ duration }} horas</p>
-    <a target="_blank" :href="imdbUrl">Ver no IMDB</a>
+    <a class="average-rgb--border" target="_blank" :href="imdbUrl"
+      >Ver no IMDB</a
+    >
   </div>
 </template>
 
