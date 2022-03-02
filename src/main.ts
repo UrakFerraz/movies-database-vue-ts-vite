@@ -8,10 +8,12 @@ import MoviePage from './pages/movie.vue'
 import Home from './pages/home.vue'
 import Header from './components/molecule/header.vue'
 import Footer from './components/molecule/footer.vue'
+import Genre from './pages/genre.vue'
 
 const routes = [
 	{ path: '/', components: { default: Home, header: Header, footer: Footer } },
-	{ name: 'movie', path: '/movie/:movieId', components: { default: MoviePage, header: Header, footer: Footer }, props: { default: true, header: false, footer: false } }
+	{ name: 'movie', path: '/movie/:movieId', components: { default: MoviePage, header: Header, footer: Footer }, props: { default: true, header: false, footer: false } },
+	{ path: '/:genre/:pageNumber', component: Genre, props: true }
 ]
 
 const router = createRouter({

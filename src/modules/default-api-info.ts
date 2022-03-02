@@ -26,7 +26,7 @@ export default class APIDefaultInfo {
 	get upcomingMoviesUrl(): string {
 		return `${this.apiURL}/movie/upcoming?api_key=${this.API_KEY}&${this.defaultLanguage}&page=1`
 	}
-	static getGenreUrl(pageNumber: number, genreName: number): string {
+	getGenreUrl(pageNumber: number, genreName: number): string {
 		return `${this.apiURL}/discover/movie?api_key=${this.API_KEY}&${this.defaultLanguage}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_genres=${genreName}`
 	}
 	fetchData = async (url: string) => {
