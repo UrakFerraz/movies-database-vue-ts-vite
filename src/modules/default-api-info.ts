@@ -17,7 +17,7 @@ export default class APIDefaultInfo {
 	get nowPlayingMoviesUrl(): string {
 		return `${this.apiURL}/movie/now_playing?api_key=${this.API_KEY}&${this.defaultLanguage}&page=1`
 	}
-	get populargMoviesUrl(): string {
+	get popularMoviesUrl(): string {
 		return `${this.apiURL}/movie/popular?api_key=${this.API_KEY}&${this.defaultLanguage}&page=1`
 	}
 	get topRatedMoviesUrl(): string {

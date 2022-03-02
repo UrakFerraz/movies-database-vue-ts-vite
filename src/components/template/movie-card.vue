@@ -1,19 +1,22 @@
 <template>
   <div class="movie-card">
     <MoviePosterImage
+      class="movie-card--image"
       :poster-path="movie.poster_path"
       :alt-text="movie.original_title"
     />
     <div class="movie-card--content">
-      <MovieInfo :movie="movie" />
+      <span
+        >{{ movie.vote_average }} - {{ movie.release_date.slice(0, 4) }}</span
+      >
     </div>
+    <router-link :to="'/movie/' + movie.id" class="router-link"></router-link>
   </div>
 </template>
 
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import MoviePosterImage from "../molecule/movie-poster-image.vue";
-import MovieInfo from "../molecule/movie-info.vue";
 
 const props = defineProps<{ movie: any }>();
 
@@ -23,17 +26,30 @@ onMounted(() => {
 </script>
 
 <style scoped>
+.router-link {
+  position: absolute;
+  width: 90%;
+  height: 90%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 20;
+  border: none;
+  outline: none;
+}
 .movie-card {
-  padding: 100px 20px 40px 20px;
   display: grid;
   gap: 20px;
+  padding: 10px;
+}
+
+.movie-card--image {
+  width: 120px;
 }
 
 @media (min-width: 768px) {
-  .movie-card {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    gap: 20px;
+  .movie-card--image {
+    width: 250px;
   }
 }
 </style>
