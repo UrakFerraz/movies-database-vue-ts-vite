@@ -3,6 +3,14 @@ html {
 	background: rgb(25, 25, 32);
 }
 
+:root {
+	--darkest-color: rgb(25, 25, 32);
+	--dark-color: rgb(51, 49, 59);
+	--gray: rgb(60, 79, 101);
+	--principal: rgb(49, 53, 82);
+	--light: rgb(230, 245, 255);
+}
+
 div, h1, h2 , h3, span, p, a, li, ul, button, input, html, body {
 	font-family: 'Manrope', sans-serif;
 	position: relative;
@@ -16,7 +24,7 @@ h2,
 h3,
 p,
 li {
-  color: aliceblue;
+  color: var(--light);
 	line-height: 1.5;
 }
 
@@ -29,7 +37,7 @@ a , button{
 	display: inline-grid;
 	font-size: 14px;
 	padding: 5px 9px;
-	border: 1px solid rgb(100, 96, 96);
+	border: 1px solid var(--gray);
 	border-radius: 5px;
 	background: transparent;
 	cursor: pointer;

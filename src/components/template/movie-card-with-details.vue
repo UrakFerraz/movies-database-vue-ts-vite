@@ -6,6 +6,8 @@
     />
     <div class="movie-card--content">
       <MovieInfo :movie="movie" />
+      <MovieMoreInfo :movie="movie" />
+      <GenresList :genres="movie.genres" />
     </div>
   </div>
 </template>
@@ -13,7 +15,9 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import MoviePosterImage from "../molecule/movie-poster-image.vue";
+import MovieMoreInfo from "../molecule/movie-more-info.vue";
 import MovieInfo from "../molecule/movie-info.vue";
+import GenresList from "../molecule/genres-list.vue";
 
 const displayCast = ref(false);
 const props = defineProps<{ movie: any }>();

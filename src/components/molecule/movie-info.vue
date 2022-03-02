@@ -7,8 +7,7 @@
     </div>
     <span>Título Original: {{ movie.original_title }}</span>
     <h1>{{ movie.title }}</h1>
-    <h2>{{ movie.tagline }}</h2>
-    <p>{{ movie.overview }}</p>
+    <p>{{ movie.release_date.slice(0, 4) }}</p>
   </div>
 </template>
 

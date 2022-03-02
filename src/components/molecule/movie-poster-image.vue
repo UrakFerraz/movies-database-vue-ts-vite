@@ -2,13 +2,13 @@
   <div class="movie-card--img">
     <img
       :src="'https://www.themoviedb.org/t/p/w300/' + props.posterPath"
-      alt="{{props.title}}"
+      :alt="props.altText"
     />
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ posterPath: string; title: string }>();
+const props = defineProps<{ posterPath: string; altText: string }>();
 </script>
 
 <style scoped>

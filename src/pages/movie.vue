@@ -6,7 +6,7 @@
         <MovieCard :movie="movieDetails" />
         <template #fallback> Loading... </template>
       </Suspense>
-      <CastList class="cast-list--wrapper" :movie-id="movieDetails.id" />
+      <CastList class="cast-list--wrapper" :movie-id="props.movieId" />
     </div>
   </div>
 </template>
@@ -14,19 +14,23 @@
 import { ref } from "vue";
 import CastList from "../components/template/cast-list.vue";
 import Backdrop from "../components/molecule/backdrop.vue";
-import MovieCard from "../components/template/movie-card.vue";
+import MovieCard from "../components/template/movie-card-with-details.vue";
 import MovieDatabase from "../modules/movies-db-api";
-const props = defineProps<{ movieId: string }>();
+
+const props = defineProps<{ movieId: number | string }>();
 let movieDatabase = new MovieDatabase(props.movieId);
 let movieDetails = ref(null) as any;
+
 async function getMovieDetails() {
   movieDetails.value = await movieDatabase.fetchData(
     movieDatabase.movieDetailsUrl
   );
 }
-getMovieDetails();
+
 console.log(movieDatabase.movieDetailsUrl);
 console.log(movieDetails);
+
+getMovieDetails();
 </script>
 
 <style scoped>

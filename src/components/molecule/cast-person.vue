@@ -21,7 +21,22 @@
 
 <script setup lang="ts">
 const props = defineProps<{ cast: any }>();
+console.log(props);
 </script>
 
 <style scoped>
+.cast-list-img {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  border-radius: 10px;
+  max-height: 250px;
+  margin-bottom: 10px;
+}
+
+.cast-list-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 </style>
