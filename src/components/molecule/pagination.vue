@@ -1,7 +1,7 @@
 <template>
   <div class="pagination">
-    <button v-if="genrePageNum > 1" @click="prev">Anterior</button>
-    <button @click="next">Próximo</button>
+    <router-link :to="nextPrev('prev')">Anterior</router-link>
+    <router-link :to="nextPrev('next')">Próximo</router-link>
   </div>
 </template>
 
@@ -12,20 +12,33 @@ import { useRouter, useRoute } from "vue-router";
 const router = useRouter();
 const route = useRoute();
 
-const count = ref(1);
+let count = 1;
 
-const genreName = route.params.genre;
+const genreId = route.params.genre;
 const genrePageNum = Number(route.params.pageNumber);
 
-function next() {
-  count.value++;
-  return router.push(`/${genreName}/${count.value}`);
-}
-function prev() {
-  count.value--;
-  return router.push(`/${genreName}/${count.value}`);
+function nextPrev(direction: string) {
+  count = genrePageNum;
+  console.log(count);
+  console.log(typeof count);
+  if (direction === "prev") {
+    if (count > 1) {
+      count -= 1;
+    }
+  } else if (direction === "next") {
+    count += 1;
+  }
+  return `/${genreId}/${count}`;
 }
 </script>
 
 <style scoped>
+.pagination {
+  margin-top: 40px;
+  width: 100%;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  gap: 20px;
+}
 </style>

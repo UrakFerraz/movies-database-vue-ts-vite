@@ -1,13 +1,15 @@
 <script setup lang="ts">
-import { useRoute } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 const route = useRoute();
+const router = useRouter();
 console.log(route);
+console.log(router);
 </script>
 
 <template>
   <router-view name="header"></router-view>
   <div class="content">
-    <router-view></router-view>
+    <router-view :key="route.path"></router-view>
   </div>
   <router-view name="footer"></router-view>
 </template>

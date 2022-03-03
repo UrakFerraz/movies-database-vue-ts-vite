@@ -11,6 +11,17 @@ import { ref } from "vue";
 import MoviesTable from "../components/organism/movies-table.vue";
 import APIDefaultInfo from "../modules/default-api-info";
 import Pagination from "../components/molecule/pagination.vue";
+import { useRouter, onBeforeRouteLeave } from "vue-router";
+import Genres from "../components/organism/genres.vue";
+
+const router = useRouter();
+
+console.log(router);
+
+onBeforeRouteLeave((to, from) => {
+  console.log(to);
+  console.log(from);
+});
 
 const defaultAPIInfos = new APIDefaultInfo();
 

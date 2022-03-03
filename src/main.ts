@@ -13,7 +13,7 @@ import Genre from './pages/genre.vue'
 const routes = [
 	{ path: '/', components: { default: Home, header: Header, footer: Footer } },
 	{ name: 'movie', path: '/movie/:movieId', components: { default: MoviePage, header: Header, footer: Footer }, props: { default: true, header: false, footer: false } },
-	{ path: '/:genre/:pageNumber', component: Genre, props: true }
+	{ name: 'genre', path: '/:genre/:pageNumber', components: { default: Genre, header: Header, footer: Footer }, props: { default: true, header: false, footer: false } }
 ]
 
 const router = createRouter({

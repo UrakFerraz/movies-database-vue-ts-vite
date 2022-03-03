@@ -26,12 +26,14 @@ export default class APIDefaultInfo {
 	get upcomingMoviesUrl(): string {
 		return `${this.apiURL}/movie/upcoming?api_key=${this.API_KEY}&${this.defaultLanguage}&page=1`
 	}
-	getGenreUrl(pageNumber: number, genreName: number): string {
+	getGenreUrl(pageNumber: number | string, genreName: string): string {
 		return `${this.apiURL}/discover/movie?api_key=${this.API_KEY}&${this.defaultLanguage}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_genres=${genreName}`
 	}
 	fetchData = async (url: string) => {
 		const response = await fetch(url)
 		const data = await response.json()
+		console.log(url);
+		
 		console.log(data);
 		return data
 	}

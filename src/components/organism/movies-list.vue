@@ -26,7 +26,14 @@ const countScroll = ref(0);
 .movies-list--wrapper {
   scroll-snap-type: x mandatory;
   overflow-x: scroll;
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
 }
+
+.movies-list--wrapper::-webkit-scrollbar {
+  display: none;
+}
+
 .movies-list--overflow {
   display: flex;
 }

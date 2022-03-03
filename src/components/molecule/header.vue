@@ -1,6 +1,8 @@
 <template>
   <div class="header average-rgb--bg">
-    <h1>The Movie Database</h1>
+    <router-link to="/" class="link">
+      <h1>The Movie Database</h1>
+    </router-link>
   </div>
 </template>
 
@@ -18,18 +20,23 @@
   z-index: 999;
 }
 
-.header h1 {
+.link {
   position: absolute;
+  outline: none;
+  border: none;
+}
+
+.header h1 {
   opacity: 0.3;
-  transform: scale(1.5);
-  transform-origin: 0;
   top: 4px;
   left: 0;
+  transform-origin: 0;
+  transform: scale(1.5);
 }
 
 @media (min-width: 768px) {
   .header h1 {
-    transform: scale(2.3);
+    transform: scale(2);
     top: -2px;
   }
 }
