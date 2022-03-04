@@ -1,17 +1,9 @@
 <template>
-  <GenresList :genres="genres.value" v-if="genres" />
+  <GenresList :genres="genres" v-if="genres" />
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import GenresList from "../molecule/genres-list.vue";
 
-import defaultAPIInfos from "../modules/default-api-info";
-
-const props = defineProps<{ genres: Object[] }>();
-
-const genres = ref(null) as Object[];
+const props = defineProps<{ genres: any }>();
 </script>
-
-<style scoped>
-</style>

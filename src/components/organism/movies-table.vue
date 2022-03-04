@@ -17,13 +17,25 @@
 import { ref } from "vue";
 import { useRoute } from "vue-router";
 import MovieCard from "../template/movie-card.vue";
+import genres from "../../assets/genres";
 const props = defineProps<{ content: any }>();
 
 const countScroll = ref(0);
 
 const route = useRoute();
 
-const genreName = route.params.genre;
+const genreName = ref(null) as string;
+
+function getGenreName() {
+  const genreId = Number(route.params.genre);
+  const getGenre = genres.forEach((genre) => {
+    if (genre.id === genreId) {
+      genreName.value = genre.name;
+    }
+  });
+}
+
+getGenreName();
 </script>
 
 <style scoped>
