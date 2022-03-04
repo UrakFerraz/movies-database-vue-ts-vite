@@ -70,7 +70,7 @@ const props = defineProps<{ backdropPath: string }>();
       rgba(25, 25, 32, 1) 0%,
       rgba(25, 25, 32, 1) 10%,
       rgba(25, 25, 32, 0) 25%,
-      rgba(25, 25, 32, 0) 85%,
+      rgba(25, 25, 32, 0) 75%,
       rgba(25, 25, 32, 1) 90%,
       rgba(25, 25, 32, 1) 100%
     );
