@@ -7,6 +7,14 @@
         <template #fallback> Loading... </template>
       </Suspense>
       <CastList class="cast-list--wrapper" :movie-id="props.movieId" />
+      <ProductionCompanies :companies="movieDetails.production_companies" />
+      <a
+        v-if="movieDetails.homepage"
+        class="homepage-link average-rgb--border"
+        target="_blank"
+        :href="movieDetails.homepage"
+        >Homepage</a
+      >
     </div>
   </div>
 </template>
@@ -17,15 +25,15 @@ import Backdrop from "../components/molecule/backdrop.vue";
 import MovieCard from "../components/template/movie-card-with-details.vue";
 import MovieDatabase from "../modules/movies-db-api";
 import getAverageRgb from "../modules/get-average-rgb";
+import ProductionCompanies from "../components/organism/production-companies.vue";
+
 const props = defineProps<{ movieId: number | string }>();
 let movieDatabase = new MovieDatabase(props.movieId);
-let movieDetails = ref(null) as any;
-let averageRGB = ref(null) as any;
+const movieDetails = ref(null) as any;
+const averageRGB = ref(null) as any;
 
 async function getMovieDetails() {
-  movieDetails.value = await movieDatabase.fetchData(
-    movieDatabase.movieDetailsUrl
-  );
+  movieDetails.value = await movieDatabase.fetchData(movieDatabase.movieDetailsUrl);
   averageRGB.value = await getAverageRGBfromPoster();
 }
 
@@ -54,10 +62,12 @@ watch(averageRGB, () => {
   display: grid;
   grid-template-columns: auto minmax(300px, 1200px) auto;
 }
-.movie-content .movie-card {
+.movie-content * {
   grid-column: 2 / -2;
 }
-.cast-list--wrapper {
-  grid-column: 2 / -2;
+
+.homepage-link {
+  justify-self: center;
+  padding: 10px 15px;
 }
 </style>
