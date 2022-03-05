@@ -7,7 +7,7 @@
           :class="`movie-card-scroll-snap movie-card-scroll-snap--${movie.id}`"
           :movie="movie"
           v-for="movie in props.movies"
-          :key="movie.id"
+          :key="Number(movie.id)"
         />
       </div>
     </div>

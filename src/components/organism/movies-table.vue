@@ -7,7 +7,7 @@
         :class="`movie-card-scroll-snap movie-card-scroll-snap--${movie.id}`"
         :movie="movie"
         v-for="movie in props.movies"
-        :key="movie.id"
+        :key="Number(movie.id)"
       />
     </div>
   </div>
@@ -28,7 +28,7 @@ const genreName = ref("");
 function getGenreName() {
   const genreId = Number(route.params.genre);
   const getGenre = genres.forEach((genre) => {
-    if (genre.id === genreId) {
+    if (genre.id == genreId) {
       genreName.value = genre.name;
     }
   });

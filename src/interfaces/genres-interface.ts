@@ -1,4 +1,4 @@
 export default interface GenresInterface {
 	id: number,
-	name: string
+	name: string,
 }

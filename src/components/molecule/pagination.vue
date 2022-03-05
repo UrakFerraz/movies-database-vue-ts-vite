@@ -13,7 +13,7 @@ const route = useRoute();
 
 let count = 1;
 
-const genreId = route.params.genre;
+const genreId = Number(route.params.genre);
 const genrePageNum = Number(route.params.pageNumber);
 
 function nextPrev(direction: string) {

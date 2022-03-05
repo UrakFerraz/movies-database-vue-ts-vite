@@ -14,7 +14,7 @@ import CastList from "../organism/cast-list.vue";
 import Cast from "../../interfaces/cast-person-interface";
 import MovieDatabase from "../../modules/movies-db-api";
 
-const props = defineProps<{ movieId: number }>();
+const props = defineProps<{ movieId: number | string }>();
 let movieDatabase = new MovieDatabase(Number(props.movieId));
 let movieCredits = ref(null) as any;
 let movieCreditsCastWithPhotos = ref(null) as any;
