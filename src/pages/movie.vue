@@ -25,17 +25,22 @@ import Backdrop from "../components/molecule/backdrop.vue";
 import MovieCard from "../components/template/movie-card-with-details.vue";
 import MovieDatabase from "../modules/movies-db-api";
 import getAverageRgb from "../modules/get-average-rgb";
+import MovieInterface from "../interfaces/movie-interface";
 import ProductionCompanies from "../components/organism/production-companies.vue";
 
-const props = defineProps<{ movieId: number | string }>();
-let movieDatabase = new MovieDatabase(props.movieId);
-const movieDetails = ref(null) as any;
+const props = defineProps<{ movieId: number }>();
+let movieDatabase = new MovieDatabase(Number(props.movieId));
+const movieDetails = ref<MovieInterface>({} as MovieInterface);
 const averageRGB = ref(null) as any;
 
 async function getMovieDetails() {
-  movieDetails.value = await movieDatabase.fetchData(movieDatabase.movieDetailsUrl);
+  let movieDetailsResponse = {} as MovieInterface;
+  movieDetailsResponse = await movieDatabase.fetchData(movieDatabase.movieDetailsUrl);
+  movieDetails.value = movieDetailsResponse;
   averageRGB.value = await getAverageRGBfromPoster();
 }
+
+getMovieDetails();
 
 async function getAverageRGBfromPoster() {
   const rgb = await getAverageRgb(
@@ -45,13 +50,12 @@ async function getAverageRGBfromPoster() {
 }
 console.log(movieDatabase.movieDetailsUrl);
 console.log(movieDetails);
-getMovieDetails();
 
 watch(averageRGB, () => {
-  document.querySelectorAll(".average-rgb--bg").forEach((el) => {
+  document.querySelectorAll(".average-rgb--bg").forEach((el: any) => {
     el.style.background = averageRGB.value;
   });
-  document.querySelectorAll(".average-rgb--border").forEach((el) => {
+  document.querySelectorAll(".average-rgb--border").forEach((el: any) => {
     el.style.borderColor = averageRGB.value;
   });
 });

@@ -1,6 +1,6 @@
 export default interface CollectionInterface {
-	backdrop_path: string
-	id: number
-	name: string
-	poster_path: string
+	backdrop_path: string | null
+	id: number,
+	name: string,
+	poster_path: string | null
 }

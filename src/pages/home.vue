@@ -1,13 +1,13 @@
 <template>
   <div class="home--content">
     <h2>Now Playing</h2>
-    <MoviesList :content="nowPlaying" v-if="nowPlaying !== null" />
+    <MoviesList :movies="nowPlaying.results" v-if="nowPlaying !== null" />
     <h2>Popular</h2>
-    <MoviesList :content="popular" v-if="popular !== null" />
+    <MoviesList :movies="popular.results" v-if="popular !== null" />
     <h2>Upcoming</h2>
-    <MoviesList :content="upcoming" v-if="upcoming !== null" />
+    <MoviesList :movies="upcoming.results" v-if="upcoming !== null" />
     <h2>Top Rated</h2>
-    <MoviesList :content="topRated" v-if="topRated !== null" />
+    <MoviesList :movies="topRated.results" v-if="topRated !== null" />
   </div>
 </template>
 
@@ -15,32 +15,35 @@
 import { ref } from "vue";
 import MoviesList from "../components/organism/movies-list.vue";
 import APIDefaultInfo from "../modules/default-api-info";
+import ResultsInterface from "../interfaces/results-interface";
 const defaultAPIInfos = new APIDefaultInfo();
 
-const nowPlaying = ref(null) as any;
-const popular = ref(null) as any;
-const upcoming = ref(null) as any;
-const topRated = ref(null) as any;
+const nowPlaying = ref<ResultsInterface>({} as ResultsInterface);
+const popular = ref<ResultsInterface>({} as ResultsInterface);
+const upcoming = ref<ResultsInterface>({} as ResultsInterface);
+const topRated = ref<ResultsInterface>({} as ResultsInterface);
 
-async function getNowPlayingMoviesLists(pageNum: number) {
-  let list = "";
+async function getNowPlayingMoviesLists(pageNum: number): Promise<void> {
+  let list = {} as ResultsInterface;
   list = await defaultAPIInfos.fetchData(defaultAPIInfos.nowPlayingMoviesUrl);
-  nowPlaying.value = list.results;
+  nowPlaying.value = list;
 }
-async function getPopularMoviesLists(pageNum: number) {
-  let list = "";
+async function getPopularMoviesLists(pageNum: number): Promise<void> {
+  let list = {} as ResultsInterface;
   list = await defaultAPIInfos.fetchData(defaultAPIInfos.popularMoviesUrl);
-  popular.value = list.results;
+  popular.value = list;
 }
-async function getUpcomingMoviesLists(pageNum: number) {
-  let list = "";
+async function getUpcomingMoviesLists(pageNum: number): Promise<void> {
+  let list = {} as ResultsInterface;
   list = await defaultAPIInfos.fetchData(defaultAPIInfos.upcomingMoviesUrl);
-  upcoming.value = list.results;
+  upcoming.value = list;
 }
-async function getTopRatedMoviesLists(pageNum: number) {
-  let list = "";
+async function getTopRatedMoviesLists(pageNum: number): Promise<void> {
+  let list = {} as ResultsInterface;
   list = await defaultAPIInfos.fetchData(defaultAPIInfos.topRatedMoviesUrl);
-  topRated.value = list.results;
+  console.log(list);
+
+  topRated.value = list;
 }
 
 getNowPlayingMoviesLists(1);

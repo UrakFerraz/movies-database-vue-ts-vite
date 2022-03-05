@@ -1,6 +1,6 @@
 export default interface ProductionCompanyInterface {
-	id: number
-	logo_path: string
-	name:string
+	id: number,
+	logo_path: string | null,
+	name:string,
 	origin_country: string
 }

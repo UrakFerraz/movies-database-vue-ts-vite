@@ -11,35 +11,34 @@
 <script setup lang="ts">
 import { ref, watch } from "vue";
 import CastList from "../organism/cast-list.vue";
+import Cast from "../../interfaces/cast-person-interface";
 import MovieDatabase from "../../modules/movies-db-api";
 
-const props = defineProps<{ movieId: number | string }>();
-let movieDatabase = new MovieDatabase(props.movieId);
-let displayCast = ref(true) as boolean;
+const props = defineProps<{ movieId: number }>();
+let movieDatabase = new MovieDatabase(Number(props.movieId));
 let movieCredits = ref(null) as any;
 let movieCreditsCastWithPhotos = ref(null) as any;
 
 async function getMovieCredits() {
-  movieCredits.value = await movieDatabase.fetchData(
-    movieDatabase.movieCreditsUrl
-  );
+  movieCredits.value = await movieDatabase.fetchData(movieDatabase.movieCreditsUrl);
   await viewCast();
 }
 
 function viewCast() {
-  displayCast = !displayCast;
   movieCreditsCastWithPhotos.value = getCastWithPhotos();
 }
 
 function getCastWithPhotos() {
-  const castWithPhotos = [];
-  movieCredits.value.cast.forEach((actor) => {
+  const castWithPhotos: Cast[] = [];
+  movieCredits.value.cast.forEach((actor: Cast) => {
     if (actor.profile_path === null) return;
     castWithPhotos.push(actor);
   });
   if (castWithPhotos.length <= 21) {
     return castWithPhotos;
   }
+  console.log(castWithPhotos);
+
   return castWithPhotos.splice(0, 18);
 }
 

@@ -1,9 +1,6 @@
 <template>
   <div class="movie-card">
-    <MoviePosterImage
-      :poster-path="movie.poster_path"
-      :alt-text="movie.original_title"
-    />
+    <MoviePosterImage :poster-path="movie.poster_path" :alt-text="movie.original_title" />
     <div class="movie-card--content">
       <MovieInfo :movie="movie" />
       <MovieMoreInfo :movie="movie" />
@@ -13,18 +10,13 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
 import MoviePosterImage from "../molecule/movie-poster-image.vue";
 import MovieMoreInfo from "../molecule/movie-more-info.vue";
 import MovieInfo from "../molecule/movie-info.vue";
 import GenresList from "../molecule/genres-list.vue";
+import MovieInterface from "../../interfaces/movie-interface";
 
-const displayCast = ref(false);
-const props = defineProps<{ movie: any }>();
-
-function viewCast(): void {
-  return !displayCast.value;
-}
+const props = defineProps<{ movie: MovieInterface }>();
 </script>
 
 <style scoped>

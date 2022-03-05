@@ -1,6 +1,6 @@
 import APIDefaultInfo from './default-api-info';
 export default class MovieDatabase extends APIDefaultInfo {
-	constructor(private readonly movieId: string) {
+	constructor(private readonly movieId: number) {
 		super()
 	}
 	get movieDetailsUrl(): string {

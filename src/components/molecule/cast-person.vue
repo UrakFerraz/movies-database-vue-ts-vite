@@ -1,10 +1,7 @@
 <template>
   <li class="cast-list-item">
     <div class="cast-list-img">
-      <img
-        :src="'https://image.tmdb.org/t/p/w200' + props.cast.profile_path"
-        alt=""
-      />
+      <img :src="'https://image.tmdb.org/t/p/w200' + props.cast.profile_path" alt="" />
     </div>
     <a
       class="cast-name average-rgb--border"
@@ -20,7 +17,8 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ cast: any }>();
+import Cast from "../../interfaces/cast-person-interface";
+const props = defineProps<{ cast: Cast }>();
 console.log(props);
 </script>
 

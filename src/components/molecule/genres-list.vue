@@ -12,7 +12,8 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ genres: any }>();
+import GenresInterface from "../../interfaces/genres-interface";
+const props = defineProps<{ genres: GenresInterface }>();
 </script>
 
 <style scoped>

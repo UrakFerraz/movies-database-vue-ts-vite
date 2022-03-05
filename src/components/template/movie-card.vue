@@ -7,7 +7,7 @@
     />
     <div class="movie-card--content">
       <span
-        >{{ movie.vote_average }} - {{ movie.release_date.slice(0, 4) }}</span
+        >{{ movie.vote_average }} - {{ new Date(movie.release_date).getFullYear() }}</span
       >
     </div>
     <router-link :to="'/movie/' + movie.id" class="router-link"></router-link>
@@ -15,14 +15,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from "vue";
+import MovieInListInerface from "../../interfaces/movies-in-list-interface";
 import MoviePosterImage from "../molecule/movie-poster-image.vue";
 
-const props = defineProps<{ movie: any }>();
-
-onMounted(() => {
-  console.log(props.movie);
-});
+const props = defineProps<{ movie: MovieInListInerface }>();
 </script>
 
 <style scoped>

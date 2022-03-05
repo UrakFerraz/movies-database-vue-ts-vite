@@ -1,5 +1,5 @@
 export default class APIDefaultInfo {
-	public readonly _apiURL = 'https://api.themoviedb.org/3'
+	public readonly _apiURL: string = 'https://api.themoviedb.org/3'
 	private readonly _API_KEY: string = 'a152faf46b825f190ee05ae333705f56'
 	private readonly _defaultLanguage: string = 'language=pt-BR'
 	get apiURL(): string {
@@ -26,7 +26,7 @@ export default class APIDefaultInfo {
 	get upcomingMoviesUrl(): string {
 		return `${this.apiURL}/movie/upcoming?api_key=${this.API_KEY}&${this.defaultLanguage}&page=1`
 	}
-	getGenreUrl(pageNumber: number | string, genreName: string): string {
+	getGenreUrl(pageNumber: number, genreName: string): string {
 		return `${this.apiURL}/discover/movie?api_key=${this.API_KEY}&${this.defaultLanguage}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_genres=${genreName}`
 	}
 	fetchData = async (url: string) => {

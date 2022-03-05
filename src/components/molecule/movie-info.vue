@@ -7,7 +7,7 @@
     </div>
     <span>Título Original: {{ movie.original_title }}</span>
     <h1>{{ movie.title }}</h1>
-    <p>{{ movie.release_date.slice(0, 4) }}</p>
+    <p>{{ new Date(movie.release_date).getFullYear() }}</p>
   </div>
 </template>
 
