@@ -2,7 +2,7 @@
   <div class="genres">
     <span>Gêneros:</span>
     <ul>
-      <li v-for="(genre, index) in props.genres" :key="index">
+      <li v-for="genre in genres" :key="genre.id">
         <router-link :to="`/${genre.id}/${1}`" class="average-rgb--border">{{
           genre.name
         }}</router-link>
@@ -13,7 +13,7 @@
 
 <script setup lang="ts">
 import GenresInterface from "../../interfaces/genres-interface";
-const props = defineProps<{ genres: GenresInterface }>();
+const props = defineProps<{ genres: GenresInterface[] }>();
 </script>
 
 <style scoped>

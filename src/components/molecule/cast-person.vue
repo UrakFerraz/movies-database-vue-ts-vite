@@ -1,18 +1,22 @@
 <template>
   <li class="cast-list-item">
     <div class="cast-list-img">
-      <img :src="'https://image.tmdb.org/t/p/w200' + props.cast.profile_path" alt="" />
+      <img
+        :src="'https://image.tmdb.org/t/p/w200' + cast.profile_path"
+        alt=""
+      />
     </div>
-    <a
+    <router-link :to="'/cast/' + cast.id">{{ cast.name }}</router-link>
+    <!-- <a
       class="cast-name average-rgb--border"
       :href="
         'https://api.themoviedb.org/3/person/' +
-        props.cast.cast_id +
+        cast.cast_id +
         '/movie_credits?api_key=a152faf46b825f190ee05ae333705f56&language=en-US'
       "
-      >{{ props.cast.name }}</a
-    >
-    <span>{{ props.cast.character }}</span>
+      >{{ cast.name }}</a
+    > -->
+    <span>{{ cast.character }}</span>
   </li>
 </template>
 

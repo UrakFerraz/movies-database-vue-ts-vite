@@ -1,6 +1,6 @@
 <template>
   <ul>
-    <CastPerson v-for="cast in props.cast" :key="Number(cast.id)" :cast="cast" />
+    <CastPerson v-for="cast in cast" :key="Number(cast.id)" :cast="cast" />
   </ul>
 </template>
 

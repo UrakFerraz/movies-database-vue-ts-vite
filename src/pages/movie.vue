@@ -64,11 +64,11 @@ watch(averageRGB, () => {
 </script>
 
 <style scoped>
-.movie-page--wrapper .movie-content {
+.movie-page--wrapper {
   display: grid;
   grid-template-columns: auto minmax(300px, 1200px) auto;
 }
-.movie-content * {
+.movie-content {
   grid-column: 2 / -2;
 }
 

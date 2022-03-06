@@ -1,5 +1,5 @@
 <template>
-  <div class="movie-card">
+  <div class="movie-card" v-if="movie.poster_path">
     <MoviePosterImage
       class="movie-card--image"
       :poster-path="movie.poster_path"
@@ -7,7 +7,8 @@
     />
     <div class="movie-card--content">
       <span
-        >{{ movie.vote_average }} - {{ new Date(movie.release_date).getFullYear() }}</span
+        >{{ movie.vote_average }} -
+        {{ new Date(movie.release_date).getFullYear() }}</span
       >
     </div>
     <router-link :to="'/movie/' + movie.id" class="router-link"></router-link>

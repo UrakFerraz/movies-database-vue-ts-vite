@@ -1,10 +1,7 @@
 <template>
   <div class="home--content">
     <Pagination />
-    <MoviesTable
-      :movies="moviesByGenre.results"
-      v-if="moviesByGenre !== null"
-    />
+    <MoviesTable :movies="moviesByGenre" v-if="moviesByGenre" />
     <Pagination />
   </div>
 </template>

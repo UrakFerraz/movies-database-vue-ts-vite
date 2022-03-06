@@ -1,12 +1,12 @@
 <template>
-  <div class="movies-list--content">
+  <div class="movies-list--content" v-if="results">
     <button class="view-more--btn">Ver mais</button>
     <div class="movies-list--wrapper">
       <div class="movies-list--overflow">
         <MovieCard
           :class="`movie-card-scroll-snap movie-card-scroll-snap--${movie.id}`"
           :movie="movie"
-          v-for="(movie, index) in props.movies"
+          v-for="(movie, index) in results"
           :key="Number(movie.id)"
         />
       </div>
@@ -15,9 +15,16 @@
 </template>
 
 <script setup lang="ts">
-import MovieInListInerface from "../../interfaces/movies-in-list-interface";
+import { computed } from "vue";
+import ResultsInterface from "../../interfaces/results-interface";
+import MoviesInListInterface from "../../interfaces/movies-in-list-interface";
 import MovieCard from "../template/movie-card.vue";
-const props = defineProps<{ movies: MovieInListInerface }>();
+const props = defineProps<{ movies: any }>();
+
+const results = computed(() => {
+  if (props.movies.results) return props.movies.results;
+  return props.movies;
+});
 </script>
 
 <style scoped>

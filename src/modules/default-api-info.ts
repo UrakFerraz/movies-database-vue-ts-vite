@@ -29,6 +29,15 @@ export default class APIDefaultInfo {
 	getGenreUrl(pageNumber: number, genreName: string): string {
 		return `${this.apiURL}/discover/movie?api_key=${this.API_KEY}&${this.defaultLanguage}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_genres=${genreName}`
 	}
+	getCastPersonDetailsURL(castPersonId: number | string): string {
+		return `https://api.themoviedb.org/3/person/${castPersonId}?api_key=a152faf46b825f190ee05ae333705f56&${this.defaultLanguage}`
+	}
+	getCastPersonMoviesURL(castPersonId: number | string): string {
+		return `https://api.themoviedb.org/3/person/${castPersonId}/movie_credits?api_key=a152faf46b825f190ee05ae333705f56&${this.defaultLanguage}`
+	}
+	getCastPersonTvURL(castPersonId: number | string): string {
+		return `https://api.themoviedb.org/3/person/${castPersonId}/tv_credits?api_key=a152faf46b825f190ee05ae333705f56&${this.defaultLanguage}`
+	}
 	fetchData = async (url: string) => {
 		const response = await fetch(url)
 		const data = await response.json()

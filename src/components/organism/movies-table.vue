@@ -1,12 +1,12 @@
 <template>
-  <div class="movies-list--content">
+  <div class="movies-list--content" v-if="results">
     <h2>{{ genreName }}</h2>
     <button class="view-more--btn">Ver mais</button>
     <div class="movies-list--wrapper">
       <MovieCard
         :class="`movie-card-scroll-snap movie-card-scroll-snap--${movie.id}`"
         :movie="movie"
-        v-for="movie in props.movies"
+        v-for="movie in results"
         :key="Number(movie.id)"
       />
     </div>
@@ -14,16 +14,22 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import MovieInListInerface from "../../interfaces/movies-in-list-interface";
+import ResultsInterface from "../../interfaces/results-interface";
 import { useRoute } from "vue-router";
 import MovieCard from "../template/movie-card.vue";
 import genres from "../../assets/genres";
-const props = defineProps<{ movies: MovieInListInerface }>();
+const props = defineProps<{ movies: any }>();
 
 const route = useRoute();
 
 const genreName = ref("");
+
+const results = computed(() => {
+  if (props.movies.results) return props.movies.results;
+  return props.movies;
+});
 
 function getGenreName() {
   const genreId = Number(route.params.genre);

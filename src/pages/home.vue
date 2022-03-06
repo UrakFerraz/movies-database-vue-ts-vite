@@ -1,13 +1,13 @@
 <template>
   <div class="home--content">
     <h2>Now Playing</h2>
-    <MoviesList :movies="nowPlaying.results" v-if="nowPlaying !== null" />
+    <MoviesList :movies="nowPlaying" v-if="nowPlaying" />
     <h2>Popular</h2>
-    <MoviesList :movies="popular.results" v-if="popular !== null" />
+    <MoviesList :movies="popular" v-if="popular" />
     <h2>Upcoming</h2>
-    <MoviesList :movies="upcoming.results" v-if="upcoming !== null" />
+    <MoviesList :movies="upcoming" v-if="upcoming" />
     <h2>Top Rated</h2>
-    <MoviesList :movies="topRated.results" v-if="topRated !== null" />
+    <MoviesList :movies="topRated" v-if="topRated" />
   </div>
 </template>
 
