@@ -1,14 +1,18 @@
 <template>
   <div class="production-companies average-rgb--border">
     <h2>Production companies</h2>
-    <ProductionCompany :company="comp" v-for="comp in props.companies" :key="comp.name" />
+    <ProductionCompany
+      :company="comp"
+      v-for="comp in props.companies"
+      :key="comp.name"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
 import ProductionCompany from "../molecule/production-company.vue";
 import ProductionCompanyInterface from "../../interfaces/production-company-interface";
-const props = defineProps<{ companies: ProductionCompanyInterface[] }>();
+const props = defineProps<{ companies: ProductionCompanyInterface }>();
 </script>
 
 <style scoped>

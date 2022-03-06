@@ -19,7 +19,7 @@ import MovieInListInerface from "../../interfaces/movies-in-list-interface";
 import { useRoute } from "vue-router";
 import MovieCard from "../template/movie-card.vue";
 import genres from "../../assets/genres";
-const props = defineProps<{ movies: MovieInListInerface[] }>();
+const props = defineProps<{ movies: MovieInListInerface }>();
 
 const route = useRoute();
 

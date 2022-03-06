@@ -1,7 +1,10 @@
 <template>
   <div class="home--content">
     <Pagination />
-    <MoviesTable :movies="moviesByGenre.results" v-if="moviesByGenre !== null" />
+    <MoviesTable
+      :movies="moviesByGenre.results"
+      v-if="moviesByGenre !== null"
+    />
     <Pagination />
   </div>
 </template>
@@ -25,7 +28,7 @@ onBeforeRouteLeave((to, from) => {
   console.log(from);
 });
 
-const props = defineProps<{ pageNumber: number; genre: string }>();
+const props = defineProps<{ pageNumber: number | string; genre: string }>();
 
 const moviesByGenre = ref<ResultsInterface>({} as ResultsInterface);
 

@@ -28,14 +28,16 @@ import getAverageRgb from "../modules/get-average-rgb";
 import MovieInterface from "../interfaces/movie-interface";
 import ProductionCompanies from "../components/organism/production-companies.vue";
 
-const props = defineProps<{ movieId: number }>();
+const props = defineProps<{ movieId: number | string }>();
 let movieDatabase = new MovieDatabase(Number(props.movieId));
 const movieDetails = ref<MovieInterface>({} as MovieInterface);
 const averageRGB = ref(null) as any;
 
 async function getMovieDetails() {
   let movieDetailsResponse = {} as MovieInterface;
-  movieDetailsResponse = await movieDatabase.fetchData(movieDatabase.movieDetailsUrl);
+  movieDetailsResponse = await movieDatabase.fetchData(
+    movieDatabase.movieDetailsUrl
+  );
   movieDetails.value = movieDetailsResponse;
   averageRGB.value = await getAverageRGBfromPoster();
 }

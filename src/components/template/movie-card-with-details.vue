@@ -1,6 +1,9 @@
 <template>
-  <div class="movie-card">
-    <MoviePosterImage :poster-path="movie.poster_path" :alt-text="movie.original_title" />
+  <div class="movie-card" v-if="movie">
+    <MoviePosterImage
+      :poster-path="movie.poster_path"
+      :alt-text="movie.original_title"
+    />
     <div class="movie-card--content">
       <MovieInfo :movie="movie" />
       <MovieMoreInfo :movie="movie" />

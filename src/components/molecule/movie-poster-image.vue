@@ -1,5 +1,5 @@
 <template>
-  <div class="movie-card--img">
+  <div class="movie-card--img" v-if="posterPath">
     <img
       :src="'https://www.themoviedb.org/t/p/w300' + props.posterPath"
       :alt="props.altText"
@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ posterPath: string; altText: string }>();
+const props = defineProps<{ posterPath: any; altText: any }>();
 </script>
 
 <style scoped>

@@ -2,17 +2,22 @@
   <div class="more-info">
     <h2>{{ movie.tagline }}</h2>
     <p>{{ movie.overview }}</p>
-    <p>Duração: {{ duration }} horas</p>
-    <a class="average-rgb--border" target="_blank" :href="imdbUrl"
+    <p>
+      Duração: {{ (movie.runtime / 60).toFixed(2).split(".").join(":") }} horas
+    </p>
+    <a
+      v-if="movie.imdb_id !== undefined || movie.imdb_id !== null"
+      class="average-rgb--border"
+      target="_blank"
+      :href="'https://www.imdb.com/title/' + props.movie.imdb_id"
       >Ver no IMDB</a
     >
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ movie: any }>();
-const imdbUrl = "https://www.imdb.com/title/" + props.movie.imdb_id;
-const duration = (props.movie.runtime / 60).toFixed(2).split(".").join(":");
+import MovieInterface from "../../interfaces/movie-interface";
+const props = defineProps<{ movie: MovieInterface }>();
 </script>
 
 <style scoped>

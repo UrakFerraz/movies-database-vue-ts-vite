@@ -6,7 +6,7 @@
         <MovieCard
           :class="`movie-card-scroll-snap movie-card-scroll-snap--${movie.id}`"
           :movie="movie"
-          v-for="movie in props.movies"
+          v-for="(movie, index) in props.movies"
           :key="Number(movie.id)"
         />
       </div>
@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import MovieInListInerface from "../../interfaces/movies-in-list-interface";
 import MovieCard from "../template/movie-card.vue";
-const props = defineProps<{ movies: MovieInListInerface[] }>();
+const props = defineProps<{ movies: MovieInListInerface }>();
 </script>
 
 <style scoped>

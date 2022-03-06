@@ -1,13 +1,16 @@
 <template>
-  <div class="backdrop-img">
+  <div class="backdrop-img" v-if="backdropPath">
     <div>
-      <img :src="'https://image.tmdb.org/t/p/original' + props.backdropPath" alt="" />
+      <img
+        :src="'https://image.tmdb.org/t/p/original' + props.backdropPath"
+        alt=""
+      />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ backdropPath: string }>();
+const props = defineProps<{ backdropPath: any }>();
 </script>
 
 <style scoped>
