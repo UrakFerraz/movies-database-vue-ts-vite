@@ -1,10 +1,10 @@
 <template>
   <div class="movies-list--content" v-if="results">
-    <button class="view-more--btn">Ver mais</button>
     <div class="movies-list--wrapper">
       <div class="movies-list--overflow">
         <MovieCard
           :class="`movie-card-scroll-snap movie-card-scroll-snap--${movie.id}`"
+          :id="`movie-card-scroll-snap--${movie.id}`"
           :movie="movie"
           v-for="(movie, index) in results"
           :key="Number(movie.id)"
@@ -21,22 +21,48 @@ import MoviesInListInterface from "../../interfaces/movies-in-list-interface";
 import MovieCard from "../template/movie-card.vue";
 const props = defineProps<{ movies: any }>();
 
+const randomClass = Math.random();
+
 const results = computed(() => {
   if (props.movies.results) return props.movies.results;
   return props.movies;
 });
+
+let count = 0;
+
+function scrollTo() {
+  const cards = document.querySelectorAll(".movie-card-scroll-snap");
+  console.log(cards);
+}
 </script>
 
 <style scoped>
 .movies-list--wrapper {
   scroll-snap-type: x mandatory;
   overflow-x: scroll;
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
 }
 
-.movies-list--wrapper::-webkit-scrollbar {
-  display: none;
+/* Let's get this party started */
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: rgba(75, 66, 66, 0.8);
+  -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+  background: rgba(75, 66, 66, 0.8);
 }
 
 .movies-list--overflow {
@@ -45,13 +71,6 @@ const results = computed(() => {
 
 .movie-card-scroll-snap {
   scroll-snap-align: start;
-}
-
-.view-more--btn {
-  position: absolute;
-  right: 0px;
-  top: -36px;
-  z-index: 2;
 }
 
 @media (min-width: 768px) {
