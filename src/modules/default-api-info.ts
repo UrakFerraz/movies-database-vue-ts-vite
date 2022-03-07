@@ -30,13 +30,13 @@ export default class APIDefaultInfo {
 		return `${this.apiURL}/discover/movie?api_key=${this.API_KEY}&${this.defaultLanguage}&sort_by=popularity.desc&include_adult=false&include_video=false&page=${pageNumber}&with_genres=${genreName}`
 	}
 	getCastPersonDetailsURL(castPersonId: number | string): string {
-		return `https://api.themoviedb.org/3/person/${castPersonId}?api_key=a152faf46b825f190ee05ae333705f56&${this.defaultLanguage}`
+		return `https://api.themoviedb.org/3/person/${castPersonId}?api_key=${this.API_KEY}&${this.defaultLanguage}`
 	}
 	getCastPersonMoviesURL(castPersonId: number | string): string {
-		return `https://api.themoviedb.org/3/person/${castPersonId}/movie_credits?api_key=a152faf46b825f190ee05ae333705f56&${this.defaultLanguage}`
+		return `https://api.themoviedb.org/3/person/${castPersonId}/movie_credits?api_key=${this.API_KEY}&${this.defaultLanguage}`
 	}
-	getCastPersonTvURL(castPersonId: number | string): string {
-		return `https://api.themoviedb.org/3/person/${castPersonId}/tv_credits?api_key=a152faf46b825f190ee05ae333705f56&${this.defaultLanguage}`
+	getCastPersonImages(castPersonId: number | string): string {
+		return `https://api.themoviedb.org/3/person/${castPersonId}/images?api_key=${this.API_KEY}`
 	}
 	fetchData = async (url: string) => {
 		const response = await fetch(url)

@@ -37,26 +37,25 @@ function birthday(): string {
 </script>
 
 <style scoped>
+.cast-person-details {
+  display: flex;
+  flex-flow: column;
+  padding: 40px 20px;
+}
 .cast-img {
   overflow: hidden;
   position: relative;
   display: block;
   border-radius: 10px;
-  max-height: 500px;
   margin-bottom: 10px;
+  width: 200px;
+  align-self: center;
 }
 
 .cast-img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.cast-person-details {
-  display: grid;
-  grid-template-columns: auto 1fr;
-  padding: 40px 20px;
-  gap: 20px;
 }
 
 .cast-infos {
@@ -69,5 +68,17 @@ function birthday(): string {
   display: flex;
   flex-flow: row wrap;
   gap: 20px;
+}
+
+@media (min-width: 768px) {
+  .cast-person-details {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 40px 20px;
+    gap: 20px;
+  }
+  .cast-img {
+    width: 330px;
+  }
 }
 </style>

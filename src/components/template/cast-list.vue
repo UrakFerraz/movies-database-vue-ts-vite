@@ -20,7 +20,9 @@ let movieCredits = ref(null) as any;
 let movieCreditsCastWithPhotos = ref(null) as any;
 
 async function getMovieCredits() {
-  movieCredits.value = await movieDatabase.fetchData(movieDatabase.movieCreditsUrl);
+  movieCredits.value = await movieDatabase.fetchData(
+    movieDatabase.movieCreditsUrl
+  );
   await viewCast();
 }
 
