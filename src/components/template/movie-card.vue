@@ -41,7 +41,7 @@ const props = defineProps<{ movie: MovieInListInerface }>();
 }
 
 .movie-card--image {
-  width: 120px;
+  min-width: 120px;
 }
 
 @media (min-width: 768px) {

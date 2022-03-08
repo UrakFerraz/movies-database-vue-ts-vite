@@ -2,7 +2,8 @@
   <li class="cast-list-item">
     <div class="cast-list-img">
       <img
-        :src="'https://image.tmdb.org/t/p/w200' + cast.profile_path"
+        loading="lazy"
+        :src="'https://image.tmdb.org/t/p/w185' + cast.profile_path"
         alt=""
       />
     </div>
@@ -31,8 +32,9 @@ console.log(props);
   overflow: hidden;
   position: relative;
   display: block;
+  width: 100%;
   border-radius: 10px;
-  max-height: 250px;
+  max-height: 225px;
   margin-bottom: 10px;
 }
 
@@ -40,5 +42,11 @@ console.log(props);
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .cast-list-img {
+    max-height: 250px;
+  }
 }
 </style>

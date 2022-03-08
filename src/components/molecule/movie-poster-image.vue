@@ -1,7 +1,8 @@
 <template>
   <div class="movie-card--img" v-if="posterPath">
     <img
-      :src="'https://www.themoviedb.org/t/p/w300' + props.posterPath"
+      loading="lazy"
+      :src="'https://image.tmdb.org/t/p/w300' + props.posterPath"
       :alt="props.altText"
     />
   </div>
@@ -13,7 +14,6 @@ const props = defineProps<{ posterPath: any; altText: any }>();
 
 <style scoped>
 .movie-card--img {
-  width: 200px;
   overflow: hidden;
   border-radius: 10px;
 }

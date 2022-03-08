@@ -10,6 +10,7 @@
   </div>
   <div class="cast-images">
     <img
+      loading="lazy"
       :src="'https://www.themoviedb.org/t/p/original' + castImage.file_path"
       v-for="(castImage, index) in castImages"
       :key="index"

@@ -1,13 +1,17 @@
 <template>
   <div class="home--content">
     <h2>Now Playing</h2>
-    <MoviesList :movies="nowPlaying" v-if="nowPlaying" />
+    <MoviesList
+      class="home-movies-list"
+      :movies="nowPlaying"
+      v-if="nowPlaying"
+    />
     <h2>Popular</h2>
-    <MoviesList :movies="popular" v-if="popular" />
+    <MoviesList class="home-movies-list" :movies="popular" v-if="popular" />
     <h2>Upcoming</h2>
-    <MoviesList :movies="upcoming" v-if="upcoming" />
+    <MoviesList class="home-movies-list" :movies="upcoming" v-if="upcoming" />
     <h2>Top Rated</h2>
-    <MoviesList :movies="topRated" v-if="topRated" />
+    <MoviesList class="home-movies-list" :movies="topRated" v-if="topRated" />
   </div>
 </template>
 
@@ -55,5 +59,9 @@ getTopRatedMoviesLists(1);
 <style scoped>
 .home--content {
   padding: 20px;
+}
+
+.home-movies-list {
+  min-height: 250px;
 }
 </style>

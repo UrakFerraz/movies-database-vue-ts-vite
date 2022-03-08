@@ -14,6 +14,7 @@
   overflow: hidden;
   width: 100%;
   height: 40px;
+  min-height: 40px;
   top: 0;
   left: 0;
   background: var(--principal);

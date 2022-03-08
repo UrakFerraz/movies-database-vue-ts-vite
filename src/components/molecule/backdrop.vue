@@ -2,6 +2,7 @@
   <div class="backdrop-img" v-if="backdropPath">
     <div>
       <img
+        loading="lazy"
         :src="'https://image.tmdb.org/t/p/original' + props.backdropPath"
         alt=""
       />

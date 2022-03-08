@@ -1,9 +1,10 @@
 <template>
   <div class="production-company">
     <img
-      v-if="props.company.logo_path"
-      :src="'https://image.tmdb.org/t/p/w300' + props.company.logo_path"
-      :alt="props.company.name"
+      loading="lazy"
+      v-if="company.logo_path"
+      :src="'https://image.tmdb.org/t/p/w185' + company.logo_path"
+      :alt="company.name"
     />
     <p v-if="props.company.logo_path">{{ props.company.name }}</p>
   </div>

@@ -2,6 +2,7 @@
   <div class="cast-person-details" v-if="castDetails">
     <div class="cast-img">
       <img
+        loading="lazy"
         :src="'https://image.tmdb.org/t/p/original' + castDetails.profile_path"
         alt=""
       />

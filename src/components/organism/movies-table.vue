@@ -49,7 +49,9 @@ getGenreName();
 }
 .movies-list--wrapper {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: 1fr 1fr;
+  justify-items: center;
+  gap: 10px;
 }
 .movies-list--overflow {
   display: flex;
@@ -69,7 +71,7 @@ getGenreName();
 @media (min-width: 768px) {
   .movies-list--wrapper {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 10px;
+    gap: 15px;
   }
   .movies-list--overflow {
     gap: 10px;

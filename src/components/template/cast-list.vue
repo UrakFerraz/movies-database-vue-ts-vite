@@ -2,7 +2,7 @@
   <div v-if="movieCredits" class="cast-wrapper">
     <h2>Cast Principal</h2>
     <Suspense>
-      <CastList :cast="movieCreditsCastWithPhotos" class="cast-list" />
+      <CastList :cast="movieCreditsCastWithPhotos" />
       <template #fallback> Loading... </template>
     </Suspense>
   </div>
@@ -50,10 +50,5 @@ getMovieCredits();
 <style scoped>
 .cast-wrapper {
   padding: 20px;
-}
-.cast-list {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-  gap: 20px;
 }
 </style>

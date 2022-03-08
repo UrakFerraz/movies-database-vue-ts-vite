@@ -6,7 +6,7 @@
         <MovieCard :movie="movieDetails" />
         <template #fallback> Loading... </template>
       </Suspense>
-      <CastList class="cast-list--wrapper" :movie-id="movieId" />
+      <CastList :movie-id="movieId" />
       <ProductionCompanies :companies="movieDetails.production_companies" />
       <a
         v-if="movieDetails.homepage"
