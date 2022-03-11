@@ -14,6 +14,7 @@ const props = defineProps<{ posterPath: any; altText: any }>();
 
 <style scoped>
 .movie-card--img {
+  justify-self: center;
   overflow: hidden;
   border-radius: 10px;
 }

@@ -1,7 +1,6 @@
 <template>
   <div class="movies-list--content" v-if="results">
     <h2>{{ genreName }}</h2>
-    <button class="view-more--btn">Ver mais</button>
     <div class="movies-list--wrapper">
       <MovieCard
         :class="`movie-card-scroll-snap movie-card-scroll-snap--${movie.id}`"

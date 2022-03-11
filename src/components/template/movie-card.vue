@@ -1,5 +1,6 @@
 <template>
   <div class="movie-card" v-if="movie.poster_path">
+    <MovieCardMenu :movie-id="movie.id" />
     <MoviePosterImage
       class="movie-card--image"
       :poster-path="movie.poster_path"
@@ -18,6 +19,7 @@
 <script setup lang="ts">
 import MovieInListInerface from "../../interfaces/movies-in-list-interface";
 import MoviePosterImage from "../molecule/movie-poster-image.vue";
+import MovieCardMenu from "../molecule/movie-card-menu.vue";
 
 const props = defineProps<{ movie: MovieInListInerface }>();
 </script>
@@ -26,7 +28,7 @@ const props = defineProps<{ movie: MovieInListInerface }>();
 .router-link {
   position: absolute;
   width: 90%;
-  height: 90%;
+  height: 75%;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
@@ -36,12 +38,12 @@ const props = defineProps<{ movie: MovieInListInerface }>();
 }
 .movie-card {
   display: grid;
-  gap: 20px;
   padding: 10px;
 }
 
 .movie-card--image {
   min-width: 120px;
+  margin: 5px 0;
 }
 
 @media (min-width: 768px) {
