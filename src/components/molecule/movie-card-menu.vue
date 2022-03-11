@@ -2,7 +2,7 @@
   <div class="card-menu">
     <button class="wish-list-btn">Ver depois</button>
     <button class="favorite-btn" @click="favoritePressed()">
-      <FavoriteIcon :is-favorite="isFavoriteRef" />
+      <FavoriteIcon :is-favorite="wasAddedFavoritesRef" />
     </button>
   </div>
 </template>
@@ -14,23 +14,23 @@ import FavoriteIcon from "../molecule/favorite-icon.vue";
 const props = defineProps<{ movieId: number }>();
 import { favorites } from "../../store/favorites";
 const favoritesStore = favorites();
-const isFavoriteRef = ref(false);
+const wasAddedFavoritesRef = ref(false);
 
-function checkIsFavorite() {
-  const isFavorite = favoritesStore.isFavorite(props.movieId);
-  isFavoriteRef.value = isFavorite;
+function checkwasAdded() {
+  const wasAdded = favoritesStore.wasAdded(props.movieId);
+  wasAddedFavoritesRef.value = wasAdded;
 }
 
 function favoritePressed() {
   favoritesStore.favoritePressed(props.movieId);
-  checkIsFavorite();
+  checkwasAdded();
 }
 
 onMounted(() => {
-  checkIsFavorite();
+  checkwasAdded();
 });
 onUpdated(() => {
-  checkIsFavorite();
+  checkwasAdded();
 });
 </script>
 
