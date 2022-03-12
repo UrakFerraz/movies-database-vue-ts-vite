@@ -2,54 +2,46 @@ import { defineStore } from 'pinia'
 import { ref, Ref } from 'vue'
 import { MoviesListState, WasAdded } from '../interfaces/movies-list-state-iterface'
 
+const getters = {
+  wasAdded: (state: MoviesListState): WasAdded => {
+    return (movieId: number) => state.movies.includes(movieId)
+  },
+  total: (state: MoviesListState): number => {
+    return state.movies.length
+  }
+}
 export const favorites = defineStore('favorites', {
   state: (): MoviesListState => ({
-    movies: [414906, 634649]
+    movies: []
   }),
-  getters: {
-    wasAdded: (state: MoviesListState): WasAdded => {
-      return (movieId: number) => state.movies.includes( movieId)
-    },
-    favoritesTotal: (state: MoviesListState): number => {
-      return state.movies.length
-    }
-  },
+  getters,
   actions: {
     favoritePressed(id: number): void {
-      console.log(this.movies);
-      
       if (this.wasAdded(id)) {
         this.movies.splice(this.movies.indexOf(id), 1);
       } else {
         this.movies.push(id)
         
       }
+      console.log(this.movies);
     }
   }
 })
 
 export const toSee = defineStore('toSee', {
   state: (): MoviesListState => ({
-    movies: [414906, 634649]
+    movies: []
   }),
-  getters: {
-    wasAdded: (state: MoviesListState): WasAdded => {
-      return (movieId: number) => state.movies.includes( movieId)
-    },
-    toSeeTotal: (state: MoviesListState): number => {
-      return state.movies.length
-    }
-  },
+  getters,
   actions: {
     toSeePressed(id: number): void {
-      console.log(this.movies);
-      
       if (this.wasAdded(id)) {
         this.movies.splice(this.movies.indexOf(id), 1);
       } else {
         this.movies.push(id)
         
       }
+      console.log(this.movies);
     }
   }
 })

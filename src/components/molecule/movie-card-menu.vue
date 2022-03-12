@@ -1,6 +1,11 @@
 <template>
   <div class="card-menu">
-    <button class="wish-list-btn">Ver depois</button>
+    <button
+      @click="toSeePressed()"
+      :class="wasAddedtoSeeRef ? 'wish-list-btn--saved-movie' : 'wish-list-btn'"
+    >
+      Ver depois
+    </button>
     <button class="favorite-btn" @click="favoritePressed()">
       <FavoriteIcon :is-favorite="wasAddedFavoritesRef" />
     </button>
@@ -8,29 +13,47 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUpdated } from "vue";
+import { ref, onMounted, onUpdated, Ref, watch } from "vue";
 import { storeToRefs } from "pinia";
 import FavoriteIcon from "../molecule/favorite-icon.vue";
 const props = defineProps<{ movieId: number }>();
-import { favorites } from "../../store/favorites";
+import { favorites, toSee } from "../../store/movies-lists";
 const favoritesStore = favorites();
+const { movies: favoriteMovies } = storeToRefs(favoritesStore);
 const wasAddedFavoritesRef = ref(false);
+const toSeeStore = toSee();
+const { movies: toSeeMovies } = storeToRefs(toSeeStore);
+const wasAddedtoSeeRef = ref(false);
 
-function checkwasAdded() {
-  const wasAdded = favoritesStore.wasAdded(props.movieId);
-  wasAddedFavoritesRef.value = wasAdded;
+watch(
+  [favoriteMovies, toSeeMovies],
+  (state) => {
+    localStorage.setItem("Favorite Movies", JSON.stringify(state[0]));
+    localStorage.setItem("To See Movies", JSON.stringify(state[1]));
+  },
+  { deep: true }
+);
+
+function checkwasAdded(store: any, ref: Ref) {
+  const wasAdded = store.wasAdded(props.movieId);
+  ref.value = wasAdded;
 }
-
 function favoritePressed() {
   favoritesStore.favoritePressed(props.movieId);
-  checkwasAdded();
+  checkwasAdded(favoritesStore, wasAddedFavoritesRef);
+}
+function toSeePressed() {
+  toSeeStore.toSeePressed(props.movieId);
+  checkwasAdded(toSeeStore, wasAddedtoSeeRef);
 }
 
 onMounted(() => {
-  checkwasAdded();
+  checkwasAdded(favoritesStore, wasAddedFavoritesRef);
+  checkwasAdded(toSeeStore, wasAddedtoSeeRef);
 });
 onUpdated(() => {
-  checkwasAdded();
+  checkwasAdded(favoritesStore, wasAddedFavoritesRef);
+  checkwasAdded(toSeeStore, wasAddedtoSeeRef);
 });
 </script>
 
@@ -51,6 +74,10 @@ button {
 .wish-list-btn {
   background: var(--gray);
   font-size: 11px;
+}
+
+.wish-list-btn--saved-movie {
+  background: #345e3d;
 }
 
 .favorite-btn {
