@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 
 import MoviesTable from "../components/organism/movies-table.vue";
 import Pagination from "../components/molecule/pagination.vue";
@@ -20,8 +20,13 @@ import ResultsInterface from "../interfaces/results-interface";
 import APIDefaultInfo from "../modules/default-api-info";
 const defaultAPIInfos = new APIDefaultInfo();
 const router = useRouter();
+import { favorites, toSee } from "../store/movies-lists";
+const favoritesStore = favorites();
+const toSeeStore = toSee();
 
-console.log(router);
+onMounted(() => {
+  favoritesStore.getMoviesListDatabase();
+});
 
 onBeforeRouteLeave((to, from) => {
   console.log(to);

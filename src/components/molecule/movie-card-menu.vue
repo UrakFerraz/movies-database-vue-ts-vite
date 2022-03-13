@@ -36,6 +36,17 @@ watch(
   { deep: true }
 );
 
+fetch("https://movies-lists-3a7ad-default-rtdb.firebaseio.com/movies.json", {
+  method: "PUT",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({
+    favorites: JSON.stringify(favoriteMovies),
+    toSee: JSON.stringify(toSeeMovies),
+  }),
+});
+
 function checkwasAdded(store: any, ref: Ref) {
   const wasAdded = store.wasAdded(props.movieId);
   ref.value = wasAdded;

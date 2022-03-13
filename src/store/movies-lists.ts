@@ -24,6 +24,19 @@ export const favorites = defineStore('favorites', {
         
       }
       console.log(this.movies);
+    },
+    async getMoviesListDatabase() {
+      try {
+        const request = await fetch("https://movies-lists-3a7ad-default-rtdb.firebaseio.com/movies.json")
+        if (request.ok) {
+          const data = await request.json()
+          const dataToJSON = JSON.parse(data.favorites)
+          console.log(dataToJSON);
+        }
+      } catch (error) {
+        console.log('erro de import do firebase', error);
+        
+      }
     }
   }
 })

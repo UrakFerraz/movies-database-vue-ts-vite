@@ -33,11 +33,11 @@ export default class MoviesListStorage {
 
         if (storageData != null && storageData.length > 0) {
             var ids = JSON.parse(storageData);
-            console.log(ids);
+            // console.log(ids);
             if (ids != null) {
                 this.ids = ids;
             }
-            console.log(this.ids);
+            // console.log(this.ids);
         }
     }
 
@@ -49,7 +49,7 @@ export default class MoviesListStorage {
             this.ids.push(String(movieIds[i]));
         }
 
-        console.log(this.ids);
+        // console.log(this.ids);
 
         // 3. save to storage
         this.save();

@@ -19,7 +19,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { onMounted, ref, watch } from "vue";
 import CastList from "../components/template/cast-list.vue";
 import Backdrop from "../components/molecule/backdrop.vue";
 import MovieCard from "../components/template/movie-card-with-details.vue";
@@ -27,6 +27,13 @@ import MovieDatabase from "../modules/movies-db-api";
 import getAverageRgb from "../modules/get-average-rgb";
 import MovieInterface from "../interfaces/movie-interface";
 import ProductionCompanies from "../components/organism/production-companies.vue";
+import { favorites, toSee } from "../store/movies-lists";
+const favoritesStore = favorites();
+const toSeeStore = toSee();
+
+onMounted(() => {
+  favoritesStore.getMoviesListDatabase();
+});
 
 const props = defineProps<{ movieId: number | string }>();
 let movieDatabase = new MovieDatabase(Number(props.movieId));
