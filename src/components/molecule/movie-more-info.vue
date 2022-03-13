@@ -1,5 +1,5 @@
 <template>
-  <div class="more-info">
+  <div class="more-info fade-in-animation-fast">
     <h2>{{ movie.tagline }}</h2>
     <p>{{ movie.overview }}</p>
     <p>

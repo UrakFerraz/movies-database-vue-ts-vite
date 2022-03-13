@@ -46,7 +46,7 @@ export default class MoviesListStorage {
         this.ids = []
 
         for (var i = 0; i < movieIds.length; i++) {
-                this.ids.push(String(movieIds[i]));
+            this.ids.push(String(movieIds[i]));
         }
 
         console.log(this.ids);

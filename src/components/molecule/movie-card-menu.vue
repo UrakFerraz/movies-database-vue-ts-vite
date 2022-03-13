@@ -1,5 +1,5 @@
 <template>
-  <div class="card-menu">
+  <div class="card-menu fade-in-animation-delayed">
     <button
       @click="toSeePressed()"
       :class="wasAddedtoSeeRef ? 'wish-list-btn--saved-movie' : 'wish-list-btn'"

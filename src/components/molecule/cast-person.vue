@@ -1,5 +1,5 @@
 <template>
-  <li class="cast-list-item">
+  <li class="cast-list-item fade-in-animation-delayed">
     <div class="cast-list-img">
       <img
         loading="lazy"

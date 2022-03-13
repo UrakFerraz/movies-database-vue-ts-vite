@@ -1,5 +1,5 @@
 <template>
-  <div class="movie-card--img" v-if="posterPath">
+  <div class="movie-card--img fade-in-animation-fast" v-if="posterPath">
     <img
       loading="lazy"
       :src="'https://image.tmdb.org/t/p/w300' + props.posterPath"

@@ -1,7 +1,10 @@
 <template>
-  <div class="home--content">
+  <div class="listed-movies--content">
     <Pagination />
-    <MoviesTable :movies="moviesByGenre" v-if="moviesByGenre" />
+    <Suspense>
+      <MoviesTable :movies="moviesByGenre" v-if="moviesByGenre" />
+      <template #fallback> Loading... </template>
+    </Suspense>
     <Pagination />
   </div>
 </template>
@@ -41,7 +44,7 @@ getMoviesByGenreList(props.pageNumber, props.genre);
 </script>
 
 <style scoped>
-.home--content {
+.listed-movies--content {
   padding: 20px;
 }
 </style>

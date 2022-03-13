@@ -1,5 +1,5 @@
 <template>
-  <div class="movie-info">
+  <div class="movie-info fade-in-animation-fast">
     <div class="rating average-rgb--bg">
       <div class="rate">
         <p>{{ movie.vote_average }}</p>

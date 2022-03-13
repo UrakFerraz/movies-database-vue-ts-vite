@@ -6,7 +6,7 @@
       :poster-path="movie.poster_path"
       :alt-text="movie.original_title"
     />
-    <div class="movie-card--content">
+    <div class="movie-card--content fade-in-animation-delayed">
       <span
         >{{ movie.vote_average }} -
         {{ new Date(movie.release_date).getFullYear() }}</span
