@@ -24,12 +24,14 @@ const wasAddedFavoritesRef = ref(false);
 const toSeeStore = toSee();
 const { movies: toSeeMovies } = storeToRefs(toSeeStore);
 const wasAddedtoSeeRef = ref(false);
-
+import MoviesListStorage from "../../store/localStorage";
+const FavoriteListMoviesStorage = new MoviesListStorage("Favorite Movies");
+const ToSeeListMoviesStorage = new MoviesListStorage("To See Movies");
 watch(
   [favoriteMovies, toSeeMovies],
   (state) => {
-    localStorage.setItem("Favorite Movies", JSON.stringify(state[0]));
-    localStorage.setItem("To See Movies", JSON.stringify(state[1]));
+    FavoriteListMoviesStorage.addMovies(state[0]);
+    ToSeeListMoviesStorage.addMovies(state[1]);
   },
   { deep: true }
 );
