@@ -20,13 +20,6 @@ import ResultsInterface from "../interfaces/results-interface";
 import APIDefaultInfo from "../modules/default-api-info";
 const defaultAPIInfos = new APIDefaultInfo();
 const router = useRouter();
-import { favorites, toSee } from "../store/movies-lists";
-const favoritesStore = favorites();
-const toSeeStore = toSee();
-
-onMounted(() => {
-  favoritesStore.getMoviesListDatabase();
-});
 
 onBeforeRouteLeave((to, from) => {
   console.log(to);

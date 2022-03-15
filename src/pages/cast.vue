@@ -34,13 +34,6 @@ const castPersonDetails = ref<CastPersonDetails>({} as CastPersonDetails);
 const castPersonMovies = ref(null) as any;
 const castPersonTV = ref(null) as any;
 const castImages = ref(null) as any;
-import { favorites, toSee } from "../store/movies-lists";
-const favoritesStore = favorites();
-const toSeeStore = toSee();
-
-onMounted(() => {
-  favoritesStore.getMoviesListDatabase();
-});
 
 async function getCastPersonDetails(personId: string | number) {
   let details = {} as CastPersonDetails;
