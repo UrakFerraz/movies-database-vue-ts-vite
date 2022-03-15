@@ -19,7 +19,7 @@ console.log(props);
 
 @media (min-width: 768px) {
   .cast-list {
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
 }
 </style>
