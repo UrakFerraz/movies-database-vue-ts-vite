@@ -42,11 +42,13 @@ export default class MoviesListStorage {
     }
 
     // add new movies
-    addMovies(movieIds: number[]) {
-        this.ids = []
-
-        for (var i = 0; i < movieIds.length; i++) {
-            this.ids.push(String(movieIds[i]));
+    addMovie(movieId: number) {
+        const idToString = String(movieId)
+        const wasAdded = this.ids.indexOf(idToString)
+        if (wasAdded === -1) {
+            this.ids.push(idToString)
+        } else {
+            this.ids.splice(wasAdded, 1)
         }
 
         // console.log(this.ids);
