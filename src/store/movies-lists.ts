@@ -31,11 +31,18 @@ export const favorites = defineStore('favorites', {
         if (request.ok) {
           const data = await request.json()
           const dataToJSON = JSON.parse(data.favorites)
+          dataToJSON.forEach((id: string) => {
+            const idNumberType = Number(id)
+            if (this.movies.includes(idNumberType)) {
+              return
+            } else {
+              this.movies.push(idNumberType)
+            }
+          });
           console.log(dataToJSON);
         }
       } catch (error) {
         console.log('erro de import do firebase', error);
-        
       }
     }
   }
