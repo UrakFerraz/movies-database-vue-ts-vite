@@ -6,7 +6,7 @@
       :src="'https://image.tmdb.org/t/p/w185' + company.logo_path"
       :alt="company.name"
     />
-    <p v-if="props.company.logo_path">{{ props.company.name }}</p>
+    <p>{{ props.company.name }}</p>
   </div>
 </template>
 

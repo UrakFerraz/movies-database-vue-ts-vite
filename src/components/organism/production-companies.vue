@@ -1,5 +1,5 @@
 <template>
-  <div class="production-companies average-rgb--border" v-if="companies">
+  <div class="production-companies average-rgb--border">
     <h2>Production companies</h2>
     <ProductionCompany
       :company="comp"
@@ -30,6 +30,6 @@ const props = defineProps<{ companies: ProductionCompanyInterface[] }>();
 
 .production-companies h2 {
   flex-grow: 1;
-  flex-basis: 900px;
+  flex-basis: 1500px;
 }
 </style>
