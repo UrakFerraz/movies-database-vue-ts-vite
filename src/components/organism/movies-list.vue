@@ -21,19 +21,10 @@ import MoviesInListInterface from "../../interfaces/movies-in-list-interface";
 import MovieCard from "../template/movie-card.vue";
 const props = defineProps<{ movies: any }>();
 
-const randomClass = Math.random();
-
 const results = computed(() => {
   if (props.movies.results) return props.movies.results;
   return props.movies;
 });
-
-let count = 0;
-
-function scrollTo() {
-  const cards = document.querySelectorAll(".movie-card-scroll-snap");
-  console.log(cards);
-}
 </script>
 
 <style scoped>

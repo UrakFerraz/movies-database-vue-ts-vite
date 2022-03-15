@@ -24,7 +24,6 @@
 <script setup lang="ts">
 import Cast from "../../interfaces/cast-person-interface";
 const props = defineProps<{ cast: Cast }>();
-console.log(props);
 </script>
 
 <style scoped>
