@@ -24,9 +24,6 @@ const wasAddedFavoritesRef = ref(false);
 const toSeeStore = toSee();
 const { movies: toSeeMovies } = storeToRefs(toSeeStore);
 const wasAddedtoSeeRef = ref(false);
-import MoviesListStorage from "../../store/localStorage";
-const FavoriteListMoviesStorage = new MoviesListStorage("Favorite Movies");
-const ToSeeListMoviesStorage = new MoviesListStorage("To See Movies");
 watch(
   [favoriteMovies, toSeeMovies],
   (state) => {
@@ -36,28 +33,6 @@ watch(
   { deep: true }
 );
 
-function getStringOfMoviesId(list: Ref): string {
-  const res = JSON.stringify(list);
-  const regex = /(?<ids>\[.*\])/gim; //https://regex101.com/r/OhyAZ7/2
-  const {
-    groups: { ids },
-  } = regex.exec(res);
-  if (ids !== null) {
-    return ids;
-  }
-}
-
-fetch("https://movies-lists-3a7ad-default-rtdb.firebaseio.com/movies.json", {
-  method: "PUT",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    favorites: getStringOfMoviesId(favoriteMovies),
-    toSee: getStringOfMoviesId(toSeeMovies),
-  }),
-});
-
 function checkwasAdded(store: any, ref: Ref) {
   const wasAdded = store.wasAdded(props.movieId);
   ref.value = wasAdded;
@@ -66,7 +41,6 @@ function checkwasAdded(store: any, ref: Ref) {
 function favoritePressed() {
   favoritesStore.favoritePressed(props.movieId);
   checkwasAdded(favoritesStore, wasAddedFavoritesRef);
-  FavoriteListMoviesStorage.addMovie(props.movieId);
 }
 
 function toSeePressed() {
@@ -75,6 +49,8 @@ function toSeePressed() {
 }
 
 onMounted(() => {
+  console.log(favoritesStore.movies);
+
   checkwasAdded(favoritesStore, wasAddedFavoritesRef);
   checkwasAdded(toSeeStore, wasAddedtoSeeRef);
 });
