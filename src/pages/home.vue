@@ -20,19 +20,20 @@ import { onMounted, ref } from "vue";
 import MoviesList from "../components/organism/movies-list.vue";
 import APIDefaultInfo from "../modules/default-api-info";
 import ResultsInterface from "../interfaces/results-interface";
-const defaultAPIInfos = new APIDefaultInfo();
 import { favorites, toSee } from "../store/movies-lists";
+
+const defaultAPIInfos = new APIDefaultInfo();
 const favoritesStore = favorites();
 const toSeeStore = toSee();
-
-onMounted(() => {
-  favoritesStore.getMoviesListDatabase();
-});
-
 const nowPlaying = ref<ResultsInterface>({} as ResultsInterface);
 const popular = ref<ResultsInterface>({} as ResultsInterface);
 const upcoming = ref<ResultsInterface>({} as ResultsInterface);
 const topRated = ref<ResultsInterface>({} as ResultsInterface);
+
+onMounted(() => {
+  favoritesStore.getMoviesListDatabase();
+  toSeeStore.getMoviesListDatabase();
+});
 
 async function getNowPlayingMoviesLists(pageNum: number): Promise<void> {
   let list = {} as ResultsInterface;

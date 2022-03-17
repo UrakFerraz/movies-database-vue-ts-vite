@@ -25,15 +25,21 @@ import MoviesList from "../components/organism/movies-list.vue";
 import CastPersonWithDetails from "../components/molecule/cast-person-with-details.vue";
 import CastPersonDetails from "../interfaces/cast-person-details-interface";
 import MovieInListInerface from "../interfaces/movies-in-list-interface";
+import { favorites, toSee } from "../store/movies-lists";
 
+const favoritesStore = favorites();
+const toSeeStore = toSee();
 const defaultAPIInfos = new APIDefaultInfo();
-
 const props = defineProps<{ castPersonId: string | number }>();
-
 const castPersonDetails = ref<CastPersonDetails>({} as CastPersonDetails);
 const castPersonMovies = ref(null) as any;
 const castPersonTV = ref(null) as any;
 const castImages = ref(null) as any;
+
+onMounted(() => {
+  favoritesStore.getMoviesListDatabase();
+  toSeeStore.getMoviesListDatabase();
+});
 
 async function getCastPersonDetails(personId: string | number) {
   let details = {} as CastPersonDetails;

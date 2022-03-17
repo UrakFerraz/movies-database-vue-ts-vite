@@ -49,8 +49,6 @@ function toSeePressed() {
 }
 
 onMounted(() => {
-  console.log(favoritesStore.movies);
-
   checkwasAdded(favoritesStore, wasAddedFavoritesRef);
   checkwasAdded(toSeeStore, wasAddedtoSeeRef);
 });

@@ -18,17 +18,24 @@ import { useRouter, onBeforeRouteLeave } from "vue-router";
 import Genres from "../components/organism/genres.vue";
 import ResultsInterface from "../interfaces/results-interface";
 import APIDefaultInfo from "../modules/default-api-info";
+import { favorites, toSee } from "../store/movies-lists";
+
 const defaultAPIInfos = new APIDefaultInfo();
 const router = useRouter();
+const favoritesStore = favorites();
+const toSeeStore = toSee();
+const props = defineProps<{ pageNumber: number | string; genre: string }>();
+const moviesByGenre = ref<ResultsInterface>({} as ResultsInterface);
+
+onMounted(() => {
+  favoritesStore.getMoviesListDatabase();
+  toSeeStore.getMoviesListDatabase();
+});
 
 onBeforeRouteLeave((to, from) => {
   console.log(to);
   console.log(from);
 });
-
-const props = defineProps<{ pageNumber: number | string; genre: string }>();
-
-const moviesByGenre = ref<ResultsInterface>({} as ResultsInterface);
 
 async function getMoviesByGenreList(pageNum: number | string, genre: string) {
   let list = {} as ResultsInterface;

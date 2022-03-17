@@ -7,7 +7,10 @@
         <template #fallback> Loading... </template>
       </Suspense>
       <CastList :movie-id="movieId" />
-      <ProductionCompanies :companies="movieDetails.production_companies" />
+      <ProductionCompanies
+        :companies="movieDetails.production_companies"
+        v-if="movieDetails.production_companies"
+      />
       <a
         v-if="movieDetails.homepage"
         class="homepage-link average-rgb--border"
@@ -27,6 +30,14 @@ import MovieDatabase from "../modules/movies-db-api";
 import getAverageRgb from "../modules/get-average-rgb";
 import MovieInterface from "../interfaces/movie-interface";
 import ProductionCompanies from "../components/organism/production-companies.vue";
+import { favorites, toSee } from "../store/movies-lists";
+const favoritesStore = favorites();
+const toSeeStore = toSee();
+
+onMounted(() => {
+  favoritesStore.getMoviesListDatabase();
+  toSeeStore.getMoviesListDatabase();
+});
 
 const props = defineProps<{ movieId: number | string }>();
 let movieDatabase = new MovieDatabase(Number(props.movieId));

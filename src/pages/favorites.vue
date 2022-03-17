@@ -27,11 +27,19 @@ import MovieDatabase from "../modules/movies-db-api";
 import getAverageRgb from "../modules/get-average-rgb";
 import MovieInterface from "../interfaces/movie-interface";
 import ProductionCompanies from "../components/organism/production-companies.vue";
+import { favorites, toSee } from "../store/movies-lists";
 
 const props = defineProps<{ movieId: number | string }>();
 let movieDatabase = new MovieDatabase(Number(props.movieId));
 const movieDetails = ref<MovieInterface>({} as MovieInterface);
 const averageRGB = ref(null) as any;
+const favoritesStore = favorites();
+const toSeeStore = toSee();
+
+onMounted(() => {
+  favoritesStore.getMoviesListDatabase();
+  toSeeStore.getMoviesListDatabase();
+});
 
 async function getMovieDetails() {
   let movieDetailsResponse = {} as MovieInterface;
