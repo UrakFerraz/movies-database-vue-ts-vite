@@ -17,46 +17,22 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
+import {
+  getNowPlayingMoviesLists,
+  getPopularMoviesLists,
+  getUpcomingMoviesLists,
+  getTopRatedMoviesLists,
+  nowPlaying,
+  popular,
+  upcoming,
+  topRated,
+} from "../modules/pages-helpers/home-page-helper";
 import MoviesList from "../components/organism/movies-list.vue";
 import APIDefaultInfo from "../modules/default-api-info";
 import ResultsInterface from "../interfaces/results-interface";
-import { favorites, toSee } from "../store/movies-lists";
+import getStates from "../store/get-states";
 
-const defaultAPIInfos = new APIDefaultInfo();
-const favoritesStore = favorites();
-const toSeeStore = toSee();
-const nowPlaying = ref<ResultsInterface>({} as ResultsInterface);
-const popular = ref<ResultsInterface>({} as ResultsInterface);
-const upcoming = ref<ResultsInterface>({} as ResultsInterface);
-const topRated = ref<ResultsInterface>({} as ResultsInterface);
-
-onMounted(() => {
-  favoritesStore.getMoviesListDatabase();
-  toSeeStore.getMoviesListDatabase();
-});
-
-async function getNowPlayingMoviesLists(pageNum: number): Promise<void> {
-  let list = {} as ResultsInterface;
-  list = await defaultAPIInfos.fetchData(defaultAPIInfos.nowPlayingMoviesUrl);
-  nowPlaying.value = list;
-}
-async function getPopularMoviesLists(pageNum: number): Promise<void> {
-  let list = {} as ResultsInterface;
-  list = await defaultAPIInfos.fetchData(defaultAPIInfos.popularMoviesUrl);
-  popular.value = list;
-}
-async function getUpcomingMoviesLists(pageNum: number): Promise<void> {
-  let list = {} as ResultsInterface;
-  list = await defaultAPIInfos.fetchData(defaultAPIInfos.upcomingMoviesUrl);
-  upcoming.value = list;
-}
-async function getTopRatedMoviesLists(pageNum: number): Promise<void> {
-  let list = {} as ResultsInterface;
-  list = await defaultAPIInfos.fetchData(defaultAPIInfos.topRatedMoviesUrl);
-  console.log(list);
-
-  topRated.value = list;
-}
+onMounted(getStates);
 
 getNowPlayingMoviesLists(1);
 getPopularMoviesLists(1);

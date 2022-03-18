@@ -20,51 +20,27 @@
 
 <script setup lang="ts">
 import { onMounted, ref } from "vue";
-import APIDefaultInfo from "../modules/default-api-info";
+
+const props = defineProps<{ castPersonId: string | number }>();
+
 import MoviesList from "../components/organism/movies-list.vue";
 import CastPersonWithDetails from "../components/molecule/cast-person-with-details.vue";
-import CastPersonDetails from "../interfaces/cast-person-details-interface";
-import MovieInListInerface from "../interfaces/movies-in-list-interface";
-import { favorites, toSee } from "../store/movies-lists";
+import getStates from "../store/get-states";
+import {
+  getCastPersonDetails,
+  getCastPersonMovies,
+  getCastPersonImages,
+  castPersonDetails,
+  castPersonMovies,
+  castImages,
+} from "../modules/pages-helpers/cast-page-helper";
 
-const favoritesStore = favorites();
-const toSeeStore = toSee();
-const defaultAPIInfos = new APIDefaultInfo();
-const props = defineProps<{ castPersonId: string | number }>();
-const castPersonDetails = ref<CastPersonDetails>({} as CastPersonDetails);
-const castPersonMovies = ref(null) as any;
-const castPersonTV = ref(null) as any;
-const castImages = ref(null) as any;
+onMounted(getStates);
 
-onMounted(() => {
-  favoritesStore.getMoviesListDatabase();
-  toSeeStore.getMoviesListDatabase();
-});
-
-async function getCastPersonDetails(personId: string | number) {
-  let details = {} as CastPersonDetails;
-  details = await defaultAPIInfos.fetchData(
-    defaultAPIInfos.getCastPersonDetailsURL(Number(personId))
-  );
-  castPersonDetails.value = details;
-}
-async function getCastPersonMovies(personId: string | number) {
-  let details = null;
-  details = await defaultAPIInfos.fetchData(
-    defaultAPIInfos.getCastPersonMoviesURL(Number(personId))
-  );
-  castPersonMovies.value = details.cast;
-}
-async function getCastPersonImages(personId: string | number) {
-  let images = {} as any;
-  images = await defaultAPIInfos.fetchData(
-    defaultAPIInfos.getCastPersonImages(Number(personId))
-  );
-  castImages.value = images.profiles;
-}
 getCastPersonDetails(props.castPersonId);
 getCastPersonMovies(props.castPersonId);
 getCastPersonImages(props.castPersonId);
+getStates;
 </script>
 
 <style scoped>

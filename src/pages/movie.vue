@@ -23,46 +23,28 @@
 </template>
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
+
+const props = defineProps<{ movieId: number | string }>();
+
+import {
+  movieDetails,
+  averageRGB,
+  getMovieDetails,
+} from "../modules/pages-helpers/movie-page-helper";
+
+import ResultsInterface from "../interfaces/results-interface";
 import CastList from "../components/template/cast-list.vue";
 import Backdrop from "../components/molecule/backdrop.vue";
 import MovieCard from "../components/template/movie-card-with-details.vue";
-import MovieDatabase from "../modules/movies-db-api";
-import getAverageRgb from "../modules/get-average-rgb";
-import MovieInterface from "../interfaces/movie-interface";
 import ProductionCompanies from "../components/organism/production-companies.vue";
-import { favorites, toSee } from "../store/movies-lists";
-const favoritesStore = favorites();
-const toSeeStore = toSee();
+import getStates from "../store/get-states";
+import MovieDatabase from "../modules/movies-db-api";
 
-onMounted(() => {
-  favoritesStore.getMoviesListDatabase();
-  toSeeStore.getMoviesListDatabase();
-});
-
-const props = defineProps<{ movieId: number | string }>();
 let movieDatabase = new MovieDatabase(Number(props.movieId));
-const movieDetails = ref<MovieInterface>({} as MovieInterface);
-const averageRGB = ref(null) as any;
 
-async function getMovieDetails() {
-  let movieDetailsResponse = {} as MovieInterface;
-  movieDetailsResponse = await movieDatabase.fetchData(
-    movieDatabase.movieDetailsUrl
-  );
-  movieDetails.value = movieDetailsResponse;
-  averageRGB.value = await getAverageRGBfromPoster();
-}
+onMounted(getStates);
 
-getMovieDetails();
-
-async function getAverageRGBfromPoster() {
-  const rgb = await getAverageRgb(
-    `https://image.tmdb.org/t/p/w300${movieDetails.value.poster_path}`
-  );
-  return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
-}
-console.log(movieDatabase.movieDetailsUrl);
-console.log(movieDetails);
+getMovieDetails(movieDatabase);
 
 watch(averageRGB, () => {
   document.querySelectorAll(".average-rgb--bg").forEach((el: any) => {

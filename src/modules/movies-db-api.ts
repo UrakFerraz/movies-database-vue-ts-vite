@@ -10,7 +10,7 @@ export default class MovieDatabase extends APIDefaultInfo {
 		return `${this.apiURL}/movie/${this.movieId}/credits?api_key=${this.API_KEY}&${this.defaultLanguage}`
 	}
 	get similarMoviesUrl(): string {
-		return `${this.apiURL}/movie/${this.movieId}/similar?api_key=${this.API_KEY}&${this.defaultLanguage}`
+		return `${this.apiURL}/movie/${this.movieId}/similar?api_key=${this.API_KEY}&${this.defaultLanguage}&page=1`
 	}
 	get movieImagesUrl(): string {
 		return `${this.apiURL}/movie/${this.movieId}/images?api_key=${this.API_KEY}&${this.defaultLanguage}`

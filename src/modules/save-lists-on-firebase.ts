@@ -1,10 +1,13 @@
 import { Ref } from "vue";
 import { storeToRefs } from "pinia";
 import { favorites, toSee } from "../store/movies-lists";
+import firebaseURL from '../modules/firebase-database-url'
 const favoritesStore = favorites();
 const { movies: favoriteMovies } = storeToRefs(favoritesStore);
 const toSeeStore = toSee();
 const { movies: toSeeMovies } = storeToRefs(toSeeStore);
+
+const firebaseList = `${firebaseURL}/movies.json`
 
 function getStringOfMoviesId(list: Ref) {
   const res = JSON.stringify(list);
@@ -16,7 +19,7 @@ function getStringOfMoviesId(list: Ref) {
 }
 
 export default function SaveListsOnFirebase() {
-  fetch("https://movies-lists-3a7ad-default-rtdb.firebaseio.com/movies.json", {
+  fetch(firebaseList, {
     method: "PUT",
     headers: {
       "Content-Type": "application/json",

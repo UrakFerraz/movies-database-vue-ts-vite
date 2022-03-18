@@ -3,6 +3,10 @@ import { MoviesListState, WasAdded } from '../interfaces/movies-list-state-iterf
 import MoviesListStorage from "./localStorage";
 const FavoriteListMoviesStorage = new MoviesListStorage("Favorite Movies");
 const ToSeeListMoviesStorage = new MoviesListStorage("To See Movies");
+import firebaseURL from '../modules/firebase-database-url'
+export type StatesNames = 'favorites' | 'toSee'
+
+const firebaseList = `${firebaseURL}/movies.json`
 
 const getters = {
   wasAdded: (state: MoviesListState): WasAdded => {
@@ -10,7 +14,10 @@ const getters = {
   },
   total: (state: MoviesListState): number => {
     return state.movies.length
-  }
+  },
+  getList: (state: MoviesListState): number[] => {
+    return state.movies
+  },
 }
 export const favorites = defineStore('favorites', {
   state: (): MoviesListState => ({
@@ -28,9 +35,9 @@ export const favorites = defineStore('favorites', {
       }
       console.log(this.movies);
     },
-    async getMoviesListDatabase(state: MoviesListState) {
+    async getMoviesListDatabase() {
       try {
-        const request = await fetch("https://movies-lists-3a7ad-default-rtdb.firebaseio.com/movies.json")
+        const request = await fetch(firebaseList)
         if (request.ok) {
           const data = await request.json()
           const dataToJSON = JSON.parse(data.favorites)
@@ -69,9 +76,9 @@ export const toSee = defineStore('toSee', {
       }
       console.log(this.movies);
     },
-    async getMoviesListDatabase(state: MoviesListState) {
+    async getMoviesListDatabase() {
       try {
-        const request = await fetch("https://movies-lists-3a7ad-default-rtdb.firebaseio.com/movies.json")
+        const request = await fetch(firebaseList)
         if (request.ok) {
           const data = await request.json()
           const dataToJSON = JSON.parse(data.toSee)
