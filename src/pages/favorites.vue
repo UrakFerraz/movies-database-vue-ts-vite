@@ -1,74 +1,54 @@
 <template>
-  <div class="movie-page--wrapper" v-if="movieDetails">
-    <Backdrop :backdrop-path="movieDetails.backdrop_path" />
-    <div class="movie-content">
-      <Suspense>
-        <MovieCard :movie="movieDetails" />
-        <template #fallback> Loading... </template>
-      </Suspense>
-      <CastList :movie-id="movieId" />
-      <ProductionCompanies :companies="movieDetails.production_companies" />
-      <a
-        v-if="movieDetails.homepage"
-        class="homepage-link average-rgb--border"
-        target="_blank"
-        :href="movieDetails.homepage"
-        >Homepage</a
-      >
-    </div>
+  <div class="listed-movies--content">
+    <Suspense>
+      <MoviesTable :movies="favoriteMoviesIds" v-if="favoriteMoviesIds" />
+      <template #fallback> Loading... </template>
+    </Suspense>
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
-import CastList from "../components/template/cast-list.vue";
-import Backdrop from "../components/molecule/backdrop.vue";
-import MovieCard from "../components/template/movie-card-with-details.vue";
-import MovieDatabase from "../modules/movies-db-api";
-import getAverageRgb from "../modules/get-average-rgb";
+import { onMounted, ref } from "vue";
+import MoviesTable from "../components/organism/movies-table.vue";
 import MovieInterface from "../interfaces/movie-interface";
-import ProductionCompanies from "../components/organism/production-companies.vue";
-import { favorites, toSee } from "../store/movies-lists";
+import getStates, { favoritesStore } from "../store/get-states";
+import MovieDatabase from "../modules/movies-db-api";
 
-const props = defineProps<{ movieId: number | string }>();
-let movieDatabase = new MovieDatabase(Number(props.movieId));
-const movieDetails = ref<MovieInterface>({} as MovieInterface);
-const averageRGB = ref(null) as any;
-const favoritesStore = favorites();
-const toSeeStore = toSee();
+export interface MoviesIdsResults {
+  results: MovieInterface[];
+}
 
-onMounted(() => {
-  favoritesStore.getMoviesListDatabase();
-  toSeeStore.getMoviesListDatabase();
-});
+const favoriteMoviesIds = ref<MoviesIdsResults>({} as MoviesIdsResults);
 
-async function getMovieDetails() {
+const moviesIdsListFromStore = favoritesStore.getList;
+
+onMounted(getStates);
+
+console.log(favoritesStore);
+
+async function getMovieDetails(movieId: number) {
+  const movieDatabase = new MovieDatabase(movieId);
   let movieDetailsResponse = {} as MovieInterface;
   movieDetailsResponse = await movieDatabase.fetchData(
     movieDatabase.movieDetailsUrl
   );
-  movieDetails.value = movieDetailsResponse;
-  averageRGB.value = await getAverageRGBfromPoster();
+
+  console.log(movieDetailsResponse);
+
+  favoriteMoviesIds.value.results.push(movieDetailsResponse);
 }
 
-getMovieDetails();
+console.log(favoriteMoviesIds);
+console.log(moviesIdsListFromStore);
 
-async function getAverageRGBfromPoster() {
-  const rgb = await getAverageRgb(
-    `https://image.tmdb.org/t/p/w300${movieDetails.value.poster_path}`
-  );
-  return `rgb(${rgb[0]},${rgb[1]},${rgb[2]})`;
+async function loadFavorites() {
+  const promises = moviesIdsListFromStore.map(async (id) => {
+    console.log(id);
+
+    await getMovieDetails(id);
+  });
+  const data = await Promise.all(promises);
+  return data;
 }
-console.log(movieDatabase.movieDetailsUrl);
-console.log(movieDetails);
-
-watch(averageRGB, () => {
-  document.querySelectorAll(".average-rgb--bg").forEach((el: any) => {
-    el.style.background = averageRGB.value;
-  });
-  document.querySelectorAll(".average-rgb--border").forEach((el: any) => {
-    el.style.borderColor = averageRGB.value;
-  });
-});
 </script>
 
 <style scoped>

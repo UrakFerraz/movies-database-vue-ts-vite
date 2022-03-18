@@ -35,6 +35,19 @@ const routes = [
 			header: () => import(/* webpackChunkName: "Header" */ '../components/molecule/header.vue'),
 			footer: () => import(/* webpackChunkName: "Footer" */ '../components/molecule/footer.vue')
 		}, props: { default: true, header: false, footer: false }
+	},
+	{
+		name: 'favorites',
+		path: '/favorites',
+		components: {
+			default: () => import(/* webpackChunkName: "Genre" */ '../pages/favorites.vue'),
+			header: () => import(/* webpackChunkName: "Header" */ '../components/molecule/header.vue'),
+			footer: () => import(/* webpackChunkName: "Footer" */ '../components/molecule/footer.vue')
+		}
+	},
+	{
+		path: '/:notFound(.*)',
+		redirect: '/'
 	}
 ]
 
