@@ -1,6 +1,3 @@
-// module with classes and logic for working with local storage in browsers via JavaScript
-// see also: http://professorweb.ru/my/html/html5/level5/5_1.php
-
 export interface IStorageItem {
 	key: string;
 	value: any;
