@@ -41,9 +41,6 @@ export default class APIDefaultInfo {
 	fetchData = async (url: string) => {
 		const response = await fetch(url)
 		const data = await response.json()
-		console.log(url);
-		
-		console.log(data);
 		return data
 	}
 }

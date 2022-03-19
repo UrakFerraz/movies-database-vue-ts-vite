@@ -1,29 +1,39 @@
 <template>
   <div class="listed-movies--content">
+    <Pagination />
     <Suspense>
-      <MoviesTable :movies="favoriteMoviesIds" v-if="favoriteMoviesIds" />
+      <MoviesTable
+        :movies="favoriteMoviesList"
+        :page-name="'favorites'"
+        :key="forceReload"
+      />
       <template #fallback> Loading... </template>
     </Suspense>
+    <Pagination />
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref } from "vue";
+import { onBeforeMount, onMounted, ref } from "vue";
 import MoviesTable from "../components/organism/movies-table.vue";
+import MovieInListInerface from "../interfaces/movies-in-list-interface";
+import ResultsInterface from "../interfaces/results-interface";
 import MovieInterface from "../interfaces/movie-interface";
 import getStates, { favoritesStore } from "../store/get-states";
 import MovieDatabase from "../modules/movies-db-api";
+import Pagination from "../components/molecule/pagination.vue";
 
-export interface MoviesIdsResults {
-  results: MovieInterface[];
-}
+const props = defineProps<{ pageNumber: string }>();
 
-const favoriteMoviesIds = ref<MoviesIdsResults>({} as MoviesIdsResults);
+const favoriteMoviesList = ref([] as any);
+
+const forceReload = ref(0);
 
 const moviesIdsListFromStore = favoritesStore.getList;
 
+onBeforeMount(loadFavorites(props.pageNumber));
 onMounted(getStates);
 
-console.log(favoritesStore);
+console.log(moviesIdsListFromStore);
 
 async function getMovieDetails(movieId: number) {
   const movieDatabase = new MovieDatabase(movieId);
@@ -32,22 +42,37 @@ async function getMovieDetails(movieId: number) {
     movieDatabase.movieDetailsUrl
   );
 
-  console.log(movieDetailsResponse);
+  const {
+    budget,
+    genres,
+    homepage,
+    revenue,
+    runtime,
+    status,
+    tagline,
+    belongs_to_collection,
+    imdb_id,
+    production_companies,
+    production_countries,
+    spoken_languages,
+    ...movie
+  } = movieDetailsResponse;
 
-  favoriteMoviesIds.value.results.push(movieDetailsResponse);
+  console.log(movie);
+
+  return movie;
 }
 
-console.log(favoriteMoviesIds);
-console.log(moviesIdsListFromStore);
-
-async function loadFavorites() {
-  const promises = moviesIdsListFromStore.map(async (id) => {
-    console.log(id);
-
-    await getMovieDetails(id);
-  });
-  const data = await Promise.all(promises);
-  return data;
+async function loadFavorites(pageNumber: string) {
+  const promises = moviesIdsListFromStore
+    .slice(Number(pageNumber), 21)
+    .map(async (id) => {
+      forceReload.value++;
+      const response = await getMovieDetails(id);
+      return response;
+    });
+  favoriteMoviesList.value = await Promise.all(promises);
+  console.log(favoriteMoviesList);
 }
 </script>
 

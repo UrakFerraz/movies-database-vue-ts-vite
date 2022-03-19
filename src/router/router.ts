@@ -37,13 +37,23 @@ const routes = [
 		}, props: { default: true, header: false, footer: false }
 	},
 	{
-		name: 'favorites',
+		name: 'page 0 favorites',
 		path: '/favorites',
 		components: {
 			default: () => import(/* webpackChunkName: "Genre" */ '../pages/favorites.vue'),
 			header: () => import(/* webpackChunkName: "Header" */ '../components/molecule/header.vue'),
 			footer: () => import(/* webpackChunkName: "Footer" */ '../components/molecule/footer.vue')
-		}
+		},
+		redirect: '/favorites/0',
+	},
+	{
+		name: 'favorites',
+		path: '/favorites/:pageNumber',
+		components: {
+			default: () => import(/* webpackChunkName: "Genre" */ '../pages/favorites.vue'),
+			header: () => import(/* webpackChunkName: "Header" */ '../components/molecule/header.vue'),
+			footer: () => import(/* webpackChunkName: "Footer" */ '../components/molecule/footer.vue')
+		}, props: { default: true, header: false, footer: false }
 	},
 	{
 		path: '/:notFound(.*)',

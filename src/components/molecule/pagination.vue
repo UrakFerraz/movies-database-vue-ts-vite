@@ -11,23 +11,33 @@ import { useRouter, useRoute } from "vue-router";
 const router = useRouter();
 const route = useRoute();
 
-let count = 1;
+let count = 0;
 
-const genreId = Number(route.params.genre);
-const genrePageNum = Number(route.params.pageNumber);
+const pageNumber = Number(route.params.pageNumber);
+
+const slug = (() => {
+  if (route.params.genre) {
+    return Number(route.params.genre);
+  }
+  if (route.path.includes("favorites")) {
+    console.log(route);
+
+    return "favorites";
+  }
+})();
 
 function nextPrev(direction: string) {
-  count = genrePageNum;
+  count = pageNumber;
   console.log(count);
   console.log(typeof count);
   if (direction === "prev") {
-    if (count > 1) {
+    if (count >= 1) {
       count -= 1;
     }
   } else if (direction === "next") {
     count += 1;
   }
-  return `/${genreId}/${count}`;
+  return `/${slug}/${count}`;
 }
 </script>
 

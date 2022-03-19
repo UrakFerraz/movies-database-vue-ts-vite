@@ -1,6 +1,6 @@
 <template>
   <div class="movies-list--content" v-if="results">
-    <h2>{{ genreName }}</h2>
+    <h2>{{ title }}</h2>
     <div class="movies-list--wrapper">
       <MovieCard
         :class="`movie-card-scroll-snap movie-card-scroll-snap--${movie.id}`"
@@ -19,27 +19,37 @@ import ResultsInterface from "../../interfaces/results-interface";
 import { useRoute } from "vue-router";
 import MovieCard from "../template/movie-card.vue";
 import genres from "../../assets/genres";
-const props = defineProps<{ movies: any }>();
+
+const props =
+  defineProps<{ movies: any; pageName: "genre" | "favorites" | "toSee" }>();
 
 const route = useRoute();
 
-const genreName = ref("");
+const title = ref("");
 
 const results = computed(() => {
+  console.log(props.movies);
   if (props.movies.results) return props.movies.results;
   return props.movies;
 });
 
-function getGenreName() {
-  const genreId = Number(route.params.genre);
-  const getGenre = genres.forEach((genre) => {
-    if (genre.id == genreId) {
-      genreName.value = genre.name;
-    }
-  });
+if (props.pageName === "favorites") {
+  title.value = "Favorites";
 }
-
-getGenreName();
+if (props.pageName === "toSee") {
+  title.value = "To See";
+}
+if (props.pageName === "genre") {
+  function getGenreName() {
+    const genreId = Number(route.params.genre);
+    const getGenre = genres.forEach((genre) => {
+      if (genre.id == genreId) {
+        title.value = genre.name;
+      }
+    });
+  }
+  getGenreName();
+}
 </script>
 
 <style scoped>
