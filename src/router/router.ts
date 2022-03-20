@@ -56,6 +56,25 @@ const routes = [
 		}, props: { default: true, header: false, footer: false }
 	},
 	{
+		name: 'page 0 toSee',
+		path: '/toSee',
+		components: {
+			default: () => import(/* webpackChunkName: "Genre" */ '../pages/to-see.vue'),
+			header: () => import(/* webpackChunkName: "Header" */ '../components/molecule/header.vue'),
+			footer: () => import(/* webpackChunkName: "Footer" */ '../components/molecule/footer.vue')
+		},
+		redirect: '/toSee/0',
+	},
+	{
+		name: 'toSee',
+		path: '/toSee/:pageNumber',
+		components: {
+			default: () => import(/* webpackChunkName: "Genre" */ '../pages/to-see.vue'),
+			header: () => import(/* webpackChunkName: "Header" */ '../components/molecule/header.vue'),
+			footer: () => import(/* webpackChunkName: "Footer" */ '../components/molecule/footer.vue')
+		}, props: { default: true, header: false, footer: false }
+	},
+	{
 		path: '/:notFound(.*)',
 		redirect: '/'
 	}

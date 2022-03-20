@@ -20,9 +20,10 @@ const slug = (() => {
     return Number(route.params.genre);
   }
   if (route.path.includes("favorites")) {
-    console.log(route);
-
     return "favorites";
+  }
+  if (route.path.includes("toSee")) {
+    return "toSee";
   }
 })();
 
