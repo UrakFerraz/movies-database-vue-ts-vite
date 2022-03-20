@@ -5,7 +5,7 @@
       <MoviesTable
         :movies="favoriteMoviesList"
         :page-name="'favorites'"
-        :key="forceReload"
+        v-if="favoriteMoviesList"
       />
       <template #fallback> Loading... </template>
     </Suspense>
@@ -13,7 +13,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onBeforeMount, onMounted, ref } from "vue";
+import { onBeforeMount, ref } from "vue";
 import MoviesTable from "../components/organism/movies-table.vue";
 import MovieInListInerface from "../interfaces/movies-in-list-interface";
 import ResultsInterface from "../interfaces/results-interface";
@@ -26,14 +26,16 @@ const props = defineProps<{ pageNumber: string }>();
 
 const favoriteMoviesList = ref([] as any);
 
-const forceReload = ref(0);
-
 const moviesIdsListFromStore = favoritesStore.getList;
 
-onBeforeMount(loadFavorites(props.pageNumber));
-onMounted(getStates);
+setTimeout(() => {}, 2000);
 
-console.log(moviesIdsListFromStore);
+onBeforeMount(async () => {
+  console.log(moviesIdsListFromStore);
+
+  getStates();
+  loadFavorites(props.pageNumber);
+});
 
 async function getMovieDetails(movieId: number) {
   const movieDatabase = new MovieDatabase(movieId);
@@ -58,35 +60,25 @@ async function getMovieDetails(movieId: number) {
     ...movie
   } = movieDetailsResponse;
 
-  console.log(movie);
-
   return movie;
 }
 
-async function loadFavorites(pageNumber: string) {
-  const promises = moviesIdsListFromStore
-    .slice(Number(pageNumber), 21)
-    .map(async (id) => {
-      forceReload.value++;
-      const response = await getMovieDetails(id);
-      return response;
-    });
-  favoriteMoviesList.value = await Promise.all(promises);
-  console.log(favoriteMoviesList);
+async function loadFavorites(pageNumber: string): Promise<void> {
+  let moviesPerPage = 20;
+  const pages = [];
+  const promises = moviesIdsListFromStore.map(async (id) => {
+    const response = await getMovieDetails(id);
+    return response;
+  });
+  for (var i = 0; i < promises.length; i = i + moviesPerPage) {
+    pages.push(promises.slice(i, i + moviesPerPage));
+  }
+  favoriteMoviesList.value = await Promise.all(pages[Number(pageNumber)]);
 }
 </script>
 
 <style scoped>
-.movie-page--wrapper {
-  display: grid;
-  grid-template-columns: auto minmax(300px, 1200px) auto;
-}
-.movie-content {
-  grid-column: 2 / -2;
-}
-
-.homepage-link {
-  justify-self: center;
-  padding: 10px 15px;
+.listed-movies--content {
+  padding: 20px;
 }
 </style>
