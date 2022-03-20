@@ -36,7 +36,7 @@ const results = computed(() => {
 if (props.pageName === "favorites") {
   title.value = "Favorites";
 }
-if (props.pageName === "toSee") {
+if (props.pageName === "to-see") {
   title.value = "To See";
 }
 if (props.pageName === "genre") {
