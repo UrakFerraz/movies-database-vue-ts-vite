@@ -4,21 +4,11 @@ import MoviesListStorage from "./localStorage";
 const FavoriteListMoviesStorage = new MoviesListStorage("Favorite Movies");
 const ToSeeListMoviesStorage = new MoviesListStorage("To See Movies");
 import firebaseURL from '../modules/firebase-database-url'
+import getters from './getters';
 export type StatesNames = 'favorites' | 'toSee'
 
 const firebaseList = `${firebaseURL}/movies.json`
 
-const getters = {
-  wasAdded: (state: MoviesListState): WasAdded => {
-    return (movieId: number) => state.movies.includes(movieId)
-  },
-  total: (state: MoviesListState): number => {
-    return state.movies.length
-  },
-  getList: (state: MoviesListState): number[] => {
-    return state.movies
-  },
-}
 export const favorites = defineStore('favorites', {
   state: (): MoviesListState => ({
     movies: []
