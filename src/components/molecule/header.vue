@@ -3,10 +3,12 @@
     <router-link to="/" class="link">
       <h1>The Movie Database</h1>
     </router-link>
+    <MoviesListSubmenu />
   </div>
 </template>
 
 <script setup lang="ts">
+import MoviesListSubmenu from "../molecule/movies-lists-submenu.vue";
 </script>
 
 <style scoped>
