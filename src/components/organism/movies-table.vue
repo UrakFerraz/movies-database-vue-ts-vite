@@ -21,7 +21,7 @@ import MovieCard from "../template/movie-card.vue";
 import genres from "../../assets/genres";
 
 const props =
-  defineProps<{ movies: any; pageName: "genre" | "favorites" | "toSee" }>();
+  defineProps<{ movies: any; pageName: "genre" | "favorites" | "to-see" }>();
 
 const route = useRoute();
 

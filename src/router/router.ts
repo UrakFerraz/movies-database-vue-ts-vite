@@ -56,18 +56,18 @@ const routes = [
 		}, props: { default: true, header: false, footer: false }
 	},
 	{
-		name: 'page 0 toSee',
-		path: '/toSee',
+		name: 'page 0 to see',
+		path: '/to-see',
 		components: {
 			default: () => import(/* webpackChunkName: "Genre" */ '../pages/to-see.vue'),
 			header: () => import(/* webpackChunkName: "Header" */ '../components/molecule/header.vue'),
 			footer: () => import(/* webpackChunkName: "Footer" */ '../components/molecule/footer.vue')
 		},
-		redirect: '/toSee/0',
+		redirect: '/to-see/0',
 	},
 	{
-		name: 'toSee',
-		path: '/toSee/:pageNumber',
+		name: 'to-see',
+		path: '/to-see/:pageNumber',
 		components: {
 			default: () => import(/* webpackChunkName: "Genre" */ '../pages/to-see.vue'),
 			header: () => import(/* webpackChunkName: "Header" */ '../components/molecule/header.vue'),

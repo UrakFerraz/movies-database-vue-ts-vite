@@ -22,8 +22,8 @@ const slug = (() => {
   if (route.path.includes("favorites")) {
     return "favorites";
   }
-  if (route.path.includes("toSee")) {
-    return "toSee";
+  if (route.path.includes("to-see")) {
+    return "to-see";
   }
 })();
 
