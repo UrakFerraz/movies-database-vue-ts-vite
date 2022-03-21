@@ -35,6 +35,7 @@ import MoviesListSubmenu from "../molecule/movies-lists-submenu.vue";
   left: 0;
   transform-origin: 0;
   transform: scale(1.5);
+  text-shadow: 0 0 10px black;
 }
 
 @media (min-width: 768px) {
