@@ -1,19 +1,19 @@
 <template>
   <div class="card-menu fade-in-animation-delayed">
     <button
-      @click="toSeePressed()"
+      @click="addOrRemoveToList('to-see')"
       :class="wasAddedtoSeeRef ? 'wish-list-btn--saved-movie' : 'wish-list-btn'"
     >
       Ver depois
     </button>
-    <button class="favorite-btn" @click="favoritePressed()">
+    <button class="favorite-btn" @click="addOrRemoveToList('favorites')">
       <FavoriteIcon :is-favorite="wasAddedFavoritesRef" />
     </button>
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, onUpdated, Ref, watch } from "vue";
+import { ref, onMounted, Ref, watch, onUpdated } from "vue";
 import { storeToRefs } from "pinia";
 import FavoriteIcon from "../molecule/favorite-icon.vue";
 const props = defineProps<{ movieId: number }>();
@@ -38,14 +38,18 @@ function checkwasAdded(store: any, ref: Ref) {
   ref.value = wasAdded;
 }
 
-function favoritePressed() {
-  favoritesStore.favoritePressed(props.movieId);
-  checkwasAdded(favoritesStore, wasAddedFavoritesRef);
+function addOrRemoveToList(storeName: "favorites" | "to-see") {
+  if (storeName === "favorites") {
+    return buttonPressed(favoritesStore, wasAddedFavoritesRef);
+  }
+  if (storeName === "to-see") {
+    return buttonPressed(toSeeStore, wasAddedtoSeeRef);
+  }
 }
 
-function toSeePressed() {
-  toSeeStore.toSeePressed(props.movieId);
-  checkwasAdded(toSeeStore, wasAddedtoSeeRef);
+function buttonPressed(store: any, wasAdded: Ref) {
+  store.buttonPressed(props.movieId);
+  checkwasAdded(store, wasAdded);
 }
 
 onMounted(() => {

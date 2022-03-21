@@ -1,11 +1,11 @@
 import { defineStore } from 'pinia'
-import { MoviesListState, WasAdded } from '../interfaces/movies-list-state-iterface'
+import { MoviesListState } from '../interfaces/movies-list-state-iterface'
 import MoviesListStorage from "./localStorage";
 const FavoriteListMoviesStorage = new MoviesListStorage("Favorite Movies");
 const ToSeeListMoviesStorage = new MoviesListStorage("To See Movies");
 import firebaseURL from '../modules/firebase-database-url'
 import getters from './getters';
-export type StatesNames = 'favorites' | 'toSee'
+export type StatesNames = 'favorites' | 'to-see'
 
 const firebaseList = `${firebaseURL}/movies.json`
 
@@ -15,7 +15,7 @@ export const favorites = defineStore('favorites', {
   }),
   getters,
   actions: {
-    favoritePressed(id: number): void {
+    addOrRemoveMovie(id: number): void {
       FavoriteListMoviesStorage.addMovie(id);
       if (this.wasAdded(id)) {
         this.movies.splice(this.movies.indexOf(id), 1);
@@ -50,13 +50,13 @@ export const favorites = defineStore('favorites', {
   }
 })
 
-export const toSee = defineStore('toSee', {
+export const toSee = defineStore('to-see', {
   state: (): MoviesListState => ({
     movies: []
   }),
   getters,
   actions: {
-    toSeePressed(id: number): void {
+    addOrRemoveMovie(id: number): void {
       ToSeeListMoviesStorage.addMovie(id)
       if (this.wasAdded(id)) {
         this.movies.splice(this.movies.indexOf(id), 1);
