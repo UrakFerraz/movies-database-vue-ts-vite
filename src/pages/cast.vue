@@ -24,7 +24,7 @@ import { onMounted, ref } from "vue";
 const props = defineProps<{ castPersonId: string | number }>();
 
 import MoviesList from "../components/organism/movies-list.vue";
-import CastPersonWithDetails from "../components/molecule/cast-person-with-details.vue";
+import CastPersonWithDetails from "../components/organism/cast-person-with-details.vue";
 import getStates from "../store/get-states";
 import {
   getCastPersonDetails,

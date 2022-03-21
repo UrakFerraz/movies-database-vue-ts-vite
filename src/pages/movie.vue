@@ -6,24 +6,30 @@
         <MovieCard :movie="movieDetails" />
         <template #fallback> Loading... </template>
       </Suspense>
-      <CastList :movie-id="movieId" />
-      <ProductionCompanies
-        :companies="movieDetails.production_companies"
-        v-if="movieDetails.production_companies"
-      />
-      <a
+      <Suspense>
+        <CastList :movie-id="movieId" />
+        <template #fallback> Loading... </template>
+      </Suspense>
+      <Suspense>
+        <ProductionCompanies
+          :companies="movieDetails.production_companies"
+          v-if="movieDetails.production_companies"
+        />
+        <template #fallback> Loading... </template>
+      </Suspense>
+      <Link
         v-if="movieDetails.homepage"
-        class="homepage-link average-rgb--border"
-        target="_blank"
+        :class="'homepage-link average-rgb--border'"
         :href="movieDetails.homepage"
-        >Homepage</a
-      >
+        :target="'_blank'"
+        :title="'Homepage'"
+      />
     </div>
   </div>
 </template>
 <script setup lang="ts">
 import { onMounted, ref, watch } from "vue";
-
+import Link from "../components/atoms/link.vue";
 const props = defineProps<{ movieId: number | string }>();
 
 import {

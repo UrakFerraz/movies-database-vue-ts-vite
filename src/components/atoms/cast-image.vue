@@ -1,14 +1,17 @@
 <template>
   <div class="cast-img fade-in-animation">
-    <img
-      loading="lazy"
-      :src="'https://image.tmdb.org/t/p/original' + castDetails.profile_path"
-      alt=""
-    />
+    <Suspense>
+      <Img
+        :src="'https://image.tmdb.org/t/p/original' + castDetails.profile_path"
+        :alt="castDetails.name"
+      />
+      <template #fallback> Loading... </template>
+    </Suspense>
   </div>
 </template>
 
 <script setup lang="ts">
+import Img from "../atoms/img.vue";
 import CastDetails from "../../interfaces/cast-person-details-interface";
 const props = defineProps<{ castDetails: CastDetails }>();
 </script>

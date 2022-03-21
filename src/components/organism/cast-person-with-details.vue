@@ -8,7 +8,7 @@
 <script setup lang="ts">
 import CastDetails from "../../interfaces/cast-person-details-interface";
 import CastImage from "../atoms/cast-image.vue";
-import CastInfo from "./cast-infos.vue";
+import CastInfo from "../molecule/cast-infos.vue";
 const props = defineProps<{ castDetails: CastDetails }>();
 </script>
 

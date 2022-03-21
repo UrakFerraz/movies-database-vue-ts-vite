@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { ref, onMounted, Ref, watch, onUpdated } from "vue";
 import { storeToRefs } from "pinia";
-import FavoriteIcon from "../molecule/favorite-icon.vue";
+import FavoriteIcon from "../atoms/favorite-icon.vue";
 const props = defineProps<{ movieId: number }>();
 import { favorites, toSee } from "../../store/movies-lists";
 const favoritesStore = favorites();
@@ -48,7 +48,7 @@ function addOrRemoveToList(storeName: "favorites" | "to-see") {
 }
 
 function buttonPressed(store: any, wasAdded: Ref) {
-  store.buttonPressed(props.movieId);
+  store.addOrRemoveMovie(props.movieId);
   checkwasAdded(store, wasAdded);
 }
 

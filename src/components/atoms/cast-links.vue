@@ -1,15 +1,16 @@
 <template>
   <div class="cast-links">
-    <a
-      class="average-rgb--border"
+    <Link
+      :class="'average-rgb--border'"
       :href="'https://www.imdb.com/name/' + castDetails.imdb_id"
-    >
-      Ver no IMDB
-    </a>
+      :target="'_blank'"
+      :title="'Ver no IMDB'"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
+import Link from "../atoms/link.vue";
 import CastDetails from "../../interfaces/cast-person-details-interface";
 const props = defineProps<{ castDetails: CastDetails }>();
 </script>

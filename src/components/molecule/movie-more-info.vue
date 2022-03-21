@@ -5,17 +5,18 @@
     <p>
       Duração: {{ (movie.runtime / 60).toFixed(2).split(".").join(":") }} horas
     </p>
-    <a
+    <Link
       v-if="movie.imdb_id !== undefined || movie.imdb_id !== null"
-      class="average-rgb--border"
-      target="_blank"
+      :class="'average-rgb--border'"
       :href="'https://www.imdb.com/title/' + props.movie.imdb_id"
-      >Ver no IMDB</a
-    >
+      :target="'_blank'"
+      :title="'Ver no IMDB'"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
+import Link from "../atoms/link.vue";
 import MovieInterface from "../../interfaces/movie-interface";
 const props = defineProps<{ movie: MovieInterface }>();
 </script>

@@ -1,11 +1,14 @@
 <template>
   <ul class="cast-list">
-    <CastPerson v-for="cast in cast" :key="Number(cast.id)" :cast="cast" />
+    <Suspense>
+      <CastPerson v-for="cast in cast" :key="Number(cast.id)" :cast="cast" />
+      <template #fallback> Loading... </template>
+    </Suspense>
   </ul>
 </template>
 
 <script setup lang="ts">
-import CastPerson from "../molecule/cast-person.vue";
+import CastPerson from "./cast-person.vue";
 const props = defineProps<{ cast: any }>();
 console.log(props);
 </script>

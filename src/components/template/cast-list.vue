@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { ref, watch } from "vue";
-import CastList from "../organism/cast-list.vue";
+import CastList from "../molecule/cast-list.vue";
 import Cast from "../../interfaces/cast-person-interface";
 import MovieDatabase from "../../modules/movies-db-api";
 

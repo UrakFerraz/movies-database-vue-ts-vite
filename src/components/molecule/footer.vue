@@ -1,15 +1,16 @@
 <template>
   <div class="footer average-rgb--bg">
-    <a
-      class="average-rgb--border"
-      href="https://github.com/UrakFerraz/movies-database-vue-ts-vite"
-      target="_blank"
-      >GitHub</a
-    >
+    <Link
+      :class="'average-rgb--border'"
+      :href="'https://github.com/UrakFerraz/movies-database-vue-ts-vite'"
+      :target="'_blank'"
+      :title="'GitHub'"
+    />
   </div>
 </template>
 
 <script setup lang="ts">
+import Link from "../atoms/link.vue";
 </script>
 
 <style scoped>

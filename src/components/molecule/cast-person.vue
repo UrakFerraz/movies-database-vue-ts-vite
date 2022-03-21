@@ -1,10 +1,9 @@
 <template>
   <li class="cast-list-item fade-in-animation-delayed">
     <div class="cast-list-img">
-      <img
-        loading="lazy"
+      <Img
         :src="'https://image.tmdb.org/t/p/w185' + cast.profile_path"
-        alt=""
+        :alt="cast.name"
       />
     </div>
     <router-link :to="'/cast/' + cast.id">{{ cast.name }}</router-link>
@@ -22,6 +21,7 @@
 </template>
 
 <script setup lang="ts">
+import Img from "../atoms/img.vue";
 import Cast from "../../interfaces/cast-person-interface";
 const props = defineProps<{ cast: Cast }>();
 </script>
