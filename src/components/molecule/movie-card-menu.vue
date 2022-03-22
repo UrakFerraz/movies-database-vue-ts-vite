@@ -4,7 +4,7 @@
       @click="addOrRemoveToList('to-see')"
       :class="wasAddedtoSeeRef ? 'wish-list-btn--saved-movie' : 'wish-list-btn'"
     >
-      Ver depois
+      To see
     </button>
     <button class="favorite-btn" @click="addOrRemoveToList('favorites')">
       <FavoriteIcon :is-favorite="wasAddedFavoritesRef" />
