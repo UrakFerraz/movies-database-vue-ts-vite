@@ -1,16 +1,16 @@
 <template>
   <div class="backdrop-img" v-if="backdropPath">
     <div class="fade-in-animation-delayed">
-      <img
-        loading="lazy"
+      <Img
         :src="'https://image.tmdb.org/t/p/original' + props.backdropPath"
-        alt=""
+        :alt="'backdrop image'"
       />
     </div>
   </div>
 </template>
 
 <script setup lang="ts">
+import Img from "../atoms/img.vue";
 const props = defineProps<{ backdropPath: any }>();
 </script>
 
