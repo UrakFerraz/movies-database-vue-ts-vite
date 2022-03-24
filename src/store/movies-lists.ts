@@ -23,7 +23,6 @@ export const favorites = defineStore('favorites', {
         this.movies.push(id)
         
       }
-      console.log(this.movies);
     },
     async getMoviesListDatabase() {
       try {
@@ -40,8 +39,6 @@ export const favorites = defineStore('favorites', {
               this.movies.push(idNumberType)
             }
           });
-          console.log(dataToJSON);
-          
         }
       } catch (error) {
         console.log('erro de import do firebase', error);
@@ -64,7 +61,6 @@ export const toSee = defineStore('to-see', {
         this.movies.push(id)
         
       }
-      console.log(this.movies);
     },
     async getMoviesListDatabase() {
       try {
@@ -81,9 +77,6 @@ export const toSee = defineStore('to-see', {
               this.movies.push(idNumberType)
             }
           });
-          console.log(dataToJSON);
-          console.log(this.movies);
-          
         }
       } catch (error) {
         console.log('erro de import do firebase', error);

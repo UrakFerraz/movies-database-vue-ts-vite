@@ -20,8 +20,6 @@ export async function getCastPersonMovies(personId: string | number) {
     defaultAPIInfos.getCastPersonMoviesURL(Number(personId))
   );
   castPersonMovies.value = details.cast;
-  console.log(castPersonMovies);
-  
 }
 export async function getCastPersonImages(personId: string | number) {
   let images = {} as any;
@@ -29,6 +27,4 @@ export async function getCastPersonImages(personId: string | number) {
     defaultAPIInfos.getCastPersonImages(Number(personId))
   );
   castImages.value = images.profiles;
-  console.log(castImages);
-  
 }

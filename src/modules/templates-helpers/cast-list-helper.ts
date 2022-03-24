@@ -11,9 +11,6 @@ export default async function getMovieCredits(movieDatabase: MovieDatabase, movi
 
 function viewCast(movieCreditsCastWithPhotos: Ref, movieCredits: Ref) {
 	movieCreditsCastWithPhotos.value = getCastWithPhotos(movieCredits);
-	console.log(movieCredits);
-	console.log(movieCreditsCastWithPhotos);
-	
 }
 
 function getCastWithPhotos(movieCredits: Ref) {
@@ -25,7 +22,5 @@ function getCastWithPhotos(movieCredits: Ref) {
   if (castWithPhotos.length <= 21) {
     return castWithPhotos;
   }
-  console.log(castWithPhotos);
-
   return castWithPhotos.splice(0, 18);
 }

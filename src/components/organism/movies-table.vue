@@ -28,7 +28,6 @@ const route = useRoute();
 const title = ref("");
 
 const results = computed(() => {
-  console.log(props.movies);
   if (props.movies.results) return props.movies.results;
   return props.movies;
 });

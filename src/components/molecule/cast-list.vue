@@ -10,7 +10,6 @@
 <script setup lang="ts">
 import CastPerson from "./cast-person.vue";
 const props = defineProps<{ cast: any }>();
-console.log(props);
 </script>
 
 <style scoped>

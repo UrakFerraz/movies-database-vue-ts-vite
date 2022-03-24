@@ -29,8 +29,6 @@ const slug = (() => {
 
 function nextPrev(direction: string) {
   count = pageNumber;
-  console.log(count);
-  console.log(typeof count);
   if (direction === "prev") {
     if (count >= 1) {
       count -= 1;
