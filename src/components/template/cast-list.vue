@@ -2,7 +2,9 @@
   <div v-if="movieCredits" class="cast-wrapper">
     <h2>Cast Principal</h2>
     <Suspense>
-      <CastList :cast="movieCreditsCastWithPhotos" />
+      <template #default>
+        <CastList :cast="movieCreditsCastWithPhotos" />
+      </template>
       <template #fallback> Loading... </template>
     </Suspense>
   </div>
@@ -13,38 +15,15 @@ import { ref, watch } from "vue";
 import CastList from "../molecule/cast-list.vue";
 import Cast from "../../interfaces/cast-person-interface";
 import MovieDatabase from "../../modules/movies-db-api";
+import getMovieCredits from "../../modules/templates-helpers/cast-list-helper";
 
 const props = defineProps<{ movieId: number | string }>();
+
 let movieDatabase = new MovieDatabase(Number(props.movieId));
-let movieCredits = ref(null) as any;
-let movieCreditsCastWithPhotos = ref(null) as any;
+let movieCredits = ref<Cast>({} as Cast);
+let movieCreditsCastWithPhotos = ref<Cast>({} as Cast);
 
-async function getMovieCredits() {
-  movieCredits.value = await movieDatabase.fetchData(
-    movieDatabase.movieCreditsUrl
-  );
-  await viewCast();
-}
-
-function viewCast() {
-  movieCreditsCastWithPhotos.value = getCastWithPhotos();
-}
-
-function getCastWithPhotos() {
-  const castWithPhotos: Cast[] = [];
-  movieCredits.value.cast.forEach((actor: Cast) => {
-    if (actor.profile_path === null) return;
-    castWithPhotos.push(actor);
-  });
-  if (castWithPhotos.length <= 21) {
-    return castWithPhotos;
-  }
-  console.log(castWithPhotos);
-
-  return castWithPhotos.splice(0, 18);
-}
-
-getMovieCredits();
+getMovieCredits(movieDatabase, movieCredits, movieCreditsCastWithPhotos);
 </script>
 
 <style scoped>
