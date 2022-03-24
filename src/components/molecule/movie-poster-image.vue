@@ -1,10 +1,12 @@
 <template>
   <div class="movie-card--img fade-in-animation-fast" v-if="posterPath">
     <Suspense>
-      <Img
-        :src="'https://image.tmdb.org/t/p/w300' + props.posterPath"
-        :alt="props.altText"
-      />
+      <template #default>
+        <Img
+          :src="'https://image.tmdb.org/t/p/w300' + props.posterPath"
+          :alt="props.altText"
+        />
+      </template>
       <template #fallback> Loading... </template>
     </Suspense>
   </div>

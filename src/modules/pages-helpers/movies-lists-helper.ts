@@ -2,8 +2,9 @@ import { ref } from "vue";
 import MovieInterface from "../../interfaces/movie-interface";
 import MovieDatabase from "../movies-db-api";
 import { favoritesStore, toSeeStore } from "../../store/get-states";
+import MovieInListInerface from "../../interfaces/movies-in-list-interface";
 
-const moviesList = ref([] as any);
+const moviesList = ref<MovieInListInerface[]>([]);
 
 let moviesIdsListFromStore: number[] = []
 
@@ -54,6 +55,7 @@ export async function loadMovies(pageNumber: string, store: string): Promise<voi
     pages.push(promises.slice(i, i + moviesPerPage));
   }
   moviesList.value = await Promise.all(pages[Number(pageNumber)]);
+  
 }
 
 export {moviesList}

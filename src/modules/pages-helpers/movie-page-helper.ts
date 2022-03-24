@@ -3,7 +3,7 @@ import MovieInterface from "../../interfaces/movie-interface";
 import MovieDatabase from "../../modules/movies-db-api";
 import getAverageRgb from "../../modules/get-average-rgb";
 export const movieDetails = ref<MovieInterface>({} as MovieInterface);
-export const averageRGB = ref(null) as any;
+export const averageRGB = ref("");
 export async function getMovieDetails(data: MovieDatabase) {
   let movieDetailsResponse = {} as MovieInterface;
   movieDetailsResponse = await data.fetchData(
