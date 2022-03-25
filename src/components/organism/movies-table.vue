@@ -14,8 +14,6 @@
 
 <script setup lang="ts">
 import { ref, computed } from "vue";
-import MovieInListInerface from "../../interfaces/movies-in-list-interface";
-import ResultsInterface from "../../interfaces/results-interface";
 import { useRoute } from "vue-router";
 import MovieCard from "../template/movie-card.vue";
 import genres from "../../assets/genres";

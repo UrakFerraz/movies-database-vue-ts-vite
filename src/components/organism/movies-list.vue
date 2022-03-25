@@ -16,8 +16,6 @@
 
 <script setup lang="ts">
 import { computed } from "vue";
-import ResultsInterface from "../../interfaces/results-interface";
-import MoviesInListInterface from "../../interfaces/movies-in-list-interface";
 import MovieCard from "../template/movie-card.vue";
 const props = defineProps<{ movies: any }>();
 
