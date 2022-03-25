@@ -18,7 +18,6 @@ const props = defineProps<{ movie: any }>();
   align-self: start;
   justify-self: center;
   border-radius: 5px;
-  margin-bottom: 4px;
 }
 .rating p {
   margin: 0;

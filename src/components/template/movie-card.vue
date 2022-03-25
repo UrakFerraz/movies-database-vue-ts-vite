@@ -7,10 +7,8 @@
       :alt-text="movie.original_title"
     />
     <div class="movie-card--content fade-in-animation-delayed">
-      <span
-        >{{ movie.vote_average }} -
-        {{ new Date(movie.release_date).getFullYear() }}</span
-      >
+      <Rating :movie="movie" class="movie-card--rating" />
+      <span> {{ new Date(movie.release_date).getFullYear() }}</span>
     </div>
     <router-link :to="'/movie/' + movie.id" class="router-link"></router-link>
   </div>
@@ -20,6 +18,7 @@
 import MovieInListInerface from "../../interfaces/movies-in-list-interface";
 import MoviePosterImage from "../molecule/movie-poster-image.vue";
 import MovieCardMenu from "../molecule/movie-card-menu.vue";
+import Rating from "../atoms/rating.vue";
 
 const props = defineProps<{ movie: MovieInListInerface }>();
 </script>
@@ -39,6 +38,16 @@ const props = defineProps<{ movie: MovieInListInerface }>();
 .movie-card {
   display: grid;
   padding: 10px;
+}
+
+.movie-card--content {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.movie-card--rating {
+  border: 1px solid var(--principal);
 }
 
 .movie-card--image {

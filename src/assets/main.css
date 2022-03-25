@@ -9,6 +9,7 @@ html {
 	--gray: rgb(60, 79, 101);
 	--principal: rgb(49, 53, 82);
 	--light: rgb(230, 245, 255);
+	--light-gray: rgb(184, 176, 196);
 }
 
 div, h1, h2 , h3, span, p, a, li, ul, button, input, html, body {
@@ -67,7 +68,7 @@ p {
 
 span {
 	font-size: 12px;
-	color: rgb(100, 96, 96);
+	color: var(--light-gray)
 }
 
 @keyframes fade-in {
