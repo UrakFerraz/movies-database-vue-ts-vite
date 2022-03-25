@@ -53,12 +53,18 @@ onMounted(getStates);
 getMovieDetails(movieDatabase);
 
 watch(averageRGB, () => {
-  document.querySelectorAll(".average-rgb--bg").forEach((el: any) => {
-    el.style.background = averageRGB.value;
-  });
-  document.querySelectorAll(".average-rgb--border").forEach((el: any) => {
-    el.style.borderColor = averageRGB.value;
-  });
+  console.log(attrs);
+
+  document
+    .querySelectorAll(".average-rgb--bg")
+    .forEach((el: HTMLDivElement) => {
+      el.style.background = averageRGB.value;
+    });
+  document
+    .querySelectorAll(".average-rgb--border")
+    .forEach((el: HTMLDivElement | HTMLLinkElement) => {
+      el.style.borderColor = averageRGB.value;
+    });
 });
 </script>
 
