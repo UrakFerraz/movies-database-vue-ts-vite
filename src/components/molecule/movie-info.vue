@@ -12,7 +12,7 @@ import Rating from "../atoms/rating.vue";
 const props = defineProps<{ movie: any }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .movie-info {
   display: flex;
   flex-flow: column;

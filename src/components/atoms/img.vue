@@ -6,5 +6,5 @@
 const props = defineProps<{ src: string; alt: string }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>

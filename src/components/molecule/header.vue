@@ -11,7 +11,7 @@
 import MoviesListSubmenu from "../molecule/movies-lists-submenu.vue";
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .header {
   overflow: hidden;
   width: 100%;
@@ -19,7 +19,7 @@ import MoviesListSubmenu from "../molecule/movies-lists-submenu.vue";
   min-height: 40px;
   top: 0;
   left: 0;
-  background: var(--principal);
+  background: $principal;
   z-index: 999;
 }
 

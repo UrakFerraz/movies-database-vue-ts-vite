@@ -37,7 +37,7 @@ onBeforeRouteLeave((to, from) => {
 getMoviesByGenreList(props.pageNumber, props.genre);
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .listed-movies--content {
   padding: 20px;
 }

@@ -15,5 +15,5 @@ import CastDetails from "../../interfaces/cast-person-details-interface";
 const props = defineProps<{ castDetails: CastDetails }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>

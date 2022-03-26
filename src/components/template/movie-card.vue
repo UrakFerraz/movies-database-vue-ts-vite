@@ -23,7 +23,7 @@ import Rating from "../atoms/rating.vue";
 const props = defineProps<{ movie: MovieInListInerface }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .router-link {
   position: absolute;
   width: 90%;
@@ -47,7 +47,7 @@ const props = defineProps<{ movie: MovieInListInerface }>();
 }
 
 .movie-card--rating {
-  border: 1px solid var(--principal);
+  border: 1px solid $principal;
 }
 
 .movie-card--image {

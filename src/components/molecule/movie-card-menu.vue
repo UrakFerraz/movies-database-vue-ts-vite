@@ -63,7 +63,7 @@ onUpdated(() => {
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .card-menu {
   display: flex;
   flex-flow: row nowrap;
@@ -78,7 +78,7 @@ button {
 }
 
 .wish-list-btn {
-  background: var(--gray);
+  background: $gray;
   font-size: 11px;
 }
 
@@ -92,7 +92,7 @@ button {
 }
 
 .wish-list-btn:hover {
-  background: var(--principal);
+  background: $principal;
 }
 
 .favorite-btn svg {

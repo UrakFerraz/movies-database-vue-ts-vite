@@ -7,5 +7,5 @@ const props =
   defineProps<{ class: string; href: string; target: string; title: string }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 </style>

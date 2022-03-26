@@ -25,7 +25,7 @@ const results = computed(() => {
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .movies-list--wrapper {
   scroll-snap-type: x mandatory;
   overflow-x: scroll;

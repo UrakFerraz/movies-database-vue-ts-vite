@@ -12,7 +12,7 @@ import CastInfo from "../molecule/cast-infos.vue";
 const props = defineProps<{ castDetails: CastDetails }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .cast-person-details {
   display: flex;
   flex-flow: column;

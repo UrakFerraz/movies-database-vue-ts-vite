@@ -14,7 +14,7 @@ import Img from "../atoms/img.vue";
 const props = defineProps<{ backdropPath: any }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .backdrop-img {
   z-index: -1;
   position: fixed;

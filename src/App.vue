@@ -12,9 +12,9 @@ const router = useRouter();
   <router-view name="footer"></router-view>
 </template>
 
-<style scoped>
+<style lang="scss" scoped>
 #app {
-  background: var(--darkest-color);
+  background: $darkest-color;
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

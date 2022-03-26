@@ -25,7 +25,7 @@ import MovieCardMenu from "../molecule/movie-card-menu.vue";
 const props = defineProps<{ movie: MovieInterface }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .movie-card {
   padding: 100px 20px 40px 20px;
   display: grid;

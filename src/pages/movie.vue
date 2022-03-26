@@ -62,7 +62,7 @@ watch(averageRGB, () => {
 });
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .movie-page--wrapper {
   display: grid;
   grid-template-columns: auto minmax(300px, 1200px) auto;

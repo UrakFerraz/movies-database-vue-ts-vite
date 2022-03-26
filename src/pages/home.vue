@@ -40,7 +40,7 @@ getUpcomingMoviesLists(1);
 getTopRatedMoviesLists(1);
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .home--content {
   padding: 20px;
 }

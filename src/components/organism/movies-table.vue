@@ -49,7 +49,7 @@ if (props.pageName === "genre") {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .movies-list--content h2 {
   text-transform: capitalize;
 }

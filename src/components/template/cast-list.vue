@@ -26,7 +26,7 @@ let movieCreditsCastWithPhotos = ref<Cast>({} as Cast);
 getMovieCredits(movieDatabase, movieCredits, movieCreditsCastWithPhotos);
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .cast-wrapper {
   padding: 20px;
 }

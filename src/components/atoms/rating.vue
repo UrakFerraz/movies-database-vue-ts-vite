@@ -10,7 +10,7 @@
 const props = defineProps<{ movie: any }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .rating {
   position: relative;
   display: inline-flex;

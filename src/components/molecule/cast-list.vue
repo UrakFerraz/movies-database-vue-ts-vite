@@ -12,7 +12,7 @@ import CastPerson from "./cast-person.vue";
 const props = defineProps<{ cast: any }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .cast-list {
   display: grid;
   grid-template-columns: 1fr 1fr;

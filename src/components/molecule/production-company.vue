@@ -18,7 +18,7 @@ import ProductionCompanyInterface from "../../interfaces/production-company-inte
 const props = defineProps<{ company: ProductionCompanyInterface }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .production-company {
   flex-flow: column;
   display: flex;

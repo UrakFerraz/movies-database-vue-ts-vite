@@ -8,7 +8,7 @@
 <script setup lang="ts">
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .movies-lists-submenu {
   display: flex;
   flex-flow: row nowrap;

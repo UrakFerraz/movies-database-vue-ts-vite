@@ -13,10 +13,10 @@
 import Link from "../atoms/link.vue";
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .footer {
   margin-top: 50px;
-  background: var(--principal);
+  background: $principal;
   padding: 20px;
 }
 </style>

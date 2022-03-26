@@ -17,7 +17,7 @@ import Img from "../atoms/img.vue";
 const props = defineProps<{ posterPath: any; altText: any }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .movie-card--img {
   justify-self: center;
   overflow: hidden;

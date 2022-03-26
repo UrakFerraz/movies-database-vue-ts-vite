@@ -43,7 +43,7 @@ getCastPersonImages(props.castPersonId);
 getStates;
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .cast-page--wrapper {
   display: grid;
   grid-template-columns: auto minmax(300px, 1200px) auto;

@@ -15,7 +15,7 @@ import ProductionCompanyInterface from "../../interfaces/production-company-inte
 const props = defineProps<{ companies: ProductionCompanyInterface[] }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .production-companies {
   display: flex;
   flex-flow: row wrap;
@@ -24,7 +24,7 @@ const props = defineProps<{ companies: ProductionCompanyInterface[] }>();
   align-items: flex-end;
   justify-content: center;
   gap: 20px;
-  border: 1px solid var(--principal);
+  border: 1px solid $principal;
   border-radius: 10px;
 }
 

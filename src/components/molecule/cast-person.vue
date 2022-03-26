@@ -26,7 +26,7 @@ import Cast from "../../interfaces/cast-person-interface";
 const props = defineProps<{ cast: Cast }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .cast-list-img {
   overflow: hidden;
   position: relative;

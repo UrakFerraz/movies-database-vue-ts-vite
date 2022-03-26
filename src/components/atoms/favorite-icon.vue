@@ -14,7 +14,7 @@
 const props = defineProps<{ isFavorite: boolean }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 svg {
   width: 25px;
   height: 25px;

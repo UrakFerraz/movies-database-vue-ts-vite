@@ -40,7 +40,7 @@ function nextPrev(direction: string) {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .pagination {
   margin-top: 40px;
   width: 100%;

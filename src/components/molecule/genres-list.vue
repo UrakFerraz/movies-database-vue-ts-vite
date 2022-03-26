@@ -16,7 +16,7 @@ import GenresInterface from "../../interfaces/genres-interface";
 const props = defineProps<{ genres: GenresInterface[] }>();
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .genres {
   margin: 20px 0;
 }

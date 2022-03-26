@@ -20,7 +20,7 @@ function birthday(): string {
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 .cast-infos {
   display: flex;
   flex-flow: column;
