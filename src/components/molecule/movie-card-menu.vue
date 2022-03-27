@@ -80,6 +80,9 @@ button {
 .wish-list-btn {
   background: $gray;
   font-size: 11px;
+  &:hover {
+    background: $principal;
+  }
 }
 
 .wish-list-btn--saved-movie {
@@ -89,20 +92,14 @@ button {
 .favorite-btn {
   padding: 0;
   margin: 0;
-}
-
-.wish-list-btn:hover {
-  background: $principal;
-}
-
-.favorite-btn svg {
-  width: 25px;
-  height: 25px;
-  pointer-events: none;
-}
-
-.favorite-btn:hover {
-  transform: scale(0.95);
+  &:hover {
+    transform: scale(0.95);
+  }
+  svg {
+    width: 25px;
+    height: 25px;
+    pointer-events: none;
+  }
 }
 
 .favorite-btn-shape:hover {

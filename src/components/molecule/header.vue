@@ -21,6 +21,14 @@ import MoviesListSubmenu from "../molecule/movies-lists-submenu.vue";
   left: 0;
   background: $principal;
   z-index: 999;
+  h1 {
+    opacity: 0.3;
+    top: 4px;
+    left: 0;
+    transform-origin: 0;
+    transform: scale(1.5);
+    text-shadow: 0 0 10px black;
+  }
 }
 
 .link {
@@ -29,19 +37,12 @@ import MoviesListSubmenu from "../molecule/movies-lists-submenu.vue";
   border: none;
 }
 
-.header h1 {
-  opacity: 0.3;
-  top: 4px;
-  left: 0;
-  transform-origin: 0;
-  transform: scale(1.5);
-  text-shadow: 0 0 10px black;
-}
-
 @media (min-width: 768px) {
-  .header h1 {
-    transform: scale(2);
-    top: -2px;
+  .header {
+    h1 {
+      transform: scale(2);
+      top: -2px;
+    }
   }
 }
 </style>

@@ -31,15 +31,15 @@ const props = defineProps<{ movie: MovieInterface }>();
   display: grid;
   gap: 20px;
   overflow: hidden;
+  img {
+    width: 20px;
+  }
 }
 
 .movie-page-poster-img {
   width: 200px;
 }
 
-.movie-card img {
-  width: 20px;
-}
 @media (min-width: 768px) {
   .movie-card {
     display: grid;

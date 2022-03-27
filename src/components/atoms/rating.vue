@@ -18,9 +18,9 @@ const props = defineProps<{ movie: any }>();
   align-self: start;
   justify-self: center;
   border-radius: 5px;
-}
-.rating p {
-  margin: 0;
-  padding: 0;
+  p {
+    margin: 0;
+    padding: 0;
+  }
 }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="backdrop-img" v-if="backdropPath">
-    <div class="fade-in-animation-delayed">
+    <div class="wrapper fade-in-animation-delayed">
       <Img
         :src="'https://image.tmdb.org/t/p/original' + props.backdropPath"
         :alt="'backdrop image'"
@@ -24,43 +24,47 @@ const props = defineProps<{ backdropPath: any }>();
   left: 0;
   height: 70vh;
   overflow: hidden;
-}
 
-.backdrop-img div {
-  position: relative;
-  display: block;
-  height: 100%;
-}
+  .wrapper {
+    position: relative;
+    display: block;
+    height: 100%;
 
-.backdrop-img div::before {
-  z-index: 1;
-  content: "";
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  background: linear-gradient(
-    180deg,
-    rgba(25, 25, 32, 0) 0%,
-    rgba(25, 25, 32, 0) 65%,
-    rgba(25, 25, 32, 1) 100%
-  );
+    &::before {
+      z-index: 1;
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      background: linear-gradient(
+        180deg,
+        rgba(25, 25, 32, 0) 0%,
+        rgba(25, 25, 32, 0) 65%,
+        rgba(25, 25, 32, 1) 100%
+      );
+    }
+  }
 }
 
 @media (min-width: 768px) {
-  .backdrop-img div::after {
-    content: "";
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    background: linear-gradient(
-      90deg,
-      rgba(25, 25, 32, 1) 0%,
-      rgba(25, 25, 32, 1) 10%,
-      rgba(25, 25, 32, 0) 25%,
-      rgba(25, 25, 32, 0) 75%,
-      rgba(25, 25, 32, 1) 90%,
-      rgba(25, 25, 32, 1) 100%
-    );
+  .backdrop-img {
+    .wrapper {
+      &::after {
+        content: "";
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        background: linear-gradient(
+          90deg,
+          rgba(25, 25, 32, 1) 0%,
+          rgba(25, 25, 32, 1) 10%,
+          rgba(25, 25, 32, 0) 25%,
+          rgba(25, 25, 32, 0) 75%,
+          rgba(25, 25, 32, 1) 90%,
+          rgba(25, 25, 32, 1) 100%
+        );
+      }
+    }
   }
 }
 </style>

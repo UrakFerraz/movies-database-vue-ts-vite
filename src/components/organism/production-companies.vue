@@ -29,10 +29,9 @@ const props = defineProps<{ companies: ProductionCompanyInterface[] }>();
   gap: 20px;
   border: 1px solid $principal;
   border-radius: 10px;
-}
-
-.production-companies h2 {
-  flex-grow: 1;
-  flex-basis: 1500px;
+  h2 {
+    flex-grow: 1;
+    flex-basis: 1500px;
+  }
 }
 </style>

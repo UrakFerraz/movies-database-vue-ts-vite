@@ -13,7 +13,7 @@
       :src="'https://www.themoviedb.org/t/p/original' + castImage.file_path"
       v-for="castImage in castImages"
       :alt="'cast id:' + castPersonId"
-      :class="'img'"
+      :class="'img-cover'"
     />
   </div>
 </template>
@@ -58,19 +58,22 @@ getStates;
   padding: 10px 15px;
 }
 
+h2 {
+  margin-left: 20px;
+}
+
 .cast-images {
   margin: 60px 0;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   grid-auto-rows: 600px;
   justify-items: center;
-}
-
-.cast-images img {
-  object-fit: cover;
-  width: 100%;
-  height: 100%;
-  max-width: 400px;
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    max-width: 400px;
+  }
 }
 
 @media (min-width: 768px) {

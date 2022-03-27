@@ -19,12 +19,11 @@ const props = defineProps<{ genres: GenresInterface[] }>();
 <style lang="scss" scoped>
 .genres {
   margin: 20px 0;
-}
-
-.genres ul {
-  margin-top: 10px;
-  display: flex;
-  gap: 10px;
-  flex-flow: row wrap;
+  ul {
+    margin-top: 10px;
+    display: flex;
+    gap: 10px;
+    flex-flow: row wrap;
+  }
 }
 </style>
