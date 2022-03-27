@@ -4,6 +4,7 @@
       <Img
         :src="'https://image.tmdb.org/t/p/w185' + cast.profile_path"
         :alt="cast.name"
+        :class="'img-cover'"
       />
     </div>
     <router-link :to="'/cast/' + cast.id">{{ cast.name }}</router-link>
@@ -35,12 +36,6 @@ const props = defineProps<{ cast: Cast }>();
   border-radius: 10px;
   margin-bottom: 10px;
   aspect-ratio: 1 / 1.5;
-}
-
-.cast-list-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 @media (min-width: 768px) {

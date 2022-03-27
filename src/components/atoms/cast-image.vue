@@ -1,12 +1,10 @@
 <template>
-  <div class="cast-img fade-in-animation">
-    <Suspense>
-      <Img
-        :src="'https://image.tmdb.org/t/p/original' + castDetails.profile_path"
-        :alt="castDetails.name"
-      />
-      <template #fallback> Loading... </template>
-    </Suspense>
+  <div class="cast-img">
+    <Img
+      :src="'https://image.tmdb.org/t/p/original' + castDetails.profile_path"
+      :alt="castDetails.name"
+      :class="'img-cover'"
+    />
   </div>
 </template>
 
@@ -26,12 +24,6 @@ const props = defineProps<{ castDetails: CastDetails }>();
   width: 200px;
   align-self: center;
   aspect-ratio: 1 / 1.5;
-}
-
-.cast-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 @media (min-width: 768px) {

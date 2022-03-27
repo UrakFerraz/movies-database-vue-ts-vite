@@ -9,11 +9,11 @@
     </div>
   </div>
   <div class="cast-images">
-    <img
-      loading="lazy"
+    <Img
       :src="'https://www.themoviedb.org/t/p/original' + castImage.file_path"
-      v-for="(castImage, index) in castImages"
-      :key="index"
+      v-for="castImage in castImages"
+      :alt="'cast id:' + castPersonId"
+      :class="img"
     />
   </div>
 </template>
@@ -26,6 +26,7 @@ const props = defineProps<{ castPersonId: string | number }>();
 import MoviesList from "../components/organism/movies-list.vue";
 import CastPersonWithDetails from "../components/organism/cast-person-with-details.vue";
 import getStates from "../store/get-states";
+import Img from "../components/atoms/img.vue";
 import {
   getCastPersonDetails,
   getCastPersonMovies,

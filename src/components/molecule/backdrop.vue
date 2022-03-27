@@ -4,6 +4,7 @@
       <Img
         :src="'https://image.tmdb.org/t/p/original' + props.backdropPath"
         :alt="'backdrop image'"
+        :class="'img-backdrop'"
       />
     </div>
   </div>
@@ -45,7 +46,7 @@ const props = defineProps<{ backdropPath: any }>();
   );
 }
 
-.backdrop-img div img {
+.img {
   opacity: 0.2;
   position: absolute;
   left: 50%;
@@ -57,7 +58,7 @@ const props = defineProps<{ backdropPath: any }>();
 }
 
 @media (min-width: 768px) {
-  .backdrop-img div img {
+  .img {
     width: 80%;
   }
   .backdrop-img div::after {

@@ -1,14 +1,10 @@
 <template>
-  <div class="movie-card--img fade-in-animation-fast" v-if="posterPath">
-    <Suspense>
-      <template #default>
-        <Img
-          :src="'https://image.tmdb.org/t/p/w300' + props.posterPath"
-          :alt="props.altText"
-        />
-      </template>
-      <template #fallback> Loading... </template>
-    </Suspense>
+  <div class="movie-card--img" v-if="posterPath">
+    <Img
+      :src="'https://image.tmdb.org/t/p/w300' + props.posterPath"
+      :alt="props.altText"
+      :class="'img-cover'"
+    />
   </div>
 </template>
 
@@ -23,12 +19,6 @@ const props = defineProps<{ posterPath: any; altText: any }>();
   overflow: hidden;
   border-radius: 10px;
   aspect-ratio: 1 / 1.5;
-}
-
-.movie-card--img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
 }
 
 @media (min-width: 768px) {
