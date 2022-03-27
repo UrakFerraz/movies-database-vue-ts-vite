@@ -1,5 +1,8 @@
 <template>
-  <div class="production-companies average-rgb--border">
+  <div
+    class="production-companies average-rgb--border"
+    v-if="companies.length > 0"
+  >
     <h2>Production companies</h2>
     <ProductionCompany
       :company="comp"
