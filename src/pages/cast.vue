@@ -13,7 +13,7 @@
       :src="'https://www.themoviedb.org/t/p/original' + castImage.file_path"
       v-for="castImage in castImages"
       :alt="'cast id:' + castPersonId"
-      :class="img"
+      :class="'img'"
     />
   </div>
 </template>

@@ -46,21 +46,7 @@ const props = defineProps<{ backdropPath: any }>();
   );
 }
 
-.img {
-  opacity: 0.2;
-  position: absolute;
-  left: 50%;
-  object-fit: cover;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-}
-
 @media (min-width: 768px) {
-  .img {
-    width: 80%;
-  }
   .backdrop-img div::after {
     content: "";
     width: 100%;

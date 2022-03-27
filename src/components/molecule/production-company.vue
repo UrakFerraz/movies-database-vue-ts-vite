@@ -4,7 +4,7 @@
       v-if="company.logo_path"
       :src="'https://image.tmdb.org/t/p/w185' + company.logo_path"
       :alt="company.name"
-      :class="img"
+      :class="'img'"
     />
     <p>{{ props.company.name }}</p>
   </div>

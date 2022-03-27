@@ -3,7 +3,7 @@
     <Img
       :src="'https://image.tmdb.org/t/p/w300' + props.posterPath"
       :alt="props.altText"
-      :class="'img-cover'"
+      :class="'fade-in-animation-fast img-cover'"
     />
   </div>
 </template>

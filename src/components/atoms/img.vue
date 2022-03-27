@@ -28,7 +28,6 @@
     loading="lazy"
     :src="imgSrc"
     :alt="alt"
-    class="fade-in-animation-fast"
     :class="class"
     @load="isLoadedImg"
     :key="src"
@@ -57,6 +56,12 @@ function isLoadedImg() {
   transform: translate(-50%, -50%);
 }
 
+.img-cover {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
 .img-backdrop {
   opacity: 0.2;
   position: absolute;
@@ -64,12 +69,6 @@ function isLoadedImg() {
   object-fit: cover;
   top: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-}
-
-.img-cover {
-  object-fit: cover;
   width: 100%;
   height: 100%;
 }
