@@ -44,7 +44,6 @@ const imgSrc = toRefs(props).src;
 
 function isLoadedImg() {
   isLoaded.value = true;
-  console.log("loaded", isLoaded.value);
 }
 </script>
 
@@ -60,6 +59,7 @@ function isLoadedImg() {
   object-fit: cover;
   width: 100%;
   height: 100%;
+  max-width: 350px;
 }
 
 .img-backdrop {
