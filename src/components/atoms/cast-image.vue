@@ -25,6 +25,7 @@ const props = defineProps<{ castDetails: CastDetails }>();
   margin-bottom: 10px;
   width: 200px;
   align-self: center;
+  aspect-ratio: 1 / 1.5;
 }
 
 .cast-img img {

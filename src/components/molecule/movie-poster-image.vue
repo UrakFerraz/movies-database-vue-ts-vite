@@ -22,6 +22,7 @@ const props = defineProps<{ posterPath: any; altText: any }>();
   justify-self: center;
   overflow: hidden;
   border-radius: 10px;
+  aspect-ratio: 1 / 1.5;
 }
 
 .movie-card--img img {

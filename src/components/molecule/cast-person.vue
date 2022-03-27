@@ -33,8 +33,8 @@ const props = defineProps<{ cast: Cast }>();
   display: block;
   width: 100%;
   border-radius: 10px;
-  max-height: 225px;
   margin-bottom: 10px;
+  aspect-ratio: 1 / 1.5;
 }
 
 .cast-list-img img {
