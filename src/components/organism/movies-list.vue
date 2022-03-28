@@ -56,15 +56,12 @@ const results = computed(() => {
 
 .movies-list--overflow {
   display: flex;
+  @media (min-width: 768px) {
+    gap: 10px;
+  }
 }
 
 .movie-card-scroll-snap {
   scroll-snap-align: start;
-}
-
-@media (min-width: 768px) {
-  .movies-list--overflow {
-    gap: 10px;
-  }
 }
 </style>

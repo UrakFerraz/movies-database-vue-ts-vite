@@ -58,9 +58,16 @@ if (props.pageName === "genre") {
   grid-template-columns: 1fr 1fr;
   justify-items: center;
   gap: 10px;
+  @media (min-width: 768px) {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+  }
 }
 .movies-list--overflow {
   display: flex;
+  @media (min-width: 768px) {
+    gap: 10px;
+  }
 }
 
 .movie-card-scroll-snap {
@@ -72,15 +79,5 @@ if (props.pageName === "genre") {
   right: 0px;
   top: 0px;
   z-index: 2;
-}
-
-@media (min-width: 768px) {
-  .movies-list--wrapper {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
-  }
-  .movies-list--overflow {
-    gap: 10px;
-  }
 }
 </style>

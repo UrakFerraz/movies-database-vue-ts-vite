@@ -17,10 +17,7 @@ const props = defineProps<{ cast: any }>();
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-}
-
-@media (min-width: 768px) {
-  .cast-list {
+  @media (min-width: 768px) {
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
 }

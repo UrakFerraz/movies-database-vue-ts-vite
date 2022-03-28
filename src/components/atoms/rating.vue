@@ -12,7 +12,6 @@ const props = defineProps<{ movie: any }>();
 
 <style lang="scss" scoped>
 .rating {
-  position: relative;
   display: inline-flex;
   padding: 5px 9px;
   align-self: start;

@@ -71,10 +71,7 @@ function isLoadedImg() {
   transform: translate(-50%, -50%);
   width: 100%;
   height: 100%;
-}
-
-@media (min-width: 768px) {
-  .img-backdrop {
+  @media (min-width: 768px) {
     width: 80%;
   }
 }

@@ -83,10 +83,14 @@ button {
   &:hover {
     background: $principal;
   }
+  @media (min-width: 768px) {
+    font-size: 14px;
+  }
 }
 
 .wish-list-btn--saved-movie {
   background: #345e3d;
+  font-size: 11px;
 }
 
 .favorite-btn {
@@ -104,11 +108,5 @@ button {
 
 .favorite-btn-shape:hover {
   fill: #e63717;
-}
-
-@media (min-width: 768px) {
-  .wish-list-btn {
-    font-size: 14px;
-  }
 }
 </style>

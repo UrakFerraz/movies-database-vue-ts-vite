@@ -30,16 +30,11 @@ const props = defineProps<{ cast: Cast }>();
 <style lang="scss" scoped>
 .cast-list-img {
   overflow: hidden;
-  position: relative;
-  display: block;
   width: 100%;
   border-radius: 10px;
   margin-bottom: 10px;
   aspect-ratio: 1 / 1.5;
-}
-
-@media (min-width: 768px) {
-  .cast-list-img {
+  @media (min-width: 768px) {
     max-height: 250px;
   }
 }

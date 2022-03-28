@@ -74,10 +74,7 @@ h2 {
     height: 100%;
     max-width: 400px;
   }
-}
-
-@media (min-width: 768px) {
-  .cast-images {
+  @media (min-width: 768px) {
     grid-auto-rows: 300px;
   }
 }

@@ -28,6 +28,10 @@ import MoviesListSubmenu from "../molecule/movies-lists-submenu.vue";
     transform-origin: 0;
     transform: scale(1.5);
     text-shadow: 0 0 10px black;
+    @media (min-width: 768px) {
+      transform: scale(2);
+      top: -2px;
+    }
   }
 }
 
@@ -35,14 +39,5 @@ import MoviesListSubmenu from "../molecule/movies-lists-submenu.vue";
   position: absolute;
   outline: none;
   border: none;
-}
-
-@media (min-width: 768px) {
-  .header {
-    h1 {
-      transform: scale(2);
-      top: -2px;
-    }
-  }
 }
 </style>

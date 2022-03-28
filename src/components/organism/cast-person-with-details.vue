@@ -17,20 +17,17 @@ const props = defineProps<{ castDetails: CastDetails }>();
   display: flex;
   flex-flow: column;
   padding: 40px 20px;
+  @media (min-width: 768px) {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    padding: 40px 20px;
+    gap: 20px;
+  }
 }
 
 .cast-links {
   display: flex;
   flex-flow: row wrap;
   gap: 20px;
-}
-
-@media (min-width: 768px) {
-  .cast-person-details {
-    display: grid;
-    grid-template-columns: auto 1fr;
-    padding: 40px 20px;
-    gap: 20px;
-  }
 }
 </style>

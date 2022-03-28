@@ -17,17 +17,12 @@ const props = defineProps<{ castDetails: CastDetails }>();
 <style lang="scss" scoped>
 .cast-img {
   overflow: hidden;
-  position: relative;
-  display: block;
   border-radius: 10px;
   margin-bottom: 10px;
   width: 200px;
   align-self: center;
   aspect-ratio: 1 / 1.5;
-}
-
-@media (min-width: 768px) {
-  .cast-img {
+  @media (min-width: 768px) {
     width: 330px;
   }
 }

@@ -34,19 +34,16 @@ const props = defineProps<{ movie: MovieInterface }>();
   img {
     width: 20px;
   }
-}
-
-.movie-page-poster-img {
-  width: 200px;
-}
-
-@media (min-width: 768px) {
-  .movie-card {
+  @media (min-width: 768px) {
     display: grid;
     grid-template-columns: auto 1fr;
     gap: 20px;
   }
-  .movie-page-poster-img {
+}
+
+.movie-page-poster-img {
+  width: 200px;
+  @media (min-width: 768px) {
     width: 300px;
   }
 }

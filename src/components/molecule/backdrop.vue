@@ -26,8 +26,6 @@ const props = defineProps<{ backdropPath: any }>();
   overflow: hidden;
 
   .wrapper {
-    position: relative;
-    display: block;
     height: 100%;
 
     &::before {
@@ -43,12 +41,8 @@ const props = defineProps<{ backdropPath: any }>();
         rgba(25, 25, 32, 1) 100%
       );
     }
-  }
-}
 
-@media (min-width: 768px) {
-  .backdrop-img {
-    .wrapper {
+    @media (min-width: 768px) {
       &::after {
         content: "";
         width: 100%;
