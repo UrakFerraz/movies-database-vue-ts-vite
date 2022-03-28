@@ -1,14 +1,11 @@
 <template>
   <div class="listed-movies--content">
     <Pagination />
-    <Suspense>
-      <MoviesTable
-        :movies="moviesByGenre"
-        :page-name="'genre'"
-        v-if="moviesByGenre"
-      />
-      <template #fallback> Loading... </template>
-    </Suspense>
+    <MoviesTable
+      :movies="moviesByGenre"
+      :page-name="'genre'"
+      v-if="moviesByGenre"
+    />
     <Pagination />
   </div>
 </template>

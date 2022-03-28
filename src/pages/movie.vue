@@ -2,21 +2,12 @@
   <div class="movie-page--wrapper" v-if="movieDetails">
     <Backdrop :backdrop-path="movieDetails.backdrop_path" />
     <div class="movie-content">
-      <Suspense>
-        <MovieCard :movie="movieDetails" />
-        <template #fallback> Loading... </template>
-      </Suspense>
-      <Suspense>
-        <CastList :movie-id="movieId" />
-        <template #fallback> Loading... </template>
-      </Suspense>
-      <Suspense>
-        <ProductionCompanies
-          :companies="movieDetails.production_companies"
-          v-if="movieDetails.production_companies"
-        />
-        <template #fallback> Loading... </template>
-      </Suspense>
+      <MovieCard :movie="movieDetails" />
+      <CastList :movie-id="movieId" />
+      <ProductionCompanies
+        :companies="movieDetails.production_companies"
+        v-if="movieDetails.production_companies"
+      />
       <Link
         v-if="movieDetails.homepage"
         :class="'homepage-link average-rgb--border'"

@@ -1,9 +1,6 @@
 <template>
   <ul class="cast-list">
-    <Suspense>
-      <CastPerson v-for="cast in cast" :key="Number(cast.id)" :cast="cast" />
-      <template #fallback> Loading... </template>
-    </Suspense>
+    <CastPerson v-for="cast in cast" :key="Number(cast.id)" :cast="cast" />
   </ul>
 </template>
 

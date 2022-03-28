@@ -1,12 +1,7 @@
 <template>
   <div v-if="movieCredits" class="cast-wrapper">
     <h2>Cast Principal</h2>
-    <Suspense>
-      <template #default>
-        <CastList :cast="movieCreditsCastWithPhotos" />
-      </template>
-      <template #fallback> Loading... </template>
-    </Suspense>
+    <CastList :cast="movieCreditsCastWithPhotos" />
   </div>
 </template>
 
