@@ -24,6 +24,7 @@ const wasAddedFavoritesRef = ref(false);
 const toSeeStore = toSee();
 const { movies: toSeeMovies } = storeToRefs(toSeeStore);
 const wasAddedtoSeeRef = ref(false);
+
 watch(
   [favoriteMovies, toSeeMovies],
   (state) => {
@@ -40,15 +41,19 @@ function checkwasAdded(store: any, ref: Ref) {
 
 function addOrRemoveToList(storeName: "favorites" | "to-see") {
   if (storeName === "favorites") {
-    return buttonPressed(favoritesStore, wasAddedFavoritesRef);
+    return buttonPressed(favoritesStore, wasAddedFavoritesRef, storeName);
   }
   if (storeName === "to-see") {
-    return buttonPressed(toSeeStore, wasAddedtoSeeRef);
+    return buttonPressed(toSeeStore, wasAddedtoSeeRef, storeName);
   }
 }
 
-function buttonPressed(store: any, wasAdded: Ref) {
-  store.addOrRemoveMovie(props.movieId);
+function buttonPressed(
+  store: any,
+  wasAdded: Ref,
+  storageName: "favorites" | "to-see"
+) {
+  store.addOrRemoveMovie(props.movieId, storageName);
   checkwasAdded(store, wasAdded);
 }
 
