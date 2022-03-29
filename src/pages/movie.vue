@@ -1,7 +1,7 @@
 <template>
-  <div class="movie-page--wrapper" v-if="movieDetails">
+  <div class="movie-page" v-if="movieDetails">
     <Backdrop :backdrop-path="movieDetails.backdrop_path" />
-    <div class="movie-content">
+    <div class="movie-page--content">
       <MovieCard :movie="movieDetails" />
       <CastList :movie-id="movieId" />
       <ProductionCompanies
@@ -54,14 +54,13 @@ watch(averageRGB, () => {
 </script>
 
 <style lang="scss" scoped>
-.movie-page--wrapper {
+.movie-page {
   display: grid;
   grid-template-columns: auto minmax(300px, 1200px) auto;
+  &--content {
+    grid-column: 2 / -2;
+  }
 }
-.movie-content {
-  grid-column: 2 / -2;
-}
-
 .homepage-link {
   justify-self: center;
   padding: 10px 15px;

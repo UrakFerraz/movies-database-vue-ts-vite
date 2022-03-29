@@ -1,6 +1,6 @@
 <template>
-  <div class="cast-page--wrapper">
-    <div class="cast-content">
+  <div class="cast-page">
+    <div class="cast-page--content">
       <CastPersonWithDetails :castDetails="castPersonDetails" />
       <div class="cast-movies">
         <h2>Filmes</h2>
@@ -45,21 +45,20 @@ getStates;
 </script>
 
 <style lang="scss" scoped>
-.cast-page--wrapper {
+.cast-page {
   display: grid;
   grid-template-columns: auto minmax(300px, 1200px) auto;
-}
-.cast-content {
-  grid-column: 2 / -2;
+  &--content {
+    grid-column: 2 / -2;
+    h2 {
+      margin-left: 20px;
+    }
+  }
 }
 
 .homepage-link {
   justify-self: center;
   padding: 10px 15px;
-}
-
-h2 {
-  margin-left: 20px;
 }
 
 .cast-images {

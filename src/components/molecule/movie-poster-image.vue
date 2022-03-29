@@ -19,10 +19,7 @@ const props = defineProps<{ posterPath: any; altText: any }>();
   overflow: hidden;
   border-radius: 10px;
   aspect-ratio: 1 / 1.5;
-}
-
-@media (min-width: 768px) {
-  .movie-card--img {
+  @media (min-width: 768px) {
     width: 300px;
   }
 }

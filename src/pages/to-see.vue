@@ -1,5 +1,5 @@
 <template>
-  <div class="listed-movies--content">
+  <div class="listed-movies">
     <Pagination />
     <MoviesTable :movies="moviesList" :page-name="'to-see'" v-if="moviesList" />
     <Pagination />
@@ -24,7 +24,7 @@ onBeforeMount(async () => {
 </script>
 
 <style lang="scss" scoped>
-.listed-movies--content {
+.listed-movies {
   padding: 20px;
 }
 </style>

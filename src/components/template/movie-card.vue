@@ -38,26 +38,20 @@ const props = defineProps<{ movie: MovieInListInerface }>();
 .movie-card {
   display: grid;
   padding: 10px;
-}
-
-.movie-card--content {
-  display: flex;
-  gap: 10px;
-  align-items: center;
-}
-
-.movie-card--rating {
-  border: 1px solid $principal;
-}
-
-.movie-card--image {
-  min-width: 120px;
-  margin: 5px 0;
-}
-
-@media (min-width: 768px) {
-  .movie-card--image {
-    width: 250px;
+  &--content {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  &--rating {
+    border: 1px solid $principal;
+  }
+  &--image {
+    min-width: 120px;
+    margin: 5px 0;
+    @media (min-width: 768px) {
+      width: 250px;
+    }
   }
 }
 </style>

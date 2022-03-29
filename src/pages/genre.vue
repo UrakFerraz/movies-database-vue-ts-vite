@@ -1,5 +1,5 @@
 <template>
-  <div class="listed-movies--content">
+  <div class="listed-movies">
     <Pagination />
     <MoviesTable
       :movies="moviesByGenre"
@@ -35,7 +35,7 @@ getMoviesByGenreList(props.pageNumber, props.genre);
 </script>
 
 <style lang="scss" scoped>
-.listed-movies--content {
+.listed-movies {
   padding: 20px;
 }
 </style>

@@ -24,10 +24,4 @@ const props = defineProps<{ castDetails: CastDetails }>();
     gap: 20px;
   }
 }
-
-.cast-links {
-  display: flex;
-  flex-flow: row wrap;
-  gap: 20px;
-}
 </style>

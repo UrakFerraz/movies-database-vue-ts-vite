@@ -1,5 +1,5 @@
 <template>
-  <div v-if="movieCredits" class="cast-wrapper">
+  <div v-if="movieCredits" class="cast--wrapper">
     <h2>Cast Principal</h2>
     <CastList :cast="movieCreditsCastWithPhotos" />
   </div>
@@ -22,7 +22,7 @@ getMovieCredits(movieDatabase, movieCredits, movieCreditsCastWithPhotos);
 </script>
 
 <style lang="scss" scoped>
-.cast-wrapper {
+.cast--wrapper {
   padding: 20px;
 }
 </style>

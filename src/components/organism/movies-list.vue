@@ -1,5 +1,5 @@
 <template>
-  <div class="movies-list--content" v-if="results">
+  <div class="movies-list" v-if="results">
     <div class="movies-list--wrapper">
       <div class="movies-list--overflow">
         <MovieCard
@@ -26,9 +26,17 @@ const results = computed(() => {
 </script>
 
 <style lang="scss" scoped>
-.movies-list--wrapper {
-  scroll-snap-type: x mandatory;
-  overflow-x: scroll;
+.movies-list {
+  &--wrapper {
+    scroll-snap-type: x mandatory;
+    overflow-x: scroll;
+  }
+  &--overflow {
+    display: flex;
+    @media (min-width: 768px) {
+      gap: 10px;
+    }
+  }
 }
 
 /* Let's get this party started */
@@ -52,13 +60,6 @@ const results = computed(() => {
 }
 ::-webkit-scrollbar-thumb:window-inactive {
   background: rgba(75, 66, 66, 0.8);
-}
-
-.movies-list--overflow {
-  display: flex;
-  @media (min-width: 768px) {
-    gap: 10px;
-  }
 }
 
 .movie-card-scroll-snap {

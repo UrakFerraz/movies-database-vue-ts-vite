@@ -1,8 +1,8 @@
 <template>
-  <div class="home--content">
+  <div class="home">
     <h2>Now Playing</h2>
     <MoviesList
-      class="home-movies-list"
+      class="home--movies-list"
       :movies="nowPlaying"
       v-if="nowPlaying"
     />
@@ -41,11 +41,10 @@ getTopRatedMoviesLists(1);
 </script>
 
 <style lang="scss" scoped>
-.home--content {
+.home {
   padding: 20px;
-}
-
-.home-movies-list {
-  min-height: 250px;
+  &--movies-list {
+    min-height: 250px;
+  }
 }
 </style>

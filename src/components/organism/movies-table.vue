@@ -1,5 +1,5 @@
 <template>
-  <div class="movies-list--content" v-if="results">
+  <div class="movies-list" v-if="results">
     <h2>{{ title }}</h2>
     <div class="movies-list--wrapper">
       <MovieCard
@@ -50,23 +50,19 @@ if (props.pageName === "genre") {
 </script>
 
 <style lang="scss" scoped>
-.movies-list--content h2 {
-  text-transform: capitalize;
-}
-.movies-list--wrapper {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  justify-items: center;
-  gap: 10px;
-  @media (min-width: 768px) {
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 15px;
+.movies-list {
+  h2 {
+    text-transform: capitalize;
   }
-}
-.movies-list--overflow {
-  display: flex;
-  @media (min-width: 768px) {
+  &--wrapper {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
     gap: 10px;
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 15px;
+    }
   }
 }
 
