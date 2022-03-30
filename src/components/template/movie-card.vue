@@ -50,7 +50,7 @@ const props = defineProps<{ movie: MovieInListInerface }>();
     min-width: 120px;
     margin: 5px 0;
     @media (min-width: 768px) {
-      width: 250px;
+      min-width: 250px;
     }
   }
 }

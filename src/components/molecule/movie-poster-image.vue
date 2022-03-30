@@ -20,7 +20,7 @@ const props = defineProps<{ posterPath: any; altText: any }>();
   border-radius: 10px;
   aspect-ratio: 1 / 1.5;
   @media (min-width: 768px) {
-    width: 300px;
+    min-width: 300px;
   }
 }
 </style>
