@@ -24,18 +24,19 @@ export function addOrRemoveMovie(this: MoviesListState): (id: number, storageNam
 
 export async function getMoviesListDatabase(this: MoviesListState, storageName: StorageName) {
 	try {
-		console.log("storageName ", storageName);
-			console.log(this);
-			
 			const request = await fetch(firebaseList)
 			if (request.ok) {
 				const data = await request.json()
-				const dataToJSON = JSON.parse(data.toSee)
-				dataToJSON.forEach((id: string) => {
+				let dataToJSON: number[] = []
+				if (storageName === "favorites") {
+					dataToJSON = JSON.parse(data.favorites)
+				}
+				if (storageName === "to-see") {
+					dataToJSON = JSON.parse(data.toSee)
+				}				
+				dataToJSON.forEach((id: string | number) => {
 					const idNumberType = Number(id)
 					if (storageName === "favorites") {
-						console.log('favorite');
-						
 						FavoriteListMoviesStorage.addMovie(idNumberType);
 					}
 					if (storageName === 'to-see') {
