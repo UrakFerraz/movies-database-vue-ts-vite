@@ -32,11 +32,8 @@ async function getMovieDetails(movieId: number) {
     vote_average
   } = movieDetailsResponse;
 
-  console.log(movieDetailsResponse);
-  
-
   const movieCard = Object.assign({}, {id, original_title, poster_path, release_date, vote_average});
-  console.log(movieCard);
+  
   return movieCard
   
 }
