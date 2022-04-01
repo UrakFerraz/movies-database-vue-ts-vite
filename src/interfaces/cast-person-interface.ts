@@ -3,7 +3,7 @@ export default interface Cast {
   cast_id: number,
   character: string,
   credit_id: string,
-  gender: number,
+  gender: number | null,
   id: number,
   known_for_department: string,
   name: string,

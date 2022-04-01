@@ -1,12 +1,12 @@
 import { ref } from "vue";
 import CastPersonDetails from "../../interfaces/cast-person-details-interface";
-import { CastPersonImage } from "../../interfaces/cast-person-images-interface";
+import { Image } from "../../interfaces/image-inerface";
 import MovieInListInerface from "../../interfaces/movies-in-list-interface";
 import APIDefaultInfo from "../../modules/default-api-info";
 const defaultAPIInfos = new APIDefaultInfo();
 export const castPersonDetails = ref<CastPersonDetails>({} as CastPersonDetails);
 export const castPersonMovies = ref<MovieInListInerface[]>([]);
-export const castImages = ref<CastPersonImage[]>([]);
+export const castImages = ref<Image[]>([]);
 export async function getCastPersonDetails(personId: string | number) {
   let details = {} as CastPersonDetails;
   details = await defaultAPIInfos.fetchData(
