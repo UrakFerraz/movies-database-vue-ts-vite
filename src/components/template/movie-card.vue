@@ -15,12 +15,12 @@
 </template>
 
 <script setup lang="ts">
-import MovieInListInerface from "../../interfaces/movies-in-list-interface";
+import MovieCardInterface from "../../interfaces/movie-card-interface";
 import MoviePosterImage from "../molecule/movie-poster-image.vue";
 import MovieCardMenu from "../molecule/movie-card-menu.vue";
 import Rating from "../atoms/rating.vue";
 
-const props = defineProps<{ movie: MovieInListInerface }>();
+const props = defineProps<{ movie: MovieCardInterface }>();
 </script>
 
 <style lang="scss" scoped>

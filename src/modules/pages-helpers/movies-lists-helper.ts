@@ -2,9 +2,9 @@ import { ref } from "vue";
 import MovieInterface from "../../interfaces/movie-interface";
 import MovieDatabase from "../movies-db-api";
 import { favoritesStore, toSeeStore } from "../../store/get-states";
-import MovieInListInerface from "../../interfaces/movies-in-list-interface";
+import MovieCardInterface from "../../interfaces/movie-card-interface";
 
-const moviesList = ref<MovieInListInerface[]>([]);
+const moviesList = ref<MovieCardInterface[]>([]);
 
 let moviesIdsListFromStore: number[] = []
 
