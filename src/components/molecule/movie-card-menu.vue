@@ -24,6 +24,7 @@ const wasAddedFavoritesRef = ref(false);
 const toSeeStore = toSee();
 const { movies: toSeeMovies } = storeToRefs(toSeeStore);
 const wasAddedtoSeeRef = ref(false);
+import { WasAddedValue, MovieStoreMethods } from '../../interfaces/movies-list-state-iterface'
 
 watch(
   [favoriteMovies, toSeeMovies],
@@ -34,7 +35,7 @@ watch(
   { deep: true }
 );
 
-function checkwasAdded(store: any, ref: Ref) {
+function checkwasAdded(store: WasAddedValue, ref: Ref) {
   const wasAdded = store.wasAdded(props.movieId);
   ref.value = wasAdded;
 }
@@ -48,8 +49,9 @@ function addOrRemoveToList(storeName: "favorites" | "to-see") {
   }
 }
 
+
 function buttonPressed(
-  store: any,
+  store: MovieStoreMethods,
   wasAdded: Ref,
   storageName: "favorites" | "to-see"
 ) {
