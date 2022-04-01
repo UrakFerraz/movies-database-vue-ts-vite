@@ -25,22 +25,20 @@ async function getMovieDetails(movieId: number) {
   );
 
   const {
-    budget,
-    genres,
-    homepage,
-    revenue,
-    runtime,
-    status,
-    tagline,
-    belongs_to_collection,
-    imdb_id,
-    production_companies,
-    production_countries,
-    spoken_languages,
-    ...movie
+    id,
+    original_title,
+    poster_path,
+    release_date,
+    vote_average
   } = movieDetailsResponse;
 
-  return movie;
+  console.log(movieDetailsResponse);
+  
+
+  const movieCard = Object.assign({}, {id, original_title, poster_path, release_date, vote_average});
+  console.log(movieCard);
+  return movieCard
+  
 }
 
 export async function loadMovies(pageNumber: string, store: string): Promise<void> {
