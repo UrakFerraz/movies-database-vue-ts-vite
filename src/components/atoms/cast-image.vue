@@ -1,7 +1,7 @@
 <template>
   <div class="cast-img">
     <Img
-      :src="'https://image.tmdb.org/t/p/original' + castDetails.profile_path"
+      :src="profileImgSrc('https://image.tmdb.org/t/p/original')"
       :alt="castDetails.name"
       :class="'img-cover'"
     />
@@ -12,6 +12,9 @@
 import Img from "../atoms/img.vue";
 import CastDetails from "../../interfaces/cast-person-details-interface";
 const props = defineProps<{ castDetails: CastDetails }>();
+function profileImgSrc(prefix: string) {
+  return (props.castDetails.profile_path !== null && typeof props.castDetails.profile_path !== "undefined") ? prefix + props.castDetails.profile_path : null
+}
 </script>
 
 <style lang="scss" scoped>

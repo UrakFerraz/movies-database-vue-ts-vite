@@ -1,8 +1,8 @@
 <template>
   <div class="more-info fade-in-animation-fast">
     <h2>{{ movie.tagline }}</h2>
-    <p>{{ movie.overview }}</p>
-    <p>
+    <p v-if="movie.overview !== null">{{ movie.overview }}</p>
+    <p v-if="movie.runtime !== null">
       Duração: {{ (movie.runtime / 60).toFixed(2).split(".").join(":") }} horas
     </p>
     <Link

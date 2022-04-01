@@ -1,7 +1,7 @@
 <template>
-  <div class="movie-card--img" v-if="posterPath">
+  <div class="movie-card--img">
     <Img
-      :src="'https://image.tmdb.org/t/p/w300' + props.posterPath"
+      :src="posterPathImgSrc('https://image.tmdb.org/t/p/w300')"
       :alt="props.altText"
       :class="'fade-in-animation-fast img-cover'"
     />
@@ -11,6 +11,9 @@
 <script setup lang="ts">
 import Img from "../atoms/img.vue";
 const props = defineProps<{ posterPath: any; altText: any }>();
+function posterPathImgSrc(prefix: string) {
+  return (props.posterPath !== null && typeof props.posterPath !== "undefined") ? prefix + props.posterPath : null
+}
 </script>
 
 <style lang="scss" scoped>

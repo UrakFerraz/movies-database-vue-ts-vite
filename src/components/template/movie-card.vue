@@ -1,5 +1,5 @@
 <template>
-  <div class="movie-card" v-if="movie.poster_path">
+  <div class="movie-card" v-if="movie.poster_path !== null">
     <MovieCardMenu :movie-id="movie.id" />
     <MoviePosterImage
       class="movie-card--image"

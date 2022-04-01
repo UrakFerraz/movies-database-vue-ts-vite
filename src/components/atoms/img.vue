@@ -25,6 +25,7 @@
     </g>
   </svg>
   <img
+    v-if="src !== null"
     loading="lazy"
     :src="imgSrc"
     :alt="alt"
@@ -43,7 +44,7 @@ const isLoaded = ref(false);
 const imgSrc = toRefs(props).src;
 
 function isLoadedImg() {
-  isLoaded.value = true;
+  isLoaded.value = imgSrc !== null
 }
 </script>
 

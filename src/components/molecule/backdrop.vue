@@ -1,8 +1,8 @@
 <template>
-  <div class="backdrop-img" v-if="backdropPath">
+  <div class="backdrop-img" v-if="backdropPath !== null">
     <div class="wrapper fade-in-animation-delayed">
       <Img
-        :src="'https://image.tmdb.org/t/p/original' + props.backdropPath"
+        :src="backdropImgSrc('https://image.tmdb.org/t/p/original')"
         :alt="'backdrop image'"
         :class="'img-backdrop'"
       />
@@ -12,7 +12,11 @@
 
 <script setup lang="ts">
 import Img from "../atoms/img.vue";
-const props = defineProps<{ backdropPath: any }>();
+const props = defineProps<{ backdropPath: string | null | undefined }>();
+
+function backdropImgSrc(prefix: string) {
+  return (props.backdropPath !== null && typeof props.backdropPath !== "undefined") ? prefix + props.backdropPath : null
+}
 </script>
 
 <style lang="scss" scoped>
