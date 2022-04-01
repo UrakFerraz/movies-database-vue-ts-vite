@@ -13,7 +13,7 @@ import Img from "../atoms/img.vue";
 import CastDetails from "../../interfaces/cast-person-details-interface";
 const props = defineProps<{ castDetails: CastDetails }>();
 function profileImgSrc(prefix: string) {
-  return (props.castDetails.profile_path !== null && typeof props.castDetails.profile_path !== "undefined") ? prefix + props.castDetails.profile_path : null
+  return (props.castDetails.profile_path !== null && typeof props.castDetails.profile_path !== "undefined") ? prefix + props.castDetails.profile_path : '../../assets/ban.svg'
 }
 </script>
 

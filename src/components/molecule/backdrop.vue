@@ -15,7 +15,7 @@ import Img from "../atoms/img.vue";
 const props = defineProps<{ backdropPath: string | null | undefined }>();
 
 function backdropImgSrc(prefix: string) {
-  return (props.backdropPath !== null && typeof props.backdropPath !== "undefined") ? prefix + props.backdropPath : null
+  return (props.backdropPath !== null && typeof props.backdropPath !== "undefined") ? prefix + props.backdropPath : '../../assets/ban.svg'
 }
 </script>
 

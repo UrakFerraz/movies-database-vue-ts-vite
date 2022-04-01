@@ -12,7 +12,7 @@
 import Img from "../atoms/img.vue";
 const props = defineProps<{ posterPath: any; altText: any }>();
 function posterPathImgSrc(prefix: string) {
-  return (props.posterPath !== null && typeof props.posterPath !== "undefined") ? prefix + props.posterPath : null
+  return (props.posterPath !== null && typeof props.posterPath !== "undefined") ? prefix + props.posterPath : '../../assets/ban.svg'
 }
 </script>
 

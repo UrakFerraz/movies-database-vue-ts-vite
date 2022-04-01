@@ -15,7 +15,7 @@
 import CastDetails from "../../interfaces/cast-person-details-interface";
 import CastLinks from "../atoms/cast-links.vue";
 const props = defineProps<{ castDetails: CastDetails }>();
-function convertDateToLocale(dateProps: props): string | null {
+function convertDateToLocale(dateProps: string): string | null {
   if(dateProps !== null) {
     return new Date(dateProps).toLocaleDateString()
   }
