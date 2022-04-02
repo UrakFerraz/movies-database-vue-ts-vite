@@ -17,9 +17,6 @@ import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import MovieCard from "../template/movie-card.vue";
 import genres from "../../assets/genres";
-import ResultsInterface from "../../interfaces/results-interface";
-import MovieInListInerface from "../../interfaces/movies-in-list-interface";
-import MovieCardInterface from "../../interfaces/movie-card-interface";
 const props =
   defineProps<{ movies: any; pageName: "genre" | "favorites" | "to-see" }>();
 

@@ -29,7 +29,6 @@ import {
 } from "../modules/pages-helpers/home-page-helper";
 import MoviesList from "../components/organism/movies-list.vue";
 import APIDefaultInfo from "../modules/default-api-info";
-import ResultsInterface from "../interfaces/results-interface";
 import getStates from "../store/get-states";
 
 onMounted(getStates);

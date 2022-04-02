@@ -19,7 +19,7 @@
   </div>
 </template>
 <script setup lang="ts">
-import { onMounted, ref, watch } from "vue";
+import { onMounted, watch } from "vue";
 import Link from "../components/atoms/link.vue";
 const props = defineProps<{ movieId: number | string }>();
 
@@ -29,7 +29,6 @@ import {
   getMovieDetails,
 } from "../modules/pages-helpers/movie-page-helper";
 
-import ResultsInterface from "../interfaces/results-interface";
 import CastList from "../components/template/cast-list.vue";
 import Backdrop from "../components/molecule/backdrop.vue";
 import MovieCard from "../components/template/movie-card-with-details.vue";

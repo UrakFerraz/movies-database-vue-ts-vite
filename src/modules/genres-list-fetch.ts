@@ -1,4 +1,3 @@
-import { ref } from "vue";
 import APIDefaultInfo from "./default-api-info";
 const defaultAPIInfos = new APIDefaultInfo();
 export default async function getGenresList(value: any) {
