@@ -1,12 +1,13 @@
 <template>
   <ul class="cast-list">
-    <CastPerson v-for="cast in cast" :key="Number(cast.id)" :cast="cast" />
+    <CastPerson v-for="person in cast" :key="Number(person.id)" :cast="person" />
   </ul>
 </template>
 
 <script setup lang="ts">
 import CastPerson from "./cast-person.vue";
-const props = defineProps<{ cast: any }>();
+import Cast from '../../interfaces/cast-person-interface'
+const props = defineProps<{ cast: Cast[] }>();
 </script>
 
 <style lang="scss" scoped>

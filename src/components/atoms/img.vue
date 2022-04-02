@@ -44,7 +44,7 @@ const isLoaded = ref(false);
 const imgSrc = toRefs(props).src;
 
 function isLoadedImg() {
-  isLoaded.value = imgSrc !== null
+  isLoaded.value = imgSrc !== null;
 }
 </script>
 

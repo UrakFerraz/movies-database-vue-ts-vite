@@ -7,7 +7,10 @@
 </template>
 
 <script setup lang="ts">
-const props = defineProps<{ movie: any }>();
+import MovieInterface from '../../interfaces/movie-interface'
+import MovieInListInerface from '../../interfaces/movies-in-list-interface'
+import MovieCardInterface from '../../interfaces/movie-card-interface'
+const props = defineProps<{ movie: MovieInterface | MovieCardInterface | MovieInListInerface }>();
 </script>
 
 <style lang="scss" scoped>

@@ -20,8 +20,11 @@ import MovieCard from "../template/movie-card.vue";
 const props = defineProps<{ movies: any }>();
 
 const results = computed(() => {
-  if (props.movies.results) return props.movies.results;
-  return props.movies;
+  if (props.movies.results) {
+    return props.movies.results;
+  } else {
+    return props.movies;
+  }
 });
 </script>
 

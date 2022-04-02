@@ -2,7 +2,7 @@
   <div class="production-company">
     <Img
       v-if="company.logo_path"
-      :src="'https://image.tmdb.org/t/p/w185' + company.logo_path"
+      :src="imgSrc('https://image.tmdb.org/t/p/w185', company.logo_path)"
       :alt="company.name"
       :class="'img'"
     />
@@ -14,6 +14,7 @@
 import Img from "../atoms/img.vue";
 import ProductionCompanyInterface from "../../interfaces/production-company-interface";
 const props = defineProps<{ company: ProductionCompanyInterface }>();
+import imgSrc from '../../modules/image-helper'
 </script>
 
 <style lang="scss" scoped>

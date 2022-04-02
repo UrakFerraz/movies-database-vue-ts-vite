@@ -2,7 +2,7 @@
   <li class="cast-list-item fade-in-animation-delayed">
     <div class="cast-list-img">
       <Img
-        :src="'https://image.tmdb.org/t/p/w185' + cast.profile_path"
+        :src="imgSrc('https://image.tmdb.org/t/p/w185', cast.profile_path)"
         :alt="cast.name"
         :class="'img-cover'"
       />
@@ -25,6 +25,7 @@
 import Img from "../atoms/img.vue";
 import Cast from "../../interfaces/cast-person-interface";
 const props = defineProps<{ cast: Cast }>();
+import imgSrc from '../../modules/image-helper'
 </script>
 
 <style lang="scss" scoped>

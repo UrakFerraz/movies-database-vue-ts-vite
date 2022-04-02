@@ -10,8 +10,10 @@
   </div>
   <div class="cast-images">
     <Img
-      :src="'https://www.themoviedb.org/t/p/original' + castImage.file_path"
       v-for="castImage in castImages"
+      :src="
+        imgSrc('https://www.themoviedb.org/t/p/original', castImage!.file_path)
+      "
       :alt="'cast id:' + castPersonId"
       :class="'img-cover'"
     />
@@ -27,6 +29,7 @@ import MoviesList from "../components/organism/movies-list.vue";
 import CastPersonWithDetails from "../components/organism/cast-person-with-details.vue";
 import getStates from "../store/get-states";
 import Img from "../components/atoms/img.vue";
+import Image from "../interfaces/image-inerface";
 import {
   getCastPersonDetails,
   getCastPersonMovies,
@@ -35,6 +38,7 @@ import {
   castPersonMovies,
   castImages,
 } from "../modules/pages-helpers/cast-page-helper";
+import imgSrc from "../modules/image-helper";
 
 onMounted(getStates);
 

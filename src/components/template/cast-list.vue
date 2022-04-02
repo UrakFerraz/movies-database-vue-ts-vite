@@ -15,8 +15,8 @@ import getMovieCredits from "../../modules/templates-helpers/cast-list-helper";
 const props = defineProps<{ movieId: number | string }>();
 
 let movieDatabase = new MovieDatabase(Number(props.movieId));
-let movieCredits = ref<Cast>({} as Cast);
-let movieCreditsCastWithPhotos = ref<Cast>({} as Cast);
+let movieCredits = ref<Cast[]>([] as Cast[]);
+let movieCreditsCastWithPhotos = ref<Cast[]>([] as Cast[]);
 
 getMovieCredits(movieDatabase, movieCredits, movieCreditsCastWithPhotos);
 </script>
