@@ -1,6 +1,7 @@
+import TMDB from './tmdb'
 export default class APIDefaultInfo {
 	public readonly _apiURL: string = 'https://api.themoviedb.org/3'
-	private readonly _API_KEY: string = 'a152faf46b825f190ee05ae333705f56'
+	private readonly _API_KEY: string = TMDB
 	private readonly _defaultLanguage: string = 'language=pt-BR'
 	get apiURL(): string {
 		return this._apiURL
