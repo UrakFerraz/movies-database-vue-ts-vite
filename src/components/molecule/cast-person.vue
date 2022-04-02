@@ -7,7 +7,9 @@
         :class="'img-cover'"
       />
     </div>
-    <router-link :to="'/cast/' + cast.id">{{ cast.name }}</router-link>
+    <router-link :to="'/cast/' + cast.id" class="average-rgb--border">{{
+      cast.name
+    }}</router-link>
     <!-- <a
       class="cast-name average-rgb--border"
       :href="
@@ -25,7 +27,7 @@
 import Img from "../atoms/img.vue";
 import Cast from "../../interfaces/cast-person-interface";
 const props = defineProps<{ cast: Cast }>();
-import imgSrc from '../../modules/image-helper'
+import imgSrc from "../../modules/image-helper";
 </script>
 
 <style lang="scss" scoped>
