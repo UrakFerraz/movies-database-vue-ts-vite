@@ -40,8 +40,14 @@ export default class APIDefaultInfo {
 		return `https://api.themoviedb.org/3/person/${castPersonId}/images?api_key=${this.API_KEY}`
 	}
 	fetchData = async (url: string) => {
-		const response = await fetch(url)
-		const data = await response.json()
-		return data
+		try {
+			const response = await fetch(url)
+			if (!response.ok) { throw response }
+			const data = await response.json()
+			return data
+		} catch (error) {
+			alert('Erro na api do TMDB')
+			console.log('Erro na api do TMDB', error)
+		}
 	}
 }

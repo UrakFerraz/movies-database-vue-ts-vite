@@ -1,5 +1,6 @@
-import { createRouter, createWebHistory } from 'vue-router'
-
+import { createRouter, createWebHistory, RouteLocationNormalized } from 'vue-router'
+import { isValidRouterPath } from '../modules/router-helper.ts'
+import genres from '../assets/genres'
 const routes = [
 	{
 		name: 'home',
@@ -17,7 +18,8 @@ const routes = [
 			default: () => import(/* webpackChunkName: "MoviePage" */ '../pages/movie.vue'),
 			header: () => import(/* webpackChunkName: "Header" */ '../components/molecule/header.vue'),
 			footer: () => import(/* webpackChunkName: "Footer" */ '../components/molecule/footer.vue')
-		},props: {default: true,header: false,footer: false } },
+		}, props: { default: true, header: false, footer: false }
+	},
 	{
 		name: 'genre',
 		path: '/:genre/:pageNumber',
@@ -75,6 +77,16 @@ const routes = [
 		}, props: { default: true, header: false, footer: false }
 	},
 	{
+		name: '404',
+		path: '/404',
+		components: {
+			default: () => import(/* webpackChunkName: "MoviePage" */ '../pages/404.vue'),
+			header: () => import(/* webpackChunkName: "Header" */ '../components/molecule/header.vue'),
+			footer: () => import(/* webpackChunkName: "Footer" */ '../components/molecule/footer.vue')
+		}
+	},
+	{
+		name: 'not found',
 		path: '/:notFound(.*)',
 		redirect: '/'
 	}
@@ -86,6 +98,39 @@ const router = createRouter({
 	scrollBehavior() {
 		return {left: 0, top: 0}
 	},
+})
+
+
+router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: Function) => {
+	console.log(router); 0
+	console.log(to.path);
+	
+	const isValidPath = isValidRouterPath(to.path)
+	let isValidSlug = false
+	isValidSlug = router.options.routes.some(route => {
+		console.log(route.name);
+		if (isValidPath) {
+			return isValidPath === String(route.name)
+		}
+	})
+	if (!isValidSlug) {
+		isValidSlug = genres.some(genre => {
+			if (isValidPath) {
+				return isValidPath === String(genre.id)
+			}
+		})
+	}
+	console.log(isValidSlug);
+	console.log(isValidPath);
+	if (isValidSlug) {
+		return next()
+	}
+	if (isValidPath === '/') {
+		return next()
+	}
+	if (isValidSlug === false) {
+		return next('/404')
+	}
 })
 
 export default router

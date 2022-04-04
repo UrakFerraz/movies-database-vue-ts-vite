@@ -1,7 +1,10 @@
 import APIDefaultInfo from './default-api-info';
 export default class MovieDatabase extends APIDefaultInfo {
-	constructor(private readonly movieId: number) {
+	constructor(private readonly _movieId: number) {
 		super()
+	}
+	get movieId(): number {
+		return this._movieId
 	}
 	get movieDetailsUrl(): string {
 		return `${this.apiURL}/movie/${this.movieId}?api_key=${this.API_KEY}&${this.defaultLanguage}`
