@@ -4,6 +4,7 @@ import MovieDatabase from './movies-db-api'
 const testApi = new MovieDatabase(470)
 
 describe('deve testar os parâmetros das URLS', () => {
+
 	it('deve ser o prefixo da url do TMDB', () => {
 		expect(testApi.apiURL).toBe('https://api.themoviedb.org/3')
 	});
@@ -18,6 +19,7 @@ describe('deve testar os parâmetros das URLS', () => {
 })
 
 describe('deve testas as urls', () => {
+	
 	it('deve ser a url de lista de gêneros', () => {
 		expect(testApi.genresListUrl).toBe(`https://api.themoviedb.org/3/genre/movie/list?api_key=${TMDB}&language=pt-BR`)
 	});

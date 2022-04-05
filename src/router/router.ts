@@ -102,13 +102,9 @@ const router = createRouter({
 
 
 router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, next: Function) => {
-	console.log(router); 0
-	console.log(to.path);
-	
 	const isValidPath = isValidRouterPath(to.path)
 	let isValidSlug = false
 	isValidSlug = router.options.routes.some(route => {
-		console.log(route.name);
 		if (isValidPath) {
 			return isValidPath === String(route.name)
 		}
@@ -120,8 +116,6 @@ router.beforeEach((to: RouteLocationNormalized, from: RouteLocationNormalized, n
 			}
 		})
 	}
-	console.log(isValidSlug);
-	console.log(isValidPath);
 	if (isValidSlug) {
 		return next()
 	}
