@@ -21,5 +21,4 @@ import MovieInterface from "../../interfaces/movie-interface";
 const props = defineProps<{ movie: MovieInterface }>();
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

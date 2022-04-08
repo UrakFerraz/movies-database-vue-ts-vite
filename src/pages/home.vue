@@ -1,11 +1,7 @@
 <template>
   <div class="home">
     <h2>Now Playing</h2>
-    <MoviesList
-      class="home--movies-list"
-      :movies="nowPlaying"
-      v-if="nowPlaying"
-    />
+    <MoviesList class="home--movies-list" :movies="nowPlaying" v-if="nowPlaying" />
     <h2>Popular</h2>
     <MoviesList class="home-movies-list" :movies="popular" v-if="popular" />
     <h2>Upcoming</h2>

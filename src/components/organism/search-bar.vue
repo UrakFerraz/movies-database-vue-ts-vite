@@ -13,7 +13,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from "vue";
+import { ref } from "vue";
 import Modal from "../molecule/modal.vue";
 const emit = defineEmits(["close-modal"]);
 const props = defineProps<{ openModal: boolean }>();
@@ -32,10 +32,6 @@ function searchMovies() {
 function closeModal() {
   emit("close-modal");
 }
-
-watch(keyword, (value) => {
-  console.log(value);
-});
 </script>
 
 <style lang="scss" scoped>

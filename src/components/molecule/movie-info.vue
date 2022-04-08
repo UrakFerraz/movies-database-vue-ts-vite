@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import Rating from "../atoms/rating.vue";
-import MovieInterface from '../../interfaces/movie-interface'
+import MovieInterface from "../../interfaces/movie-interface";
 const props = defineProps<{ movie: MovieInterface }>();
 </script>
 

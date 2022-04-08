@@ -1,11 +1,7 @@
 <template>
   <div class="listed-movies">
     <Pagination />
-    <MoviesTable
-      :movies="moviesByGenre"
-      :page-name="'genre'"
-      v-if="moviesByGenre"
-    />
+    <MoviesTable :movies="moviesByGenre" :page-name="'genre'" v-if="moviesByGenre" />
     <Pagination />
   </div>
 </template>

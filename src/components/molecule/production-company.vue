@@ -14,7 +14,7 @@
 import Img from "../atoms/img.vue";
 import ProductionCompanyInterface from "../../interfaces/production-company-interface";
 const props = defineProps<{ company: ProductionCompanyInterface }>();
-import imgSrc from '../../modules/image-helper'
+import imgSrc from "../../modules/image-helper";
 </script>
 
 <style lang="scss" scoped>

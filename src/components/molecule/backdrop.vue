@@ -13,7 +13,7 @@
 <script setup lang="ts">
 import Img from "../atoms/img.vue";
 const props = defineProps<{ backdropPath: string | null | undefined }>();
-import imgSrc from '../../modules/image-helper'
+import imgSrc from "../../modules/image-helper";
 </script>
 
 <style lang="scss" scoped>

@@ -1,14 +1,7 @@
 <template>
-  <div
-    class="production-companies average-rgb--border"
-    v-if="companies.length > 0"
-  >
+  <div class="production-companies average-rgb--border" v-if="companies.length > 0">
     <h2>Production companies</h2>
-    <ProductionCompany
-      :company="comp"
-      v-for="comp in companies"
-      :key="comp.name"
-    />
+    <ProductionCompany :company="comp" v-for="comp in companies" :key="comp.name" />
   </div>
 </template>
 

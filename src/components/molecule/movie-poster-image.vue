@@ -11,7 +11,7 @@
 <script setup lang="ts">
 import Img from "../atoms/img.vue";
 const props = defineProps<{ posterPath: string | null; altText: string }>();
-import imgSrc from '../../modules/image-helper'
+import imgSrc from "../../modules/image-helper";
 </script>
 
 <style lang="scss" scoped>

@@ -6,7 +6,7 @@
 
 <script setup lang="ts">
 import CastPerson from "./cast-person.vue";
-import Cast from '../../interfaces/cast-person-interface'
+import Cast from "../../interfaces/cast-person-interface";
 const props = defineProps<{ cast: Cast[] }>();
 </script>
 

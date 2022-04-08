@@ -1,11 +1,7 @@
 <template>
   <div class="listed-movies--content">
     <Pagination />
-    <MoviesTable
-      :movies="moviesList"
-      :page-name="'favorites'"
-      v-if="moviesList"
-    />
+    <MoviesTable :movies="moviesList" :page-name="'favorites'" v-if="moviesList" />
     <Pagination />
   </div>
 </template>
@@ -14,10 +10,7 @@ import { onBeforeMount } from "vue";
 import MoviesTable from "../components/organism/movies-table.vue";
 import getStates from "../store/get-states";
 import Pagination from "../components/molecule/pagination.vue";
-import {
-  loadMovies,
-  moviesList,
-} from "../modules/pages-helpers/movies-lists-helper";
+import { loadMovies, moviesList } from "../modules/pages-helpers/movies-lists-helper";
 
 const props = defineProps<{ pageNumber: string }>();
 

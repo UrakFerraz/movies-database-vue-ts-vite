@@ -12,7 +12,7 @@
 import Img from "../atoms/img.vue";
 import CastDetails from "../../interfaces/cast-person-details-interface";
 const props = defineProps<{ castDetails: CastDetails }>();
-import imgSrc from '../../modules/image-helper';
+import imgSrc from "../../modules/image-helper";
 </script>
 
 <style lang="scss" scoped>
