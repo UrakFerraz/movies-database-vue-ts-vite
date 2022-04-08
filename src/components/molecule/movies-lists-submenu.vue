@@ -2,10 +2,20 @@
   <div class="movies-lists-submenu">
     <router-link to="/to-see/0">To see</router-link>
     <router-link to="/favorites/0">Favorite</router-link>
+    <SearchButton @search-button-clicked="openSearchModal" />
   </div>
 </template>
 
 <script setup lang="ts">
+import { ref } from "vue";
+import SearchButton from "../atoms/search-button.vue";
+
+const emit = defineEmits(["open-search-modal"]);
+
+const openSearchModal = () => {
+  console.log("emit: open-search-modal");
+  emit("open-search-modal");
+};
 </script>
 
 <style lang="scss" scoped>
