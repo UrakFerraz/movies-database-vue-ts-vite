@@ -39,6 +39,12 @@ export default class APIDefaultInfo {
 	getCastPersonImages(castPersonId: number | string): string {
 		return `https://api.themoviedb.org/3/person/${castPersonId}/images?api_key=${this.API_KEY}`
 	}
+
+	searchMovies(query: string, pageNumber: number): string {
+		console.log(`https://api.themoviedb.org/3/search/movie?api_key=${this.API_KEY}&${this.defaultLanguage}&query=${query}&page=${pageNumber}&include_adult=false`);
+		
+		return `https://api.themoviedb.org/3/search/movie?api_key=${this.API_KEY}&${this.defaultLanguage}&query=${query}&page=${pageNumber}&include_adult=false`
+	}
 	fetchData = async (url: string) => {
 		try {
 			const response = await fetch(url)
@@ -46,7 +52,6 @@ export default class APIDefaultInfo {
 			const data = await response.json()
 			return data
 		} catch (error) {
-			alert('Erro na api do TMDB')
 			console.log('Erro na api do TMDB', error)
 		}
 	}

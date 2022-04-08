@@ -25,6 +25,9 @@ const slug = (() => {
   if (route.path.includes("to-see")) {
     return "to-see";
   }
+  if (route.path.includes("search")) {
+    return "search";
+  }
 })();
 
 function nextPrev(direction: string) {
@@ -35,6 +38,9 @@ function nextPrev(direction: string) {
     }
   } else if (direction === "next") {
     count += 1;
+  }
+  if (slug === "search") {
+    return `/${slug}/${route.params.query}/${count}`;
   }
   return `/${slug}/${count}`;
 }

@@ -17,8 +17,10 @@ import { ref, computed } from "vue";
 import { useRoute } from "vue-router";
 import MovieCard from "../template/movie-card.vue";
 import genres from "../../assets/genres";
-const props =
-  defineProps<{ movies: any; pageName: "genre" | "favorites" | "to-see" }>();
+const props = defineProps<{
+  movies: any;
+  pageName: "genre" | "favorites" | "to-see" | "search";
+}>();
 
 const route = useRoute();
 
@@ -34,6 +36,9 @@ if (props.pageName === "favorites") {
 }
 if (props.pageName === "to-see") {
   title.value = "To See";
+}
+if (props.pageName === "search") {
+  title.value = "search";
 }
 if (props.pageName === "genre") {
   function getGenreName() {

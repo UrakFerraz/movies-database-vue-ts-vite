@@ -77,6 +77,15 @@ const routes = [
 		}, props: { default: true, header: false, footer: false }
 	},
 	{
+		name: 'search',
+		path: '/search/:query/:pageNumber',
+		components: {
+			default: () => import(/* webpackChunkName: "search" */ '../pages/search.vue'),
+			header: () => import(/* webpackChunkName: "Header" */ '../components/molecule/header.vue'),
+			footer: () => import(/* webpackChunkName: "Footer" */ '../components/molecule/footer.vue')
+		},props: { default: true, header: false, footer: false }
+	},
+	{
 		name: '404',
 		path: '/404',
 		components: {
