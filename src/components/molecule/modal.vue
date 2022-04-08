@@ -1,5 +1,5 @@
 <template>
-  <div class="modal" :class="isOpenedModal ? 'fadeIn' : 'FadeOut'" ref="modal">
+  <div class="modal" :class="isOpenModal ? 'fadeIn' : 'FadeOut'" ref="modal">
     <div class="modal__wrapper">
       <button @click="closeModal()" class="modal__close-button">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512">
@@ -14,11 +14,8 @@
 </template>
 
 <script setup lang="ts">
-import { ref, toRefs } from "vue";
 const emit = defineEmits(["close-modal-button-clicked"]);
 const props = defineProps<{ isOpenModal: boolean }>();
-
-const isOpenedModal = toRefs(props).isOpenModal;
 
 function closeModal() {
   emit("close-modal-button-clicked");
@@ -46,15 +43,15 @@ function closeModal() {
   &__wrapper {
     /* From https://css.glass */
     background: rgba(100, 100, 100, 0.2);
-    display: flex;
     justify-content: center;
+    display: flex;
     gap: 20px;
     border-radius: 16px;
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     backdrop-filter: blur(7px);
     -webkit-backdrop-filter: blur(7px);
     margin-top: 50px;
-    width: 65vw;
+    width: 50vw;
     padding: 40px;
     box-shadow: rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px,
       rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px,
@@ -84,6 +81,13 @@ function closeModal() {
   animation-duration: 500ms;
   animation-fill-mode: forwards;
   animation-timing-function: ease-in;
+}
+
+.fadeOut {
+  animation-name: fadeOut;
+  animation-duration: 500ms;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
 }
 
 @keyframes fadeIn {

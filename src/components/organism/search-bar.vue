@@ -1,8 +1,13 @@
 <template>
   <Modal :is-open-modal="openModal" @close-modal-button-clicked="closeModal()">
     <div class="search">
-      <input type="text" v-model="keyword" class="search__bar" />
-      <router-link to="" @click="closeModal()">Buscar</router-link>
+      <input
+        type="text"
+        v-model="keyword"
+        class="search__bar"
+        v-on:keyup.enter="searchMovies()"
+      />
+      <button @click="searchMovies()">Search</button>
     </div>
   </Modal>
 </template>
@@ -12,19 +17,25 @@ import { ref, watch } from "vue";
 import Modal from "../molecule/modal.vue";
 const emit = defineEmits(["close-modal"]);
 const props = defineProps<{ openModal: boolean }>();
+import { useRouter } from "vue-router";
+
+const router = useRouter();
 
 const keyword = ref("");
+
+function searchMovies() {
+  router.push(`/search/${keyword.value}/1`);
+  emit("close-modal");
+  keyword.value = "";
+}
 
 function closeModal() {
   emit("close-modal");
 }
 
-watch(
-  () => keyword,
-  (value) => {
-    console.log(value);
-  }
-);
+watch(keyword, (value) => {
+  console.log(value);
+});
 </script>
 
 <style lang="scss" scoped>
@@ -34,9 +45,10 @@ watch(
   gap: 30px;
   align-items: center;
   justify-content: center;
+  flex: 1;
   &__bar {
     width: 100%;
-    padding: 10%;
+    padding: 20px;
     border-radius: 8px;
   }
 }
