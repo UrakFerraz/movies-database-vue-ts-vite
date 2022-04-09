@@ -1,0 +1,9 @@
+// Vitest Snapshot v1
+
+exports[`deve ser um componente pontos > deve renderizar uma div 1`] = `
+"<div class=\\"rating average-rgb--bg\\" data-v-7dfc6e1a=\\"\\">
+  <div class=\\"rate\\" data-v-7dfc6e1a=\\"\\">
+    <p data-v-7dfc6e1a=\\"\\">8</p>
+  </div>
+</div>"
+`;
