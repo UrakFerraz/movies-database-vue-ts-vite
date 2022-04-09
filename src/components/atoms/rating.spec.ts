@@ -2,7 +2,13 @@ import { mount } from '@vue/test-utils'
 import Rating from './rating.vue'
 
 const props = {
-	movie: {vote_average: 8}
+	movie: {
+    id: 30,
+    original_title: 'filme test',
+    poster_path: null,
+    release_date: '12/04/2020',
+    vote_average: 8,
+	}
 }
 
 const wrapper = mount(Rating, { props })
