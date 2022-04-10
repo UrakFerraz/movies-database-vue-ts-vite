@@ -13,6 +13,4 @@ export async function getMoviesBySearchList(query: string, pageNum: number | str
   );
   
   moviesByQuery.value = list;
-  console.log(moviesByQuery);
-  
 }

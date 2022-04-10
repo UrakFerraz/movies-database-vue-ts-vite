@@ -20,7 +20,6 @@
 const emit = defineEmits(["search-button-clicked"]);
 
 const buttonClicked = () => {
-  console.log("emit: search-button-clicked");
   emit("search-button-clicked");
 };
 </script>

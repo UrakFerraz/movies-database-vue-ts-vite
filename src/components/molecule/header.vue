@@ -18,8 +18,6 @@ import SearchBar from "../organism/search-bar.vue";
 const isOpenSearchModal = ref(false);
 
 function openSearchModal() {
-  console.log("chegou");
-
   isOpenSearchModal.value = true;
 }
 

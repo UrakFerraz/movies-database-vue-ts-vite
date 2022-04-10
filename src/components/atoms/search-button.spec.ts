@@ -12,7 +12,5 @@ describe('deve ser o componente button', () => {
 		const svg = wrapper.find('svg')
 		expect(svg.exists()).toBe(true)
 		expect(wrapper.html()).toMatchSnapshot()
-		console.log(wrapper.html());
-		
 	})
 })

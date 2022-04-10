@@ -13,7 +13,6 @@ import SearchButton from "../atoms/search-button.vue";
 const emit = defineEmits(["open-search-modal"]);
 
 const openSearchModal = () => {
-  console.log("emit: open-search-modal");
   emit("open-search-modal");
 };
 </script>
