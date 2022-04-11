@@ -5,22 +5,25 @@ const firebaseList = `${firebaseURL}/movies.json`
 const FavoriteListMoviesStorage = new MoviesListStorage("Favorite Movies");
 const ToSeeListMoviesStorage = new MoviesListStorage("To See Movies");
 
-type StorageName = "favorites" | "to-see"
-export function addOrRemoveMovie(this: MoviesListState): (id: number, storageName: StorageName) => void {
-	return (id, storageName) => {
-		if (storageName === "favorites") {
-			FavoriteListMoviesStorage.addMovie(id);
-		}
-		if (storageName === 'to-see') {
-			ToSeeListMoviesStorage.addMovie(id);
-		}
-		if (this.movies.includes(id)) {
-			this.movies.splice(this.movies.indexOf(id), 1);
-		} else {
-			this.movies.push(id)
-		}
+export type StorageName = "favorites" | "to-see"
+export function addOrRemoveMovie(this: MoviesListState, id: number, storageName: StorageName) {
+
+	if (storageName === "favorites") {			
+		FavoriteListMoviesStorage.addMovie(id);
 	}
-};
+
+	if (storageName === 'to-see') {
+		ToSeeListMoviesStorage.addMovie(id);
+	}
+
+	const wasAdded = this.movies.indexOf(id)
+
+	if (wasAdded !== -1) {
+		this.movies.splice(this.movies.indexOf(id), 1);
+	} else {
+		this.movies.push(id)
+	}
+}
 
 export async function getMoviesListDatabase(this: MoviesListState, storageName: StorageName) {
 	try {
